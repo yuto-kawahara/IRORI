@@ -4,7 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       t.string   :nickname,         null: false
-      t.string   :icon_image_id,    null: false
+      t.string   :icon_image_id
       t.text     :introduction,     null: false
       t.integer  :user_status,      null: false, default: 0
       t.integer  :recruits_count,   null: false, default: 0

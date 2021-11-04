@@ -3,7 +3,7 @@ class CreateRecruits < ActiveRecord::Migration[5.2]
     create_table :recruits do |t|
       t.integer    :user_id,               null: false
       t.string     :title,                 null: false
-      t.string     :image_id,              null: false
+      t.string     :image_id
       t.datetime   :start_time,            null: false
       t.integer    :time_required,         null: false
       t.integer    :capacity,              null: false
