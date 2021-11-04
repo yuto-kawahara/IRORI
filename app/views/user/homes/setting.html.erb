@@ -1,0 +1,13 @@
+<h1>設定ページ</h1>
+<%= link_to "プロフィール編集", profile_edit_user_path(current_user) %>
+<%= link_to "ヘルプ", help_path %>
+<%= link_to "問い合わせ", contact_path %>
+<%= link_to destory_user_session_path, method: :delete do %>
+  <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+  <span class="title">ログアウト</span>
+<% end %>
+<%= link_to withdraw_users_path, method: :delete do %>
+  <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+  <span class="title">退会する</span>
+<% end %>
+
