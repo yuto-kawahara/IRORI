@@ -1,0 +1,116 @@
+<style>
+  .recruit_wrapper {
+    position: relative;
+    padding-bottom: 100px;
+  }
+  .comment_form_area {
+    position: fixed;
+    bottom: 30px;
+  }
+  .comment_input {
+    border: none;
+    box-shadow: 0 0 8px gray;
+  }
+  .recruit_btn_area {
+    display: flex;
+    height: 40px;
+
+  }
+</style>
+
+<section class="recruit_wrapper">
+  <% if @recruit.user == current_user %>
+    <div class="recruit_btn_area">
+      <%= link_to edit_recruit_path(@recruit), class: "btn" do %>
+        <i class="fas fa-pen"></i>
+      <% end %>
+      <%= link_to recruit_path(@recruit), method: :delete, class: "btn" do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <table>
+    <tbody>
+      <tr>
+        <th>GM</th>
+        <td>
+          <%= link_to profile_user_path(@recruit.user) do %>
+            <%= attachment_image_tag @recruit.user, :icon_image, :fill, 40, 40, fallback: "no-icon.png", size:"40x40", class: "rounded-circle"%>
+            <%= @recruit.user.nickname %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>タイトル</th>
+        <td><%= @recruit.title %></td>
+      </tr>
+      <tr>
+        <th>画像</th>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <th>日時</th>
+        <td><%= @recruit.hold_datetime.strftime("%Y/%m/%d %H:%M") %></td>
+      </tr>
+      <tr>
+        <th>定員</th>
+        <td><%= "#{@recruit.capacity}名" %></td>
+      </tr>
+      <tr>
+        <th>プレイ形態</th>
+        <td>
+          <ul>
+            <% @form_list.each do |form| %>
+              <li><%= form.name %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>参加条件</th>
+        <td>
+          <ul>
+            <% @entry_list.each do |entry| %>
+              <li><%= entry.name %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>説明</th>
+        <td><%= @recruit.explanation %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% if @recruit.user == current_user %>
+    <div class="confirm_btn_area">
+      <%= link_to reserve_list_recruit_path(@recruit.id), class: "btn btn-primary" do %>
+        <i class="far fa-list-alt">予約リスト</i>
+      <% end %>
+    </div>
+  <% else %>
+    <% if @recruit.reserves.count <= @recruit.capacity %>
+      <div class="reserve_btn_area">
+        <%= render 'reserves/reserve_btn', recruit: @recruit %>
+      </div>
+    <% else %>
+      <p>予約人数に到達しました</p>
+    <% end %>
+  <% end %>
+  <div class="recruit_comment_index">
+    <%= render 'recruit_comments/index', recruit: @recruit %>
+  </div>
+  <div class="comment_form_area">
+    <%= form_with model:[@recruit, @recruit_comment], class: "comment_form" do |f| %>
+      <div class="input-group input-group-lg">
+      <%= f.text_field :comment, class: "form-control comment_input" %>
+        <span class="input-group-append">
+          <button type="submit" class="btn btn-info">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</section>

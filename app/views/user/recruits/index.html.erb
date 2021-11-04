@@ -1,0 +1,8 @@
+<%= month_calendar events: @recruits do |date, recruits| %>
+  <%= date.day %>
+  <div>
+    <% unless recruits.blank? %>
+      <%= link_to "#{recruits.count}件", schedule_recruits_path(:date => date) %>
+    <% end %>
+  </div>
+<% end %>
