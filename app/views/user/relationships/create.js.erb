@@ -1,0 +1,3 @@
+$('.follow_area').html("<%= j(render 'relationships/follow', user: @user) %>");
+$('.following_count').html("<%= "#{@user.following.count}フォロー中" %>");
+$('.follower_count').html("<%= "#{@user.followed.count}フォロワー" %>");
