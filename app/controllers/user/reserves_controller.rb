@@ -2,28 +2,62 @@ class User::ReservesController < ApplicationController
   include User::MessagesHelper
   include User::NotificationsHelper
 
-  def index
-    @rooms = current_user.rooms
-    @user_rooms = UserRoom.where(room_id: @rooms).sorted
-    @user_rooms = @user_rooms.where.not(user_id: current_user.id)
-  end
+  before_action :set_recruit
+  before_action :confirm_access_restrictions, only: [:confirm, :complete]
 
   def create
-    @message = current_user.messages.new(message_params)
-    @message.save
-    users = @message.room.users
-    user_id = users.where.not(id: current_user.id).first.id
-    create_notification(current_user, user_id, nil, nil, @message.id, "message")
+    @reserve = @recruit.reserves.create(user_id: current_user.id)
+    @reserve.update_attributes(reserve_status: "wait_reserve")
+    create_notification(@recruit.user.id, @recruit.id, nil, nil, "reserve")
   end
 
-  def show
-    @user = User.find(params[:id])
-    room_create_search(current_user, @user.id, "", "one")
+  def destroy
+    reserve = @recruit.reserves.find_by(user_id: current_user.id)
+    reserve.destroy
+    create_notification(@recruit.user.id, @recruit.id, nil, nil, "cancel")
+  end
+
+  def update
+    @reserve = Reserve.find(params[:id])
+    @reserves = @recruit.reserves
+    status = params[:status]
+    case status
+      when "approve_reserve" then
+        @reserve.update_attributes(reserve_status: "approve_reserve")
+        @active = "green_active"
+      when "reject_reserve" then
+        @reserve.update_attributes(reserve_status: "reject_reserve")
+        @active = "red_active"
+    end
+  end
+
+  def list
+    @reserves = @recruit.reserves
+  end
+
+  def confirm
+    @reserves = Reserve.where(recruit_id: @recruit.id, reserve_status: "approve_reserve")
+  end
+
+  def complete
+    @reserves = Reserve.where(recruit_id: @recruit.id, reserve_status: "approve_reserve")
+    @recruit.update_attributes(recruit_status: "end_recruit")
+    @reserves.each do |reserve|
+      user = reserve.user
+      server_link = "サーバー招待を送信します\r\nご入室ください\r\n#{text_url_to_link(reserve.recruit.discord_server_link).html_safe}"
+      room_create_search(current_user, user.id, server_link, "broadcast")
+    end
   end
 
   private
 
-  def message_params
-    params.require(:message).permit(:content, :room_id)
+  def set_recruit
+    @recruit = Recruit.find(params[:recruit_id])
+  end
+
+  def confirm_access_restrictions
+    if @recruit.recruit_status == "end_recruit"
+      redirect_to reserve_list_recruit_path(@recruit.id)
+    end
   end
 end

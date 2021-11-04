@@ -89,7 +89,7 @@
   </table>
   <% if @recruit.user == current_user %>
     <div class="confirm_btn_area">
-      <%= link_to reserve_list_recruit_path(@recruit.id), class: "btn btn-primary" do %>
+      <%= link_to list_recruit_reserves_path(@recruit.id), class: "btn btn-primary" do %>
         <i class="far fa-list-alt">予約リスト</i>
       <% end %>
     </div>

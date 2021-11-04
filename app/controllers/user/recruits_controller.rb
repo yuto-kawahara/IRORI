@@ -59,11 +59,7 @@ class User::RecruitsController < ApplicationController
 
   def schedule
     date = params[:date]
-    @recruits = Recruit.where(hold_datetime: date.in_time_zone.all_day)
-  end
-
-  def reserve_list
-    @reserves = @recruit.reserves
+    @recruits = Recruit.where(start_time: date.in_time_zone.all_day)
   end
 
   private

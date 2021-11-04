@@ -6,7 +6,7 @@ class User::RecruitCommentsController < ApplicationController
     @recruit_comment = current_user.recruit_comments.new(comment_params)
     @recruit_comment.recruit_id = @recruit.id
     @recruit_comment.save
-    create_notification(@recruit.user.id, @recruit.id, @recruit_comment.id, nil, "comment")
+    create_notification(current_user, @recruit.user.id, @recruit.id, @recruit_comment.id, nil, "comment")
   end
 
   def destroy
