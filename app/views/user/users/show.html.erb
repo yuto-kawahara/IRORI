@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <div class="follow_area">
-    <%= render 'relationships/follow', user: @user %>
+    <%= render 'user/relationships/follow', user: @user %>
   </div>
   <%= link_to followings_user_path do %>
     <p class="following_count"><%= "#{@user.following.count}フォロー中" %></p>

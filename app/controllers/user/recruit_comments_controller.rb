@@ -1,6 +1,6 @@
 class User::RecruitCommentsController < ApplicationController
   before_action :set_recruit
-  include NotificationsHelper
+  include User::NotificationsHelper
 
   def create
     @recruit_comment = current_user.recruit_comments.new(comment_params)

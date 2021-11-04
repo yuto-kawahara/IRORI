@@ -41,7 +41,6 @@ class User::RecruitsController < ApplicationController
   def create
     @recruit = Recruit.new(recruit_params)
     @recruit.user_id = current_user.id
-    @recruit.start_time = @recruit.hold_datetime
     play_form_ids = params[:recruit][:play_form_ids]
     entry_condition_ids = params[:recruit][:entry_condition_ids]
     if @recruit.save
@@ -81,7 +80,8 @@ class User::RecruitsController < ApplicationController
   def recruit_params
     params.require(:recruit).permit(
       :title,
-      :hold_datetime,
+      :start_time,
+      :time_required,
       :capacity,
       :explanation,
       :discord_server_link,

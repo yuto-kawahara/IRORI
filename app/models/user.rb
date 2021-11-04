@@ -21,6 +21,22 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   attachment :icon_image
-  validates :nickname, presence: true, uniqueness: true
+  validates :nickname, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :introduction, length: { maximum: 300 }
+
+  def follow(user)
+    following.create(followed_id: user.id)
+  end
+
+  def unfollow(user)
+    following.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    following_user.include?(user)
+  end
+
+  def to_param
+    nickname
+  end
 end

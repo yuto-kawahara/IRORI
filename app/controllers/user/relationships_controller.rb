@@ -1,6 +1,6 @@
 class User::RelationshipsController < ApplicationController
   before_action :set_user
-  include NotificationsHelper
+  include User::NotificationsHelper
 
   def create
     current_user.follow(@user)

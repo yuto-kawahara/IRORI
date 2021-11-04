@@ -1,6 +1,6 @@
 class User::ReservesController < ApplicationController
-  include MessagesHelper
-  include NotificationsHelper
+  include User::MessagesHelper
+  include User::NotificationsHelper
 
   def index
     @rooms = current_user.rooms

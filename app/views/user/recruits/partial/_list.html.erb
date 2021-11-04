@@ -5,11 +5,11 @@
   <%= user.nickname %>
   <% case status
        when "approve_reserve" %>
-      <%= render 'reserves/confirm_btn', reserve: reserve, recruit: recruit, green_active: "active", red_active: "no_active" %>
+      <%= render 'user/reserves/confirm_btn', reserve: reserve, recruit: recruit, green_active: "active", red_active: "no_active" %>
     <% when "reject_reserve" %>
-      <%= render 'reserves/confirm_btn', reserve: reserve, recruit: recruit, green_active: "no_active", red_active: "active" %>
+      <%= render 'user/reserves/confirm_btn', reserve: reserve, recruit: recruit, green_active: "no_active", red_active: "active" %>
     <% else %>
-      <%= render 'reserves/confirm_btn', reserve: reserve, recruit: recruit, green_active: "no_active", red_active: "no_active" %>
+      <%= render 'user/reserves/confirm_btn', reserve: reserve, recruit: recruit, green_active: "no_active", red_active: "no_active" %>
   <% end %>
 <% end %>
 

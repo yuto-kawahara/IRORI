@@ -2,10 +2,10 @@
 <%= link_to "募集へ戻る", recruit_path(@recruit), class: "btn" %>
 <% if @recruit.recruit_status != "end_recruit" %>
   <div class="reserve_list_area">
-    <%= render 'recruits/partial/list', reserves: @reserves, recruit: @recruit %>
+    <%= render 'user/recruits/partial/list', reserves: @reserves, recruit: @recruit %>
   </div>
   <div class="confirm_btn">
-    <%= render 'reserves/confirm', reserves: @reserves, recruit: @recruit %>
+    <%= render 'user/reserves/confirm', reserves: @reserves, recruit: @recruit %>
   </div>
 <% else %>
   <p>募集は終了しました</p>
