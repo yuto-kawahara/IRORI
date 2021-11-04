@@ -71,6 +71,9 @@ gem 'rspec-rails'
 gem 'enum_help'
 gem 'simple_calendar', '~> 2.0'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+group :production do
+  gem 'mysql2'
+end
 gem 'whenever', '~> 1.0'
 gem 'rubocop', '~> 1.22', '>= 1.22.3'
 gem 'bullet', '~> 6.1', '>= 6.1.5'
