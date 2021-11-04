@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: :all
-  devise_scope :user do
-    get    'users/login'         => 'devise/sessions#new',        as: :new_user_session
-    post   'users/login'         => 'devise/sessions#create',     as: :user_session
-    delete 'users/logout'        => 'devise/sessions#destroy',    as: :destory_user_session
-    get    'users/signup'        => 'devise/registrations#new',   as: :new_user_registration
-    post   'users/signup'        => 'devise/registrations#create',as: :user_registration
-    get    'users/password/new'  => 'devise/passwords#new',       as: :new_user_password
-    post   'users/password/edit' => 'devise/passwords#edit',      as: :edit_user_password
-    patch  'users/password'      => 'devise/passwords#update'
-    post   'users/password'      => 'devise/passwords#create'
 
-  end
   scope module: :user do
+    devise_for :users, skip: :all
+    devise_scope :user do
+      get    'users/login'         => 'devise/sessions#new',        as: :new_user_session
+      post   'users/login'         => 'devise/sessions#create',     as: :user_session
+      delete 'users/logout'        => 'devise/sessions#destroy',    as: :destory_user_session
+      get    'users/signup'        => 'devise/registrations#new',   as: :new_user_registration
+      post   'users/signup'        => 'devise/registrations#create',as: :user_registration
+      get    'users/password/new'  => 'devise/passwords#new',       as: :new_user_password
+      post   'users/password/edit' => 'devise/passwords#edit',      as: :edit_user_password
+      patch  'users/password'      => 'devise/passwords#update'
+      post   'users/password'      => 'devise/passwords#create'
+
+    end
+
     root to: 'homes#top'
     get '/home'    => 'homes#home'
     get '/setting' => 'homes#setting'
