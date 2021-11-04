@@ -1,0 +1,11 @@
+<% if @notifications.exists? %>
+  <%= render @notifications %>
+  <%= paginate @notifications %>
+  <div class="page-load-status" style="display:none;">
+    <div class="infinite-scroll-request">ロード中</div>
+    <p class="infinite-scroll-last">これ以上は記事がありません</p>
+    <p class="infinite-scroll-error">読み込むページがありません</p>
+  </div>
+<% else %>
+  <p>通知はありません</p>
+<% end %>
