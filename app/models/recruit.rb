@@ -20,4 +20,28 @@ class Recruit < ApplicationRecord
   validates :time_required,       presence: true
   validates :explanation,         presence: true, length: { maximum: 1000 }
   validates :discord_server_link, presence: true, length: { maximum: 200 }
+
+  enum recruit_status:{
+    not_recruit: 0,     #未募集
+    now_recruit: 1,    #募集中
+    few_recruit: 2,    #残り僅か
+    end_recruit: 3     #募集終了
+  }
+
+  def reserve_exist?(user)
+    reserves.where(user_id: user.id).exists?
+  end
+
+  def self.remind_user
+    # @message = Message.new(user_id: 4, room_id: 2, content: "テスト")
+    # @message.save
+    # MessagesController.helpers.room_create_search(2, "テスト", "broadcast")
+    @recruit = Recruit.all
+    @recruit.each do |recruit|
+      # if recruit.hold_datetime < Time.current
+        recruit.reserves.each do |reserve|
+          MessagesController.helpers.room_create_search(recruit.user, reserve.user_id, "テスト", "broadcast")
+        end
+    end
+  end
 end

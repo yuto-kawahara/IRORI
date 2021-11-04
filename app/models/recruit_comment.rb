@@ -4,4 +4,7 @@ class RecruitComment < ApplicationRecord
   has_many   :notifications, dependent: :destroy
   counter_culture :recruit
   validates :comment, presence: true, length: { maximum: 500 }
+
+
+
 end
