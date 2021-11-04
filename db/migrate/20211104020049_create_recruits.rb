@@ -1,11 +1,11 @@
 class CreateRecruits < ActiveRecord::Migration[5.2]
   def change
     create_table :recruits do |t|
-      t.integer    :user_id,               null: false, default: ""
-      t.string     :title,                 null: false, default: ""
-      t.string     :image_id,              null: false, default: ""
-      t.datetime   :start_time,            null: false, default: ""
-      t.integer    :time_required,         null: false, default: ""
+      t.integer    :user_id,               null: false
+      t.string     :title,                 null: false
+      t.string     :image_id,              null: false
+      t.datetime   :start_time,            null: false
+      t.integer    :time_required,         null: false
       t.integer    :capacity,              null: false, default: ""
       t.text       :explanation,           null: false
       t.string     :discord_server_link,   null: false, default: ""

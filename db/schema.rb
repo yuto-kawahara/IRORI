@@ -14,14 +14,14 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
 
   create_table "discord_server_links", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "name", default: "", null: false
-    t.string "link", default: "", null: false
+    t.string "name", null: false
+    t.string "link", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "entry_conditions", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.text "introduction", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
     t.integer "recruit_id"
     t.integer "recruit_comment_id"
     t.integer "message_id"
-    t.string "action", default: "", null: false
+    t.string "action", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
   end
 
   create_table "play_forms", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.text "introduction", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
 
   create_table "recruits", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "title", default: "", null: false
-    t.string "image_id", default: "", null: false
+    t.string "title", null: false
+    t.string "image_id", null: false
     t.datetime "start_time", null: false
     t.integer "time_required", null: false
     t.integer "capacity", null: false
@@ -118,13 +118,13 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "nickname", default: "", null: false
-    t.string "icon_image_id", default: "", null: false
+    t.string "nickname", null: false
+    t.string "icon_image_id", null: false
     t.text "introduction", null: false
     t.integer "user_status", default: 0, null: false
     t.integer "recruits_count", default: 0, null: false
     t.integer "reserves_count", default: 0, null: false
-    t.string "email", default: "", null: false
+    t.string "email", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
