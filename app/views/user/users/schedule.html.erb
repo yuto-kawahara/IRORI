@@ -1,0 +1,13 @@
+<h1><%= "#{current_user.nickname}さんのスケジュール" %></h1>
+
+<%= month_calendar events: @recruits do |date, recruits| %>
+  <%= date.day %>
+  <div>
+    <% unless recruits.blank? %>
+      <% recruits.each do |recruit| %>
+        <%= "#{recruit.hold_datetime.strftime("%H:%M")}～" %><br>
+        <%= link_to recruit.title, recruit_path(recruit) %><br>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,65 @@
+<div class="user_profile_area">
+  <%= attachment_image_tag @user, :icon_image, :fill, 130, 130, fallback: "person-circle-outline.svg", size:"130x130" %>
+  <%= @user.nickname %>
+  <%= @user.introduction %>
+  <% if @user != current_user %>
+    <div class="message_area">
+      <%= link_to message_path(@user.id) do %>
+        <i class="far fa-envelope"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="follow_area">
+    <%= render 'relationships/follow', user: @user %>
+  </div>
+  <%= link_to followings_user_path do %>
+    <p class="following_count"><%= "#{@user.following.count}フォロー中" %></p>
+  <% end %>
+  <%= link_to followers_user_path do %>
+    <p class="follower_count"><%= "#{@user.followed.count}フォロワー" %></p>
+  <% end %>
+
+</div>
+
+<div class="recruit_list">
+  <ul>
+    <% @user.recruits.each do |recruit| %>
+      <li>
+        <%= link_to recruit_path(recruit) do %>
+          <%= attachment_image_tag @user, :icon_image, :fill, 40, 40, fallback: "person-circle-outline.svg", size:"40x40" %>
+          <%= @user.nickname %> <br>
+          <% case recruit.recruit_status
+               when "not_recruit" %>
+
+          　<% when "now_recruit" %>
+              <div class="icon_status">
+                <ion-icon name="ellipse-outline"></ion-icon><br>
+            　   <small><%= recruit.recruit_status_i18n %></small>
+          　   </div>
+            <% when "few_recruit" %>
+              <div class="icon_status">
+                <ion-icon name="triangle-outline"></ion-icon><br>
+                <small><%= recruit.recruit_status_i18n %></small>
+              </div>
+            <% when "end_recruit" %>
+              <div class="icon_status">
+                <ion-icon name="close-outline"></ion-icon><br>
+                <small><%= recruit.recruit_status_i18n %></small>
+              </div>
+          <% end %>
+          <%= recruit.title %>
+          <%= recruit.hold_datetime %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<style>
+  .icon_status {
+    font-size: 18px;
+    text-align: center;
+    list-style: none;
+  }
+
+</style>

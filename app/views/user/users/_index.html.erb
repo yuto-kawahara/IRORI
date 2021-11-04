@@ -1,0 +1,18 @@
+<% unless users.blank? %>
+  <ul>
+    <% users.each do |user| %>
+      <li>
+        <%= link_to profile_user_path(user) do %>
+          <%= attachment_image_tag user, :icon_image, :fill, 130, 130, fallback: "person-circle-outline.svg", size:"130x130" %>
+          <%= user.nickname %>
+          <%= user.introduction %>
+        <% end %>
+        <div class="follow_area">
+          <%= render 'relationships/follow', user: user %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>フォロワーはいません</p>
+<% end %>

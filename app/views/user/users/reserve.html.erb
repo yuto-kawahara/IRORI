@@ -1,0 +1,6 @@
+<% @reserves.each do |reserve| %>
+  <% recruit = reserve.recruit %>
+  <%= attachment_image_tag recruit.user, :icon_image, :fill, 40, 40, fallback: "person-circle-outline.svg", size:"40x40" %>
+  <%= recruit.user.nickname %>
+  <%= recruit.title %>
+<% end %>
