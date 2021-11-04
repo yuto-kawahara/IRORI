@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
 
   create_table "entry_conditions", force: :cascade do |t|
     t.string "name", null: false
-    t.text "introduction", default: "", null: false
+    t.text "introduction", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
