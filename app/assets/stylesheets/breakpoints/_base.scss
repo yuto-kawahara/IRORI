@@ -1,0 +1,24 @@
+body {
+  font-size: 1rem;
+  letter-spacing: 0.125em;
+  line-height: 1.2;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+#container {
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+#side_area {
+  position: fixed;
+  width: 20%;
+  height: 100%;
+}
+
+#main_area {
+  width: 70%;
+  height: 100%;
+  margin: 0 0 0 auto;
+}
