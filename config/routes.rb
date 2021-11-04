@@ -41,7 +41,7 @@ Rails.application.routes.draw do
       resources :recruit_comments, only: [:edit, :update, :create, :destroy]
       resource :reserves, only: [:create, :destroy] do
         collection do
-          get 'reserve_list', 'confirm', 'complete'
+          get 'list', 'confirm', 'complete'
         end
       end
     end
