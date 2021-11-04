@@ -1,0 +1,2 @@
+class RecruitComment < ApplicationRecord
+end

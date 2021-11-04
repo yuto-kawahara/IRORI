@@ -1,0 +1,2 @@
+class EntryCondition < ApplicationRecord
+end

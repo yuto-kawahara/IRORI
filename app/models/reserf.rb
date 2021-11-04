@@ -1,0 +1,2 @@
+class Reserf < ApplicationRecord
+end

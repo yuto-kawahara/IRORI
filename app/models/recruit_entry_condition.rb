@@ -1,0 +1,2 @@
+class RecruitEntryCondition < ApplicationRecord
+end

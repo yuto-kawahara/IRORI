@@ -1,0 +1,2 @@
+class RecruitPlayForm < ApplicationRecord
+end

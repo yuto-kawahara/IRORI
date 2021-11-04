@@ -1,0 +1,2 @@
+class DiscordServerLink < ApplicationRecord
+end
