@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
   end
 
   create_table "entry_conditions", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.text "introduction", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
     t.integer "recruit_id"
     t.integer "recruit_comment_id"
     t.integer "message_id"
-    t.string "action", default: "", null: false
+    t.string "action", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
   end
 
   create_table "play_forms", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.text "introduction", default: "", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,13 +78,14 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
   end
 
   create_table "recruits", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "title", default: "", null: false
     t.string "image_id", default: "", null: false
     t.datetime "start_time", null: false
     t.integer "time_required", null: false
     t.integer "capacity", null: false
     t.text "explanation", null: false
-    t.string "discord_server_link", default: "", null: false
+    t.string "discord_server_link", null: false
     t.integer "recruit_status", default: 1, null: false
     t.integer "recruit_comments_count", default: 0, null: false
     t.integer "reserves_count", default: 0, null: false
