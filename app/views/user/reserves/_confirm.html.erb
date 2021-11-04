@@ -1,0 +1,5 @@
+<% if reserves.where(recruit_id: recruit.id, reserve_status: "approve_reserve").count == recruit.capacity %>
+  <%= link_to "予約確認", confirm_recruit_reserves_path(:recruit_id => recruit.id), class: "btn btn-success" %>
+<% else %>
+  <%= link_to "予約確認", confirm_recruit_reserves_path(:recruit_id => recruit.id), class: "btn btn-success disabled" %>
+<% end %>

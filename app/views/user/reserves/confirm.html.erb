@@ -1,0 +1,5 @@
+<% @reserves.each do |reserve| %>
+  <%= attachment_image_tag reserve.user, :icon_image, :fill, 40, 40, fallback: "person-circle-outline.svg", size:"40x40" %>
+  <%= reserve.user.nickname %>
+<% end %>
+<%= link_to "確定", complete_recruit_reserves_path, class: "btn btn-success" %>

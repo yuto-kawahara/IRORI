@@ -1,0 +1,6 @@
+<%= link_to reserve_path(reserve, :recruit_id => recruit.id, :status => "approve_reserve"), method: :patch, remote: true, class: "btn btn_border_green #{green_active}" do %>
+  <i class="far fa-check-circle">承認</i>
+<% end %>
+<%= link_to reserve_path(reserve, :recruit_id => recruit.id, :status => "reject_reserve"), method: :patch, remote: true, class: "btn btn_border_red #{red_active}" do %>
+  <i class="far fa-times-circle">拒否</i>
+<% end %>

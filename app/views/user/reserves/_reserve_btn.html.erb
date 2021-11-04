@@ -1,0 +1,9 @@
+<% if recruit.reserve_exist?(current_user) %>
+  <%= link_to recruit_reserves_path(@recruit), method: :delete, remote: true, class: "btn btn-danger" do %>
+    <i class="far fa-times-circle">キャンセル</i>
+  <% end %>
+<% else %>
+  <%= link_to recruit_reserves_path(@recruit), method: :post, remote: true, class: "btn btn-info" do %>
+    <i class="far fa-check-circle">予約</i>
+  <% end %>
+<% end %>
