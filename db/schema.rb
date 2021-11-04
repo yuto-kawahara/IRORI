@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
     t.datetime "start_time", null: false
     t.integer "time_required", null: false
     t.integer "capacity", null: false
-    t.text "explanation", null: false
+    t.text "explanation", default: "", null: false
     t.string "discord_server_link", null: false
     t.integer "recruit_status", default: 1, null: false
     t.integer "recruit_comments_count", default: 0, null: false
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
   create_table "users", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "icon_image_id"
-    t.text "introduction", null: false
+    t.text "introduction", default: "", null: false
     t.integer "user_status", default: 0, null: false
     t.integer "recruits_count", default: 0, null: false
     t.integer "reserves_count", default: 0, null: false
