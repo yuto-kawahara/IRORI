@@ -7,7 +7,7 @@ class CreateRecruits < ActiveRecord::Migration[5.2]
       t.datetime   :start_time,            null: false, default: ""
       t.integer    :time_required,         null: false, default: ""
       t.integer    :capacity,              null: false, default: ""
-      t.text       :explanation,           null: false, default: ""
+      t.text       :explanation,           null: false
       t.string     :discord_server_link,   null: false, default: ""
       t.integer    :recruit_status,        null: false, default: 1
       t.integer    :recruit_comments_count,null: false, default: 0
