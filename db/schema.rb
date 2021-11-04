@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
   end
 
   create_table "entry_conditions", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name", default: "", null: false
     t.text "introduction", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
     t.integer "recruit_id"
     t.integer "recruit_comment_id"
     t.integer "message_id"
-    t.string "action", null: false
+    t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
   end
 
   create_table "play_forms", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name", default: "", null: false
     t.text "introduction", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
     t.integer "time_required", null: false
     t.integer "capacity", null: false
     t.text "explanation", null: false
-    t.string "discord_server_link", null: false
+    t.string "discord_server_link", default: "", null: false
     t.integer "recruit_status", default: 1, null: false
     t.integer "recruit_comments_count", default: 0, null: false
     t.integer "reserves_count", default: 0, null: false
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
   create_table "users", force: :cascade do |t|
     t.string "nickname", default: "", null: false
     t.string "icon_image_id", default: "", null: false
-    t.string "introduction", default: "", null: false
+    t.text "introduction", null: false
     t.integer "user_status", default: 0, null: false
     t.integer "recruits_count", default: 0, null: false
     t.integer "reserves_count", default: 0, null: false
