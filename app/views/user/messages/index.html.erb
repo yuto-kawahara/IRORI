@@ -1,0 +1,8 @@
+<% @user_rooms.each do |user_room| %>
+  <% user = user_room.user %>
+  <li>
+    <%= link_to message_path(user_room.room.id) do %>
+      <%= "#{user.nickname}さんとのチャット" %>
+    <% end %>
+  </li>
+<% end %>
