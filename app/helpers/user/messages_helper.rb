@@ -1,9 +1,9 @@
 module User::MessagesHelper
   require "uri"
 
-  def room_create_search(send_user, user_id, message, send_method)
+  def room_create_search(send_user, receive_user, message, send_method)
     rooms = send_user.user_rooms.pluck(:room_id)
-    @user_rooms = UserRoom.find_by(user_id: user_id, room_id: rooms)
+    @user_rooms = UserRoom.find_by(user_id: receive_user.id, room_id: rooms)
 
     if @user_rooms.present?
       @room = @user_rooms.room
@@ -11,13 +11,13 @@ module User::MessagesHelper
       @room = Room.new
       @room.save
       UserRoom.create(user_id: send_user.id, room_id: @room.id)
-      UserRoom.create(user_id: user_id, room_id: @room.id)
+      UserRoom.create(user_id: receive_user.id, room_id: @room.id)
     end
     @messages = @room.messages
     @message = send_user.messages.new(room_id: @room.id, content: message)
     if send_method == "broadcast"
       @message.save
-      create_notification(send_user, user_id, nil, nil, @message.id, "message" )
+      create_notification(send_user, receive_user, nil, nil, @message.id, "message" )
     end
   end
 

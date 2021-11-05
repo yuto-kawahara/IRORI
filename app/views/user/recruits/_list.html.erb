@@ -1,0 +1,43 @@
+<ul class="list">
+  <% recruits.each do |recruit| %>
+    <li class="item">
+      <%= link_to recruit_path(recruit), class: "recruit_detail_link" do %>
+        <div class="recruit_status_area">
+          <% case recruit.recruit_status
+               when "not_recruit" %>
+
+          　<% when "now_recruit" %>
+              <div class="icon_status">
+                <ion-icon name="ellipse-outline", class="status_now"></ion-icon>
+                <small class="now"><%= recruit.recruit_status_i18n %></small>
+              </div>
+            <% when "few_recruit" %>
+              <div class="icon_status">
+                <ion-icon name="triangle-outline", class="status_few"></ion-icon>
+                <small class="few"><%= recruit.recruit_status_i18n %></small>
+              </div>
+            <% when "end_recruit" %>
+              <div class="icon_status">
+                <ion-icon name="close-outline", class="status_end"></ion-icon>
+                <small class="end"><%= recruit.recruit_status_i18n %></small>
+              </div>
+          <% end %>
+        </div>
+        <div class="user_post_info_area">
+          <div class="profile_area">
+            <p>GM:</p>
+            <p><%= attachment_image_tag recruit.user, :icon_image, :fill, 30, 30, fallback: "person-circle-outline.svg", size:"30x30" %></p>
+            <p><%= recruit.user.nickname %></p>
+          </div>
+          <div class="recruit_area">
+            <p class="recruit_title">
+              <%= recruit.title %>
+              <small><%= "[所要時間：#{recruit.time_required}時間]" %></small>
+            </p>
+            <p class="recruit_date"><%= "募集日時：#{recruit.start_time.strftime("%m月%d日 %H:%M～")}" %></p>
+          </div>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

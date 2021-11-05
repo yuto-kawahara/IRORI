@@ -1,0 +1,15 @@
+<ul class=list>
+  <% recruit.recruit_comments.each do |comment| %>
+    <li class="item">
+      <% recruit_comment_user = comment.user %>
+    	<%= link_to profile_user_path(recruit_comment_user), class: "user_#{recruit_comment_user.id}" do %>
+      	<%= attachment_image_tag recruit_comment_user, :icon_image, :fill, 50, 50, fallback: "person-circle-outline.svg", size: "50x50" %><br>
+      	<%= recruit_comment_user.nickname %>
+    	<% end %>
+    	<%= comment.comment %>
+    	<% if current_user == recruit_comment_user %>
+      	<%= link_to 'Destroy', recruit_recruit_comment_path(recruit, comment), method: :delete, remote: true %>
+    	<% end %>
+    </li>
+  <% end %>
+</ul>

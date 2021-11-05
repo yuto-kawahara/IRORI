@@ -1,11 +1,11 @@
 module User::NotificationsHelper
-  def create_notification(send_user, user_id, recruit_id, recruit_comment_id, message_id, action)
-    unless send_user.id == user_id
+  def create_notification(send_user, receive_user, recruit_id, recruit_comment_id, message_id, action)
+    unless send_user.id == receive_user.id
       notification = send_user.active_notifications.new(
         recruit_id: recruit_id,
         recruit_comment_id: recruit_comment_id,
         message_id: message_id,
-        visited_id: user_id,
+        visited_id: receive_user.id,
         action: action
       )
       if notification.valid?

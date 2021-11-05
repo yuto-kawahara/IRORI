@@ -5,6 +5,15 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+li {
+  list-style: none;
+}
+
 #container {
   max-width: 1200px;
   height: 100vh;
@@ -20,5 +29,196 @@ body {
 #main_area {
   width: 70%;
   height: 100%;
-  margin: 0 0 0 auto;
+  margin: 0 0 0 30%;
 }
+
+@mixin badge {
+  color: #fff;
+  border-radius: 5px;
+  padding: 1px 2px;
+}
+
+.user_profile_inner {
+  border: 1px solid #DDDDDD;
+  padding: 20px;
+}
+
+.follow_count_area {
+  display: flex;
+
+ & p {
+   margin-right: 20px;
+ }
+
+ & small {
+   font-weight: bold;
+ }
+}
+
+
+.user_recruit_list {
+  border: 1px solid #DDDDDD;
+
+
+  & .item {
+    border: 1px solid #DDDDDD;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 20px;
+  }
+
+  & .recruit_detail_link {
+   display: flex;
+   align-items: center;
+  }
+
+  & .recruit_status_area {
+    width: 10%;
+    margin-right: 20px;
+  }
+
+  & .user_post_info_area {
+    width: 90%;
+  }
+
+  & .icon_status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & ion-icon {
+    font-size: 3.5em;
+    z-index: 1;
+  }
+
+
+  & .now {
+    @include badge;
+    background: red;
+  }
+
+  & .few {
+    @include badge;
+    background: orange;
+  }
+
+  & .end {
+    @include badge;
+    background: blue;
+  }
+
+  & .status_now {
+    color: red;
+  }
+  & .status_end {
+    color: blue;
+  }
+  & .status_few {
+    color: orange;
+  }
+
+  & .profile_area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  & .recruit_title {
+    border-bottom: 1px dashed #DDDDDD;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  & .recruit_date {
+    @include badge;
+    text-align: center;
+    background: #000;
+  }
+}
+
+.post_group {
+  border: 1px solid #DDDDDD;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  vertical-align: top;
+  background: #fff;
+  text-align: left;
+  margin: 10px;
+  padding: 20px;
+}
+
+.post_control {
+  display: block;
+  position: relative;
+  margin-bottom: 15px;
+  & .control {
+    margin-bottom: 10px;
+  }
+
+  & small {
+    @include badge;
+    font-size: 5px;
+    margin-left: 10px;
+  }
+
+  & .badge_any {
+    background: gray;
+  }
+  & .badge_mandatory {
+    background: red;
+  }
+}
+.post_title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input[type=text],
+input[type=datetime-local],
+select,
+textarea {
+  border: 1px solid #DDDDDD;
+  border-radius: 20px;
+  box-shadow: 0 0 1px 0 rgba(0,0,0,0.5);
+  height: 30px;
+  padding: 7px;
+  &:focus {
+    border: 1px solid #ff9900;
+    box-shadow: 0 0 1px 0 rgba(255,153,0,1);
+    outline: 0;
+  }
+}
+
+input[type=text] {
+  width: 100%;
+}
+
+input[type=datetime-local],
+select {
+  width: 30%;
+}
+
+textarea {
+  border: 1px solid #DDDDDD;
+  border-radius: 10px;
+  height: 200px;
+  width: 100%;
+  padding: 5px;
+  resize: none;
+}
+
+.select_item {
+  font-size: .8em;
+  margin-bottom: 7px;
+  & label {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  & input {
+    margin-right: 5px;
+  }
+}
+

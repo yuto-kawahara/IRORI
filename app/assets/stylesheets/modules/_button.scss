@@ -1,0 +1,57 @@
+.btn {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 30px;
+  font-weight: 600;
+  padding: 10px 40px;
+  margin: 10px auto;
+  cursor: pointer;
+  transition: all 0.3s
+}
+
+
+
+.btn_border_green.active {
+  color: #fff;
+  background: #30ba4e;
+}
+.btn_border_green.no_active {
+  color: #30ba4e;
+  background: #fff;
+}
+
+.btn_border_red.active {
+  color: #fff;
+  background: #DC3545;
+}
+
+.btn_border_red.no_active {
+  color: #DC3545;
+  background: #fff;
+}
+
+
+.btn_border_green {
+  color: #30ba4e;
+  border: 2px solid #30ba4e;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.btn_border_green:hover {
+  color: #fff;
+  background: #30ba4e;
+}
+
+.btn_border_red {
+  color: #DC3545;
+  border: 2px solid #DC3545;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.btn_border_red:hover {
+  color: #fff;
+  background: #DC3545;
+}

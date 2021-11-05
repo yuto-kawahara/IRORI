@@ -12,13 +12,13 @@ class User::MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)
     @message.save
     users = @message.room.users
-    user_id = users.where.not(id: current_user.id).first.id
-    create_notification(current_user, user_id, nil, nil, @message.id, "message")
+    user = users.where.not(id: current_user.id).first
+    create_notification(current_user, user, nil, nil, @message.id, "message")
   end
 
   def show
     @user = User.find(params[:id])
-    room_create_search(current_user, @user.id, "", "one")
+    room_create_search(current_user, @user, "", "one")
   end
 
   private

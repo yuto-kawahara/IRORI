@@ -8,13 +8,13 @@ class User::ReservesController < ApplicationController
   def create
     @reserve = @recruit.reserves.create(user_id: current_user.id)
     @reserve.update_attributes(reserve_status: "wait_reserve")
-    create_notification(@recruit.user.id, @recruit.id, nil, nil, "reserve")
+    create_notification(current_user, @recruit.user, @recruit.id, nil, nil, "reserve")
   end
 
   def destroy
     reserve = @recruit.reserves.find_by(user_id: current_user.id)
     reserve.destroy
-    create_notification(@recruit.user.id, @recruit.id, nil, nil, "cancel")
+    create_notification(current_user, @recruit.user, @recruit.id, nil, nil, "cancel")
   end
 
   def update
@@ -44,8 +44,10 @@ class User::ReservesController < ApplicationController
     @recruit.update_attributes(recruit_status: "end_recruit")
     @reserves.each do |reserve|
       user = reserve.user
-      server_link = "サーバー招待を送信します\r\nご入室ください\r\n#{text_url_to_link(reserve.recruit.discord_server_link).html_safe}"
-      room_create_search(current_user, user.id, server_link, "broadcast")
+      server_link = text_url_to_link(reserve.recruit.discord_server_link).html_safe
+      message = "サーバー招待を送信します\r\nご入室ください\r\n#{server_link}"
+
+      room_create_search(current_user, user, message, "broadcast")
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_04_020337) do
+ActiveRecord::Schema.define(version: 2021_11_04_143701) do
 
   create_table "discord_server_links", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -102,6 +102,15 @@ ActiveRecord::Schema.define(version: 2021_11_04_020337) do
     t.datetime "updated_at", null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
+  create_table "reserves", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "recruit_id", null: false
+    t.integer "reserve_status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reserve_status"], name: "index_reserves_on_reserve_status"
   end
 
   create_table "rooms", force: :cascade do |t|

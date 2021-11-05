@@ -1,0 +1,90 @@
+<%= form_with model: recruit, local:true do |f| %>
+  <div class="post_group">
+    <div class="post_control">
+      <%= f.label :GM, "GM:", class: "post_title" %>
+      <%= attachment_image_tag current_user, :icon_image, :fill, 30, 30, fallback: "person-circle-outline.svg", size:"30x30" %>
+      <%= current_user.nickname %>
+    </div>
+
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :title, "タイトル:", class: "post_title" %>
+        <small class="badge_mandatory">必須</small>
+      </div>
+      <%= f.text_field :title, autofocus: true %>
+    </div>
+
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :start_time, "日時選択:", class: "post_title" %>
+        <small class="badge_mandatory">必須</small>
+      </div>
+      <%= f.datetime_field :start_time %>
+    </div>
+
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :time_required, "所要時間:", class: "post_title" %>
+        <small class="badge_mandatory">必須</small>
+      </div>
+      <%= f.select :time_required, options_for_select((1..10).map{|n| ["#{n}時間", n]}, selected: recruit.time_required),{ include_blank: '所要時間を選択してください'} %>
+    </div>
+
+
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :capacity, "定員:", class: "post_title" %>
+        <small class="badge_mandatory">必須</small>
+      </div>
+      <%= f.select :capacity, options_for_select((1..10).map{|n| ["#{n}人", n]}, selected: recruit.capacity),{ include_blank: '定員を選択してください'} %>
+    </div>
+
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :discord_server_link, "Discordサーバーリンク:", class: "post_title" %>
+        <small class="badge_mandatory">必須</small>
+      </div>
+      <%= f.text_field :discord_server_link %>
+    </div>
+
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :explanation, "説明:", class: "post_title" %>
+        <small class="badge_any">任意</small>
+      </div>
+      <%= f.text_area :explanation %>
+    </div>
+
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :image, "画像:", class: "post_title" %>
+        <small class="badge_any">任意</small>
+      </div>
+      <%= f.attachment_field :image, class: "form-control-file", id: "img-file" %>
+    </div>
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :play_form_ids, "プレイ形態:", class: "post_title" %>
+        <small class="badge_any">任意</small>
+      </div>
+      <%= f.collection_check_boxes(:play_form_ids, @play_forms, :id, :name) do |b| %>
+        <div class="select_item">
+          <%= b.label {b.check_box + b.text} %>
+        </div>
+      <% end %>
+    </div>
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :entry_condition_ids, "参加条件:", class: "post_title" %>
+        <small class="badge_any">任意</small>
+      </div>
+      <%= f.collection_check_boxes(:entry_condition_ids, @entry_conditions, :id, :name) do |b| %>
+        <div class="select_item">
+          <%= b.label {b.check_box + b.text} %>
+        </div>
+      <% end %>
+    </div>
+    <%= f.submit recruit.persisted? ? '変更内容を保存' : '登録', class: "btn" %>
+  </div>
+
+<% end %>
