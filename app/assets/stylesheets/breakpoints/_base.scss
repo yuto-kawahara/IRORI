@@ -30,7 +30,7 @@ li {
 #main_area {
   width: 70%;
   height: 100%;
-  margin: 0 0 0 30%;
+  margin: 0 0 0 26%;
 }
 
 @mixin badge {
@@ -42,6 +42,15 @@ li {
 .user_profile_inner {
   border: 1px solid #DDDDDD;
   padding: 20px;
+}
+
+.profile_action_area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user_action_btn {
+  display: flex;
 }
 
 .follow_count_area {
@@ -226,28 +235,30 @@ textarea {
   position: relative;
   padding-bottom: 100px;
 
+  & .recruit_detail_table {
+    border-radius: 10px;
+    background: #dbffed;
+    width: 90%;
+  }
+
   & table {
     border-collapse: collapse;
-    width: 100%;
   }
 
   & tr {
     text-align: left;
-    width: 90%;
   }
 
   & th {
-    outline: 1px solid #fff;
-    background: #5ab9ff;
     font-weight: bold;
     width: 15%;
-    background: #ffd98a;
-    padding: 2px 5px 2px 10px;
+    padding: 2px 10px;
     color: #474747;
   }
 
   & td {
     padding: 10px;
+    border-left: 1px solid #fff;
   }
 
   & .comment_form_area {
@@ -302,4 +313,105 @@ textarea {
   }
 }
 
+#message_room_wrapper {
+  & .item {
+    border: 1px solid #DDDDDD;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 20px;
+  }
+}
+
+#message_detail_wrapper {
+  .current_user_message {
+    // display: flex;
+    // justify-content: flex-end;
+    // align-items: center;
+  }
+  .other_user_message {
+    display: flex;
+  }
+}
+.balloon_message {
+  position: relative;
+  width: 100%;
+  margin: 1.2em 0;
+  padding: 15px 0;
+  overflow: hidden;
+
+  & .message_info {
+    display: flex;
+
+    & .faceicon {
+      & > img {
+        height: auto;
+        border: solid 3px #d7ebfe;
+        border-radius: 50%;
+      }
+    }
+
+    & .says {
+      display: inline-block;
+      position: relative;
+      max-width: 70%;
+      padding: 17px 13px;
+      border-radius: 12px;
+      background: #d7ebfe;
+
+      &:after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        border: 12px solid transparent;
+      }
+    }
+  }
+
+  & small {
+    letter-spacing: 0em;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.current_user {
+  & .message_info {
+    flex-flow: row-reverse;
+    & .faceicon {
+      margin-left: 20px;
+    }
+
+    & .says {
+      &:after {
+        top: 18px;
+        right: -24px;
+        border-left: 12px solid #d7ebfe;
+      }
+    }
+  }
+
+  & small {
+    right: 8%;
+  }
+}
+
+.other_user {
+
+  & .message_info {
+    & .faceicon {
+      margin-right: 20px;
+    }
+
+    & .says {
+      &:after {
+        top: 18px;
+        left: -24px;
+        border-right: 12px solid #d7ebfe;
+      }
+    }
+  }
+  & small {
+    left: 8%;
+  }
+}
 

@@ -18,7 +18,7 @@ class Recruit < ApplicationRecord
   validates :start_time,          presence: true
   validates :capacity,            presence: true
   validates :time_required,       presence: true
-  validates :explanation,         presence: true, length: { maximum: 1000 }
+  validates :explanation,         length: { maximum: 1000 }
   validates :discord_server_link, presence: true, length: { maximum: 200 }
 
   enum recruit_status:{

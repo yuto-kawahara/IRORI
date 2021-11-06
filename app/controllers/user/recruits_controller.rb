@@ -41,8 +41,10 @@ class User::RecruitsController < ApplicationController
   def create
     @recruit = Recruit.new(recruit_params)
     @recruit.user_id = current_user.id
+
     play_form_ids = params[:recruit][:play_form_ids]
     entry_condition_ids = params[:recruit][:entry_condition_ids]
+    binding.pry
     if @recruit.save
       RecruitPlayForm.bulk_create(@recruit.id, play_form_ids)
       RecruitEntryCondition.bulk_create(@recruit.id, entry_condition_ids)
@@ -60,6 +62,7 @@ class User::RecruitsController < ApplicationController
   def schedule
     date = params[:date]
     @recruits = Recruit.where(start_time: date.in_time_zone.all_day)
+    @recruits = @recruits.order(start_time: :desc )
   end
 
   private

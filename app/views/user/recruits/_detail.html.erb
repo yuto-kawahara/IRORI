@@ -1,58 +1,60 @@
-<table>
-  <tbody>
-    <tr>
-      <th>GM</th>
-      <td>
-        <%= link_to profile_user_path(recruit.user) do %>
-          <%= attachment_image_tag recruit.user, :icon_image, :fill, 40, 40, fallback: "person-circle-outline.svg", size:"40x40" %>
-          <%= recruit.user.nickname %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th>タイトル</th>
-      <td><%= recruit.title %></td>
-    </tr>
-    <tr>
-      <th>日時</th>
-      <td><%= recruit.start_time.strftime("%Y/%m/%d %H:%M") %></td>
-    </tr>
-    <tr>
-      <th>所要時間</th>
-      <td><%= "#{recruit.time_required}時間" %></td>
-    </tr>
-    <tr>
-      <th>定員</th>
-      <td><%= "#{recruit.capacity}名" %></td>
-    </tr>
-    <tr>
-      <th>プレイ形態</th>
-      <td>
-        <ul>
-          <% form_list.each do |form| %>
-            <li><%= form.name %></li>
+<div class="recruit_detail_table">
+  <table>
+    <tbody>
+      <tr>
+        <th>GM</th>
+        <td>
+          <%= link_to profile_user_path(recruit.user) do %>
+            <%= attachment_image_tag recruit.user, :icon_image, :fill, 40, 40, fallback: "person-circle-outline.svg", size:"40x40" %>
+            <%= recruit.user.nickname %>
           <% end %>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <th>参加条件</th>
-      <td>
-        <ul>
-          <% entry_list.each do |entry| %>
-            <li><%= entry.name %></li>
-          <% end %>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <th>説明</th>
-      <td><%= recruit.explanation %></td>
-    </tr>
-    <tr>
-      <td>
-        <%= attachment_image_tag recruit.image, :image, :fill, 40, 40 %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        </td>
+      </tr>
+      <tr>
+        <th>タイトル</th>
+        <td><%= recruit.title %></td>
+      </tr>
+      <tr>
+        <th>日時</th>
+        <td><%= recruit.start_time.strftime("%Y/%m/%d %H:%M") %></td>
+      </tr>
+      <tr>
+        <th>所要時間</th>
+        <td><%= "#{recruit.time_required}時間" %></td>
+      </tr>
+      <tr>
+        <th>定員</th>
+        <td><%= "#{recruit.capacity}名" %></td>
+      </tr>
+      <tr>
+        <th>プレイ形態</th>
+        <td>
+          <ul>
+            <% form_list.each do |form| %>
+              <li><%= form.name %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>参加条件</th>
+        <td>
+          <ul>
+            <% entry_list.each do |entry| %>
+              <li><%= entry.name %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>説明</th>
+        <td><%= recruit.explanation %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= attachment_image_tag recruit.image, :image, :fill, 40, 40 %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

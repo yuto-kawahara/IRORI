@@ -47,6 +47,10 @@
     text-align: center;
   }
 
+  & .icon_svg {
+    line-height: 60px;
+  }
+
   & .notice_icon[data-notice="false"]::before {
     display: none;
   }

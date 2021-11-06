@@ -2,6 +2,7 @@ class User::UsersController < ApplicationController
   before_action :ensure_correct_user, except: [:index]
 
   def show
+    @recruits = @user.recruits.sorted
   end
 
   def edit

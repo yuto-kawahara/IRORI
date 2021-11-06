@@ -1,7 +1,5 @@
-<% if user != current_user %>
-  <div class="message_btn_area">
-    <%= link_to message_path(user.id), class: "btn" do %>
-      <i class="far fa-envelope"></i>
-    <% end %>
-  </div>
-<% end %>
+<div class="message_btn_area">
+  <%= link_to message_path(user.id), class: "btn" do %>
+    <i class="far fa-envelope"></i>
+  <% end %>
+</div>

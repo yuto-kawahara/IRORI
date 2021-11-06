@@ -1,19 +1,9 @@
 <div id="user_home_wrapper">
   <h2>ホーム</h2>
   <% unless @recruits.blank? %>
-    <ul id="recruit_list">
-    <% @recruits.each do |recruit| %>
-      <li class="recruit_item">
-        <%= link_to recruit_path(recruit) do %>
-          <%= attachment_image_tag recruit.user, :icon_image, :fill, 40, 40, fallback: "person-circle-outline.svg", size:"40x40" %>
-          <%= recruit.user.nickname %> <br>
-          <%= recruit.recruit_status_i18n %>
-          <%= recruit.title %>
-          <%= recruit.start_time %>
-        <% end %>
-      </li>
-    <% end %>
-    </ul>
+    <div class="user_recruit_list">
+      <%= render 'user/recruits/list', recruits: @recruits %>
+    </div>
     <%= paginate @recruits %>
     <div class="page-load-status" style="display:none;">
       <div class="infinite-scroll-request">ロード中</div>

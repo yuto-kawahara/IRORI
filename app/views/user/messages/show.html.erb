@@ -1,22 +1,14 @@
-<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.nickname %> さんとのチャット</h1>
+<div id="message_detail_wrapper">
+  <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.nickname %> さんとのチャット</h1>
 
-<div class="message" style="width: 400px;">
-  <% @messages.each do |message| %>
+  <ul class="list">
+    <% @messages.each do |message| %>
+      <%= render 'user/messages/chat', message: message %>
+    <% end %>
+  </ul>
 
-    <% if message.content.include?("a href=https://discord") %>
-      <% content = message.content.html_safe %>
-    <% else %>
-      <% content = message.content %>
-    <% end %>
-    <% if message.user_id == current_user.id %>
-      <p style="text-align: right;"><%= content %></p>
-    <% else %>
-      <p style="text-align: left;"><%= content %></p>
-    <% end %>
+  <%= form_with model: @message, data: {remote: true} do |f| %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :room_id %>
   <% end %>
 </div>
-
-<%= form_with model: @message, data: {remote: true} do |f| %>
-  <%= f.text_field :content %>
-  <%= f.hidden_field :room_id %>
-<% end %>

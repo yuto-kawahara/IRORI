@@ -1,5 +1,5 @@
 .simple-calendar {
-
+  margin: 0 40px;
   & .calendar-heading {
     text-align: center;
     font-size: 24px;
@@ -45,7 +45,7 @@
   }
 
   & td.day {
-    height: 110px;
+    height: 150px;
     vertical-align: top;
   }
 
@@ -69,5 +69,11 @@
 
   & .event_area {
     font-size: 0.7em;
+  }
+
+  & .event_count {
+    margin: 20px 30px;
+    font-size: 1.2em;
+    text-decoration: underline;
   }
 }

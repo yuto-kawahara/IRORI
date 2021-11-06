@@ -1,2 +1,2 @@
-$('.message').append("<p style='text-align: right;'><%= @message.content %></p>");
+$(".list").append("<%= j(render 'user/messages/chat', message: @message ) %>");
 $('input[type=text]').val("")
