@@ -3,6 +3,7 @@ body {
   letter-spacing: 0.125em;
   line-height: 1.2;
   font-family: 'Noto Sans JP', sans-serif;
+  overflow-y: scroll;
 }
 
 a {
@@ -23,14 +24,15 @@ li {
 
 #side_area {
   position: fixed;
-  width: 20%;
+  width: 20vw;
   height: 100%;
 }
 
 #main_area {
-  width: 70%;
+  width: 60vw;
   height: 100%;
-  margin: 0 0 0 26%;
+  margin-left: 20vw;
+  padding: 0 5px;
 }
 
 @mixin badge {
@@ -41,7 +43,7 @@ li {
 
 .user_profile_inner {
   border: 1px solid #DDDDDD;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .profile_action_area {
@@ -66,15 +68,20 @@ li {
 }
 
 
+.face_icon {
+  height: auto;
+  border: solid 4px #fff;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
 .user_recruit_list {
   border: 1px solid #DDDDDD;
-
 
   & .item {
     border: 1px solid #DDDDDD;
     padding: 10px 20px;
     border-radius: 20px;
-    margin: 20px;
   }
 
   & .recruit_detail_link {
@@ -99,7 +106,6 @@ li {
 
   & ion-icon {
     font-size: 3.5em;
-    z-index: 1;
   }
 
 
@@ -155,8 +161,6 @@ li {
   vertical-align: top;
   background: #fff;
   text-align: left;
-  margin: 10px;
-  padding: 20px;
 }
 
 .post_control {
@@ -318,20 +322,10 @@ textarea {
     border: 1px solid #DDDDDD;
     padding: 10px 20px;
     border-radius: 20px;
-    margin: 20px;
+    margin: 20px 0;
   }
 }
 
-#message_detail_wrapper {
-  .current_user_message {
-    // display: flex;
-    // justify-content: flex-end;
-    // align-items: center;
-  }
-  .other_user_message {
-    display: flex;
-  }
-}
 .balloon_message {
   position: relative;
   width: 100%;
@@ -412,6 +406,26 @@ textarea {
   }
   & small {
     left: 8%;
+  }
+}
+
+#profile_edit_wrapper {
+  & .user_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  & .user_control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    width: 60%;
+  }
+
+  & .user_title {
+    font-weight: bold;
+    margin-bottom: 10px;
   }
 }
 

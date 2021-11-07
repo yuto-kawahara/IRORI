@@ -44,8 +44,8 @@ class User::RecruitsController < ApplicationController
 
     play_form_ids = params[:recruit][:play_form_ids]
     entry_condition_ids = params[:recruit][:entry_condition_ids]
-    binding.pry
     if @recruit.save
+      binding.pry
       RecruitPlayForm.bulk_create(@recruit.id, play_form_ids)
       RecruitEntryCondition.bulk_create(@recruit.id, entry_condition_ids)
       redirect_to recruit_path(@recruit)
@@ -62,7 +62,7 @@ class User::RecruitsController < ApplicationController
   def schedule
     date = params[:date]
     @recruits = Recruit.where(start_time: date.in_time_zone.all_day)
-    @recruits = @recruits.order(start_time: :desc )
+    @recruits = @recruits.order(start_time: :desc ).page(params[:page])
   end
 
   private
@@ -83,6 +83,7 @@ class User::RecruitsController < ApplicationController
       :time_required,
       :capacity,
       :explanation,
+      :image,
       :discord_server_link,
       { play_form_ids: [] },
       { entry_condition_ids: [] }

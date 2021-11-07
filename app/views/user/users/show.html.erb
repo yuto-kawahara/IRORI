@@ -1,7 +1,7 @@
 <div id="user_profile_wrapper">
   <div class="user_profile_inner">
     <div class="profile_action_area">
-      <%= attachment_image_tag @user, :icon_image, :fill, 130, 130, fallback: "person-circle-outline.svg", size:"130x130" %>
+      <%= attachment_image_tag @user, :icon_image, :fill, 130, 130, fallback: "no-icon.png", size:"130x130", class: "face_icon" %>
       <% if @user != current_user %>
         <div class="user_action_btn">
           <%= render 'user/messages/message', user: @user %>

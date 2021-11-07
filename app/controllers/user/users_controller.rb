@@ -2,13 +2,18 @@ class User::UsersController < ApplicationController
   before_action :ensure_correct_user, except: [:index]
 
   def show
-    @recruits = @user.recruits.sorted
+    @recruits = @user.recruits.sorted.page(params[:page])
   end
 
   def edit
   end
 
   def update
+    if @user.update(user_params)
+      redirect_to profile_user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
@@ -21,15 +26,15 @@ class User::UsersController < ApplicationController
   end
 
   def followings
-    @users = @user.following_user
+    @users = @user.following_user.page(params[:page])
   end
 
   def followers
-    @users = @user.follower_user
+    @users = @user.follower_user.page(params[:page])
   end
 
   def reserve
-    @reserves = current_user.reserves
+    @reserves = current_user.reserves.page(params[:page])
   end
 
   def schedule
@@ -46,7 +51,7 @@ class User::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :icon_image)
+    params.require(:user).permit(:nickname, :introduction, :icon_image)
   end
 
   def ensure_correct_user

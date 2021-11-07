@@ -4,12 +4,6 @@
     <div class="user_recruit_list">
       <%= render 'user/recruits/list', recruits: @recruits %>
     </div>
-    <%= paginate @recruits %>
-    <div class="page-load-status" style="display:none;">
-      <div class="infinite-scroll-request">ロード中</div>
-      <p class="infinite-scroll-last">これ以上は記事がありません</p>
-      <p class="infinite-scroll-error">読み込むページがありません</p>
-    </div>
   <% else %>
     <p>新しい投稿はありません</p>
   <% end %>

@@ -26,7 +26,7 @@
         <div class="user_post_info_area">
           <div class="profile_area">
             <p>GM:</p>
-            <p><%= attachment_image_tag recruit.user, :icon_image, :fill, 30, 30, fallback: "person-circle-outline.svg", size:"30x30" %></p>
+            <p><%= attachment_image_tag recruit.user, :icon_image, :fill, 30, 30, fallback: "no-icon.png", size:"30x30", class: "face_icon"  %></p>
             <p><%= recruit.user.nickname %></p>
           </div>
           <div class="recruit_area">
@@ -41,3 +41,5 @@
     </li>
   <% end %>
 </ul>
+<%= paginate recruits %>
+<%= render 'layouts/loader' %>

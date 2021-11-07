@@ -1,7 +1,7 @@
 <% reserves.each do |reserve| %>
   <% user = reserve.user %>
   <% status = reserve.reserve_status %>
-  <%= attachment_image_tag user, :icon_image, :fill, 40, 40, fallback: "person-circle-outline.svg", size:"40x40" %>
+  <%= attachment_image_tag user, :icon_image, :fill, 40, 40, fallback: "no-icon.png", size:"40x40", class: "face_icon"  %>
   <%= user.nickname %>
   <% case status
        when "approve_reserve" %>

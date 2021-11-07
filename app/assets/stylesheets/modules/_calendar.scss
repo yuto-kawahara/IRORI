@@ -1,5 +1,4 @@
 .simple-calendar {
-  margin: 0 40px;
   & .calendar-heading {
     text-align: center;
     font-size: 24px;
@@ -22,7 +21,6 @@
   }
 
   & table {
-    // border-radius: 10px;
     outline: 2px solid #ddd;
     border-collapse: collapse;
     width: 100%;
@@ -45,7 +43,7 @@
   }
 
   & td.day {
-    height: 150px;
+    height: 15vh;
     vertical-align: top;
   }
 
@@ -64,7 +62,6 @@
 
   & td.today {
     background-color: #F9F1C0;
-    // color: #fff;
   }
 
   & .event_area {

@@ -64,3 +64,44 @@ PlayForm.create!(
       introduction: ""
     }
   ])
+
+user = User.new(
+  email: "shimeji@test.com",
+  nickname: "舞茸しめじ",
+  introduction: "よろしくお願いいたします",
+  password: "test123",
+  )
+user.save!
+
+user = User.new(
+  email: "matutake@test.com",
+  nickname: "まつたけえのき",
+  introduction: "よろしくお願いいたします",
+  password: "test456",
+  )
+user.save!
+
+100.times do |n|
+  Recruit.create!(
+    user_id: 1,
+    title: "マダミス#{n}",
+    start_time: "2021-11-07 02:11:00",
+    time_required: 2,
+    capacity: 1,
+    explanation: "募集中です",
+    discord_server_link: "https://discord"
+  )
+
+end
+100.times do |n|
+  Recruit.create!(
+    user_id: 2,
+    title: "ボドゲ#{n}",
+    start_time: "2021-11-08 02:11:00",
+    time_required: 4,
+    capacity: 1,
+    explanation: "募集中です",
+    discord_server_link: "https://discord"
+  )
+
+end
