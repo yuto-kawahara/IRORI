@@ -10,5 +10,24 @@
         <h2>設定</h2>
       </span>
     </div>
+      <%= form_with model: @contact, url: send_mail_path, method: :post, local: true do |f| %>
+        <div class="post_group">
+          <div class="post_control">
+            <div class="control">
+              <%= f.label :subject, "タイトル", class: "post_title" %>
+              <small class="badge_mandatory">必須</small>
+            </div>
+            <%= f.text_field :subject %>
+          </div>
+          <div class="post_control">
+            <div class="control">
+              <%= f.label:message, "お問い合わせ内容", class: "post_title" %>
+              <small class="badge_mandatory">必須</small>
+            </div>
+            <%= f.text_area :message %>
+          </div>
+          <%= f.submit'送信', class: "btn" %>
+        </div>
+      <% end %>
   </div>
 </div>

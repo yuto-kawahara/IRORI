@@ -20,8 +20,7 @@ Rails.application.routes.draw do
     get '/setting'   => 'homes#setting'
     get '/help'      => 'homes#help'
     get '/contact'   => 'homes#contact'
-    get '/new/mail'  => 'homes#new_mail'
-    get '/send/mail' => 'homes#send_mail'
+    post '/send/mail' => 'homes#send_mail'
 
     resources :users, param: :nickname, only: [:update] do
       member do

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_04_143701) do
+ActiveRecord::Schema.define(version: 2021_11_08_053902) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "subject", null: false
+    t.text "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "discord_server_links", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -23,6 +31,14 @@ ActiveRecord::Schema.define(version: 2021_11_04_143701) do
   create_table "entry_conditions", force: :cascade do |t|
     t.string "name", null: false
     t.text "introduction", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "subject", null: false
+    t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

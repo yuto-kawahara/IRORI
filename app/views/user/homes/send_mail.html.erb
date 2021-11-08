@@ -1,0 +1,13 @@
+<div id="wrapper">
+  <h3>送信が完了しました</h3>
+  <div>
+    <div>内容は以下の通りです。</div>
+      <div>
+        [タイトル]<p> <%= @contact.subject %></p>
+      </div>
+      <div>
+        [本文]<p> <%= safe_join(@contact.message.split("\n"),tag(:br)) %></p>
+      </div>
+    </div>
+  </div>
+</div>

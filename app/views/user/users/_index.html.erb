@@ -1,7 +1,7 @@
 <% unless users.blank? %>
-  <ul>
+  <ul class="list">
     <% users.each do |user| %>
-      <li>
+      <li class="item">
         <%= link_to profile_user_path(user) do %>
           <%= attachment_image_tag user, :icon_image, :fill, 130, 130, fallback: "no-icon.png", size:"130x130", class: "face_icon"  %>
           <%= user.nickname %>
@@ -16,5 +16,5 @@
   <%= paginate users %>
   <%= render 'layouts/loader' %>
 <% else %>
-  <p>フォロワーはいません</p>
+  <%= follow %>
 <% end %>

@@ -1,18 +1,28 @@
-<%= link_to current_user.nickname, profile_user_path %>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <%= link_to followings_user_path, class:"nav-link" do %>
-      フォロー中
-    <% end %>
-  </li>
-  <li class="nav-item">
-    <%= link_to followers_user_path, class:"nav-link active" do %>
-      フォロワー
-    <% end %>
-  </li>
-</ul>
-<div class="tab-content">
-  <div class="tab-pane active">
-    <%= render 'user/index', users: @users  %>
+<div id="wrapper">
+  <div class="head_link">
+    <span>
+      <%= link_to profile_user_path(current_user), class: "btn btn__back" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    </span>
+    <span>
+      <h2><%= current_user.nickname %></h2>
+    </span>
+  </div>
+  <ul class="tab">
+    <li class="tab__item">
+      <%= link_to followings_user_path, class: "tab__link" do %>
+        フォロー中
+      <% end %>
+    </li>
+    <li class="tab__item">
+      <%= link_to followers_user_path, class: "tab__link" do %>
+        フォロワー
+      <% end %>
+    </li>
+    <div class="lamp"></div>
+  </ul>
+  <div class="tab_content">
+    <%= render 'index', users: @users, follow: "フォロワーはいません"  %>
   </div>
 </div>

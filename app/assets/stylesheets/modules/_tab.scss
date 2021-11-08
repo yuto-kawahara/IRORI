@@ -1,0 +1,38 @@
+.tab {
+  position: sticky;
+  top: 0;
+  display: flex;
+  border-bottom: 1px solid #DDD;
+  &__item {
+    display: flex;
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    position: relative;
+    border-right: 1px solid #DDD;
+  }
+
+  & li:last-child {
+    border: none;
+  }
+
+  &__link{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 15px 0;
+    font-size: 1.1em;
+  }
+  
+  & .lamp {
+      width:33.3%;
+  height:2px;
+  background:#333;
+  display:block;
+  position:absolute;
+  top:40px;
+  transition: all .3s ease-in;
+  }
+}

@@ -32,6 +32,17 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: '127.0.0.1', port: 1025 }
+  # config.action_mailer.smtp_settings = {
+  #   port:                 1025,
+  #   address:              'localhost'
+  #   # domain:               'gmail.com',
+  #   # user_name:            ENV['ADMIN_EMAIL'],
+  #   # password:             ENV['ADMIN_PASSWORD'],
+  #   # authentication:       'login',
+  #   # enable_starttls_auto: true
+  # }
 
   config.action_mailer.perform_caching = false
 
