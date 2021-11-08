@@ -1,23 +1,25 @@
-<div id="user_profile_wrapper">
-  <div class="user_profile_inner">
-    <div class="profile_action_area">
-      <%= attachment_image_tag @user, :icon_image, :fill, 130, 130, fallback: "no-icon.png", size:"130x130", class: "face_icon" %>
-      <% if @user != current_user %>
-        <div class="user_action_btn">
-          <%= render 'user/messages/message', user: @user %>
-          <%= render 'user/relationships/follow', user: @user %>
-        </div>
-      <% else %>
-        <div class="profile_edit_btn_area">
-          <%= link_to "プロフィール編集", profile_edit_user_path(current_user), class: "btn" %>
-        </div>
-      <% end %>
+<div id="wrapper">
+  <div class="inner">
+    <div class="user_profile_inner">
+      <div class="profile_action_area">
+        <%= attachment_image_tag @user, :icon_image, :fill, 130, 130, fallback: "no-icon.png", size:"130x130", class: "face_icon" %>
+        <% if @user != current_user %>
+          <div class="user_action_btn">
+            <%= render 'user/messages/message', user: @user %>
+            <%= render 'user/relationships/follow', user: @user %>
+          </div>
+        <% else %>
+          <div class="profile_edit_btn_area">
+            <%= link_to "プロフィール編集", profile_edit_user_path(current_user), class: "btn btn__profile_edit" %>
+          </div>
+        <% end %>
+      </div>
+      <p class="profile_name"><%= @user.nickname %></p>
+      <p class="profile_intro"><%= @user.introduction %></p>
+      <%= render 'user/relationships/follow_count', user: @user %>
     </div>
-    <p class="profile_name"><%= @user.nickname %></p>
-    <p class="profile_intro"><%= @user.introduction %></p>
-    <%= render 'user/relationships/follow_count', user: @user %>
-  </div>
-  <div class="user_recruit_list">
-    <%= render 'user/recruits/list', recruits: @recruits %>
+    <div class="user_recruit_list">
+      <%= render 'user/recruits/list', recruits: @recruits %>
+    </div>
   </div>
 </div>

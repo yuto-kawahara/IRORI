@@ -1,14 +1,32 @@
-<div id="message_detail_wrapper">
-  <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.nickname %> さんとのチャット</h1>
-
-  <ul class="list">
-    <% @messages.each do |message| %>
-      <%= render 'user/messages/chat', message: message %>
-    <% end %>
-  </ul>
-
-  <%= form_with model: @message, data: {remote: true} do |f| %>
-    <%= f.text_field :content %>
-    <%= f.hidden_field :room_id %>
-  <% end %>
+<div id="wrapper">
+  <div class="inner">
+    <div class="head_link">
+      <span>
+        <%= link_to messages_path, class: "btn btn__back" do %>
+          <i class="fas fa-arrow-left"></i>
+        <% end %>
+      </span>
+      <span>
+        <h2><%= @user.nickname %> さんとのチャット</h2>
+      </span>
+    </div>
+    <div class="message_list_wrapper">
+      <ul class="list">
+        <% @messages.each do |message| %>
+          <%= render 'user/messages/chat', message: message %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="comment_form_area">
+      <%= form_with model: @message, data: {remote: true} do |f| %>
+        <div class="comment_text_field">
+          <%= f.text_field :content, class: "comment_text_input" %>
+          <%= f.hidden_field :room_id %>
+          <button type="submit" class="btn btn__submit">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,87 @@
+.balloon_message {
+  position: relative;
+  width: 100%;
+  margin: 1.2em 0;
+  padding: 15px 0;
+  overflow: hidden;
+
+  & .message_info {
+    display: flex;
+
+    & .faceicon {
+      & > img {
+        height: auto;
+        border: solid 3px #d7ebfe;
+        border-radius: 50%;
+      }
+    }
+
+    & .says {
+      display: inline-block;
+      position: relative;
+      max-width: 70%;
+      padding: 17px 13px;
+      border-radius: 12px;
+      background: #d7ebfe;
+
+      &:after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        border: 12px solid transparent;
+      }
+    }
+  }
+
+  & small {
+    letter-spacing: 0em;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.current_user {
+  & .message_info {
+    flex-flow: row-reverse;
+    & .faceicon {
+      margin-left: 20px;
+    }
+
+    & .says {
+      &:after {
+        top: 18px;
+        right: -24px;
+        border-left: 12px solid #d7ebfe;
+      }
+    }
+  }
+
+  & small {
+    right: 8%;
+  }
+}
+
+.other_user {
+
+  & .message_info {
+    & .faceicon {
+      margin-right: 20px;
+    }
+
+    & .says {
+      &:after {
+        top: 18px;
+        left: -24px;
+        border-right: 12px solid #d7ebfe;
+      }
+    }
+  }
+  & small {
+    left: 8%;
+  }
+}
+
+.message_list_wrapper {
+  padding: 0 30px;
+  padding-bottom: 80px;
+}

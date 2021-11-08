@@ -20,14 +20,22 @@ class User::ReservesController < ApplicationController
   def update
     @reserve = Reserve.find(params[:id])
     @reserves = @recruit.reserves
+
+    remain_few = (@recruit.capacity * 0.7).floor
+    remain_last = (@recruit.capacity * 0.9).floor
+
+    if (@reserves.count >= remain_few) && (@reserves.count <= remain_last)
+      @recruit.update_attributes(recruit_status: "few_recruit")
+    end
+
     status = params[:status]
     case status
       when "approve_reserve" then
         @reserve.update_attributes(reserve_status: "approve_reserve")
-        @active = "green_active"
+        @active = "active"
       when "reject_reserve" then
         @reserve.update_attributes(reserve_status: "reject_reserve")
-        @active = "red_active"
+        @active = "no_active"
     end
   end
 
@@ -44,8 +52,8 @@ class User::ReservesController < ApplicationController
     @recruit.update_attributes(recruit_status: "end_recruit")
     @reserves.each do |reserve|
       user = reserve.user
-      server_link = text_url_to_link(reserve.recruit.discord_server_link).html_safe
-      message = "サーバー招待を送信します\r\nご入室ください\r\n#{server_link}"
+      server_link = text_url_to_link(reserve.recruit.discord_server_link)
+      message = "サーバー招待を送信します\nご入室ください\n#{server_link}"
 
       room_create_search(current_user, user, message, "broadcast")
     end

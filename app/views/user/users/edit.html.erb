@@ -1,23 +1,34 @@
-<div id="profile_edit_wrapper">
-  <p>プロフィール設定</p>
-  <%= form_with model: @user, local:true do |f| %>
-    <div class="user_group">
-      <div class="user_control">
-        <%= f.label:icon_image, "プロフィール画像", class: "user_title" %>
-        <%= attachment_image_tag @user, :icon_image, :fill, 130, 130, fallback: "no-icon.png", size:"130x130", class: "face_icon"  %>
-        <%= f.attachment_field :icon_image %>
-      </div>
-      <div class="user_control">
-        <%= f.label:nickname, "ニックネーム", class: "user_title" %>
-        <%= f.text_field :nickname, class: "" %>
-      </div>
-      <div class="user_control">
-        <%= f.label:Introduction, "自己紹介", class: "user_title" %>
-        <%= f.text_area :introduction, class: "" %>
-      </div>
-      <div class="user_control">
-        <%= f.submit '変更を保存', class: "btn" %>
-      </div>
+<div id="wrapper">
+  <div class="inner">
+    <div class="head_link">
+      <span>
+        <%= link_to   profile_user_path(@user), class: "btn__back" do %>
+          <i class="fas fa-arrow-left"></i>
+        <% end %>
+      </span>
+      <span>
+        <h2>プロフィール</h2>
+      </span>
     </div>
-  <% end %>
+    <%= form_with model: @user, local:true do |f| %>
+      <div class="user_group">
+        <div class="user_control">
+          <%= f.label:icon_image, "プロフィール画像", class: "user_title" %>
+          <%= attachment_image_tag @user, :icon_image, :fill, 130, 130, fallback: "no-icon.png", size:"130x130", class: "face_icon"  %>
+          <%= f.attachment_field :icon_image %>
+        </div>
+        <div class="user_control">
+          <%= f.label:nickname, "ニックネーム", class: "user_title" %>
+          <%= f.text_field :nickname, class: "" %>
+        </div>
+        <div class="user_control">
+          <%= f.label:Introduction, "自己紹介", class: "user_title" %>
+          <%= f.text_area :introduction, class: "" %>
+        </div>
+        <div class="user_control">
+          <%= f.submit '変更を保存', class: "btn btn__submit" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -29,10 +29,23 @@ li {
 }
 
 #main_area {
+  position: relative;
   width: 60vw;
-  height: 100%;
+  min-height: 100vh;
   margin-left: 20vw;
-  padding: 0 5px;
+  border: 1px solid #DDD;
+}
+
+.list {
+  padding: 15px 30px;
+  margin-bottom: 60px;
+}
+
+.item {
+  border: 1px solid #DDDDDD;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 @mixin badge {
@@ -41,9 +54,36 @@ li {
   padding: 1px 2px;
 }
 
+.head_link {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #DDD;
+  padding: 10px 30px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  width: 100%;
+  z-index: 200;
+  & a {
+    margin-right: 20px;
+  }
+}
+
 .user_profile_inner {
-  border: 1px solid #DDDDDD;
-  padding: 20px 0;
+  border-bottom: 1px solid #DDD;
+  padding: 20px 30px;
+
+  & .profile_name {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  & .profile_intro {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+
 }
 
 .profile_action_area {
@@ -67,22 +107,13 @@ li {
  }
 }
 
-
 .face_icon {
   height: auto;
-  border: solid 4px #fff;
+  border: 3px solid #fff;
   border-radius: 50%;
-  object-fit: contain;
 }
 
 .user_recruit_list {
-  border: 1px solid #DDDDDD;
-
-  & .item {
-    border: 1px solid #DDDDDD;
-    padding: 10px 20px;
-    border-radius: 20px;
-  }
 
   & .recruit_detail_link {
    display: flex;
@@ -111,7 +142,7 @@ li {
 
   & .now {
     @include badge;
-    background: red;
+    background: #F53A33;
   }
 
   & .few {
@@ -121,14 +152,14 @@ li {
 
   & .end {
     @include badge;
-    background: blue;
+    background: #0291C9;
   }
 
   & .status_now {
-    color: red;
+    color: #F53A33;
   }
   & .status_end {
-    color: blue;
+    color: #0291C9;
   }
   & .status_few {
     color: orange;
@@ -153,110 +184,20 @@ li {
   }
 }
 
-.post_group {
-  border: 1px solid #DDDDDD;
+.recruit_detail_table {
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  vertical-align: top;
-  background: #fff;
-  text-align: left;
-}
-
-.post_control {
-  display: block;
-  position: relative;
-  margin-bottom: 15px;
-  & .control {
-    margin-bottom: 10px;
-  }
-
-  & small {
-    @include badge;
-    font-size: 5px;
-    margin-left: 10px;
-  }
-
-  & .badge_any {
-    background: gray;
-  }
-  & .badge_mandatory {
-    background: red;
-  }
-}
-.post_title {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-input[type=text],
-input[type=datetime-local],
-select,
-textarea {
-  border: 1px solid #DDDDDD;
-  border-radius: 20px;
-  box-shadow: 0 0 1px 0 rgba(0,0,0,0.5);
-  padding: 7px;
-  &:focus {
-    border: 1px solid #ff9900;
-    box-shadow: 0 0 1px 0 rgba(255,153,0,1);
-    outline: 0;
-  }
-}
-
-input[type=text] {
-  width: 100%;
-}
-
-input[type=datetime-local],
-select {
-  width: 30%;
-}
-
-textarea {
-  border: 1px solid #DDDDDD;
-  border-radius: 10px;
-  height: 200px;
-  width: 100%;
-  padding: 5px;
-  resize: none;
-}
-
-.select_item {
-  font-size: .8em;
-  margin-bottom: 7px;
-  & label {
-    display: flex;
-    align-items: flex-end;
-  }
-
-  & input {
-    margin-right: 5px;
-  }
-}
-
-#recruit_detail_wrapper {
-  position: relative;
-  padding-bottom: 100px;
-
-  & .recruit_detail_table {
-    border-radius: 10px;
-    background: #dbffed;
-    width: 90%;
-  }
-
-  & table {
-    border-collapse: collapse;
-  }
+  border-collapse: collapse;
+  background: #dbffed;
 
   & tr {
     text-align: left;
   }
 
   & th {
+    font-size: 1.1em;
     font-weight: bold;
     width: 15%;
-    padding: 2px 10px;
+    padding: 5px 10px;
     color: #474747;
   }
 
@@ -264,35 +205,12 @@ textarea {
     padding: 10px;
     border-left: 1px solid #fff;
   }
-
-  & .comment_form_area {
-    position: fixed;
-    bottom: 0;
-    padding-bottom: 15px;
-    width: 50%;
-    background: #fff;
-    z-index: 2;
-  }
-
-  & .comment_text_field {
-    display: flex;
-    align-items: center;
-  }
-
-  & .comment_text_input {
-    font-size: 1.125em;
-    margin-right: 20px;
-    height: 40px;
-  }
-
+}
+.recruit_comment_list {
   & .item {
     display: flex;
     position: relative;
-    border: 1px solid #DDDDDD;
     padding: 10px;
-    border-radius: 20px;
-    margin: 20px 0;
-    width: 90%;
   }
 
   & .profile_img {
@@ -317,115 +235,63 @@ textarea {
   }
 }
 
-#message_room_wrapper {
-  & .item {
-    border: 1px solid #DDDDDD;
-    padding: 10px 20px;
-    border-radius: 20px;
-    margin: 20px 0;
-  }
-}
-
-.balloon_message {
-  position: relative;
-  width: 100%;
-  margin: 1.2em 0;
-  padding: 15px 0;
-  overflow: hidden;
-
-  & .message_info {
+.notice {
+  &__head {
     display: flex;
-
-    & .faceicon {
-      & > img {
-        height: auto;
-        border: solid 3px #d7ebfe;
-        border-radius: 50%;
-      }
-    }
-
-    & .says {
-      display: inline-block;
-      position: relative;
-      max-width: 70%;
-      padding: 17px 13px;
-      border-radius: 12px;
-      background: #d7ebfe;
-
-      &:after {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        border: 12px solid transparent;
-      }
-    }
-  }
-
-  & small {
-    letter-spacing: 0em;
-    position: absolute;
-    bottom: 0;
-  }
-}
-
-.current_user {
-  & .message_info {
-    flex-flow: row-reverse;
-    & .faceicon {
-      margin-left: 20px;
-    }
-
-    & .says {
-      &:after {
-        top: 18px;
-        right: -24px;
-        border-left: 12px solid #d7ebfe;
-      }
-    }
-  }
-
-  & small {
-    right: 8%;
-  }
-}
-
-.other_user {
-
-  & .message_info {
-    & .faceicon {
-      margin-right: 20px;
-    }
-
-    & .says {
-      &:after {
-        top: 18px;
-        left: -24px;
-        border-right: 12px solid #d7ebfe;
-      }
-    }
-  }
-  & small {
-    left: 8%;
-  }
-}
-
-#profile_edit_wrapper {
-  & .user_group {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 100%;
-  }
-  & .user_control {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
-    width: 60%;
-  }
-
-  & .user_title {
-    font-weight: bold;
     margin-bottom: 10px;
+    border-bottom: 1px dashed #DDD;
+  }
+  &_nickname,
+  &_action {
+    font-weight: bold;
+  }
+  &__comment {
+    font-size: .8em;
+    color: #787878;
   }
 }
+.recruit_area {
+  & p {
+    font-size: .9em;
+    margin-bottom: 5px;
+  }
+}
+.tag {
+  display: inline-block;
+	margin: 0 .1em .6em 0;
+	font-size: .7em;
+	padding: .3em;
+	line-height: 1;
+	text-decoration: none;
+	color: #0000ee;
+	background-color: #fff;
+	border: 1px solid #0000ee;
+	border-radius: 2em;
+}
+.recruit_detail_inner {
+  position: relative;
+  padding: 20px 30px 0 30px;
 
+  & .recruit_edit_btn {
+    position: absolute;
+    top: 26px;
+    right: 72px;
+  }
+
+  & .recruit_delete_btn {
+    position: absolute;
+    top: 26px;
+    right: 44px;
+  }
+}
+.reserve_list_area {
+  & .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.confirm_btn_area {
+  text-align: center;
+}

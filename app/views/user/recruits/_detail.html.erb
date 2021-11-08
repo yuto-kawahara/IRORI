@@ -1,4 +1,7 @@
 <div class="recruit_detail_table">
+  <% if @recruit.user == current_user %>
+    <%= render 'user/recruits/change', recruit: recruit %>
+  <% end %>
   <table>
     <tbody>
       <tr>
@@ -31,7 +34,7 @@
         <td>
           <ul>
             <% form_list.each do |form| %>
-              <li><%= form.name %></li>
+              <li class="list_tag"><%= form.name %></li>
             <% end %>
           </ul>
         </td>
@@ -41,7 +44,7 @@
         <td>
           <ul>
             <% entry_list.each do |entry| %>
-              <li><%= entry.name %></li>
+              <li class="list_tag"><%= entry.name %></li>
             <% end %>
           </ul>
         </td>

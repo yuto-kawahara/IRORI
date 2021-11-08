@@ -1,7 +1,16 @@
-<% if @notifications.exists? %>
-  <%= render @notifications %>
-  <%= paginate @notifications %>
-  <%= render 'layouts/loader' %>
-<% else %>
-  <p>通知はありません</p>
-<% end %>
+<div id="wrapper">
+  <div class="inner">
+    <div class="head_link">
+      <h2>通知</h2>
+    </div>
+    <% if @notifications.exists? %>
+      <ul class="list">
+        <%= render @notifications %>
+      </ul>
+      <%= paginate @notifications %>
+      <%= render 'layouts/loader' %>
+    <% else %>
+      <p>通知はありません</p>
+    <% end %>
+  </div>
+</div>

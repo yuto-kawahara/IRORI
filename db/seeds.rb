@@ -81,6 +81,39 @@ user = User.new(
   )
 user.save!
 
+user = User.new(
+  email: "hiratake@test.com",
+  nickname: "平茸なめこ",
+  introduction: "よろしくお願いいたします",
+  password: "test789",
+  )
+user.save!
+
+user = User.new(
+  email: "buna@test.com",
+  nickname: "ブナシメジ",
+  introduction: "よろしくお願いいたします",
+  password: "test101",
+  )
+user.save!
+
+user = User.new(
+  email: "kaen@test.com",
+  nickname: "カエンダケ",
+  introduction: "よろしくお願いいたします",
+  password: "test111",
+  )
+user.save!
+
+user = User.new(
+  email: "tengu@test.com",
+  nickname: "テングダケ",
+  introduction: "よろしくお願いいたします",
+  password: "test121",
+  )
+user.save!
+
+
 100.times do |n|
   Recruit.create!(
     user_id: 1,

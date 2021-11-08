@@ -1,10 +1,14 @@
-<div id="user_home_wrapper">
-  <h2>ホーム</h2>
-  <% unless @recruits.blank? %>
-    <div class="user_recruit_list">
-      <%= render 'user/recruits/list', recruits: @recruits %>
+<div id="wrapper">
+  <div class="inner">
+    <div class="head_link">
+      <h2>ホーム</h2>
     </div>
-  <% else %>
-    <p>新しい投稿はありません</p>
-  <% end %>
+    <% unless @recruits.blank? %>
+      <div class="user_recruit_list">
+        <%= render 'user/recruits/list', recruits: @recruits %>
+      </div>
+    <% else %>
+      <p>新しい投稿はありません</p>
+    <% end %>
+  </div>
 </div>

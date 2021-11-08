@@ -32,9 +32,18 @@
           <div class="recruit_area">
             <p class="recruit_title">
               <%= recruit.title %>
-              <small><%= "[所要時間：#{recruit.time_required}時間]" %></small>
             </p>
-            <p class="recruit_date"><%= "募集日時：#{recruit.start_time.strftime("%m月%d日 %H:%M～")}" %></p>
+            <p class=""><%= "募集日時：#{recruit.start_time.strftime("%m月%d日 %H:%M～")}" %></p>
+            <p class=""><%= "所要時間：#{recruit.time_required}時間" %></p>
+            <p class=""><%= "定員　　：#{recruit.capacity}人" %></p>
+            <p>< プレイ形態 ></p>
+            <% recruit.entry_conditions.each do |form| %>
+              <small class="tag"><%= form.name %></small>
+            <% end %>
+            <p>< 参加条件 ></p>
+            <% recruit.play_forms.each do |form| %>
+              <small class="tag"><%= form.name %></small>
+            <% end %>
           </div>
         </div>
       <% end %>

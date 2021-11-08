@@ -1,22 +1,23 @@
-<div id="recruit_detail_wrapper">
-  <% if @recruit.user == current_user %>
-    <%= render 'user/recruits/change', recruit: @recruit %>
-    <%= render 'user/recruits/detail', recruit: @recruit, form_list: @form_list, entry_list: @entry_list %>
-    <div class="reserve_list_btn_area">
-      <%= link_to list_recruit_reserves_path(@recruit.id), class: "btn btn-primary" do %>
-        <i class="far fa-list-alt">予約リスト</i>
-      <% end %>
-    </div>
-  <% else %>
-    <%= render 'user/recruits/detail', recruit: @recruit, form_list: @form_list, entry_list: @entry_list %>
-    <% if @recruit.reserves_count < @recruit.capacity %>
-      <div class="reserve_btn_area">
-        <%= render 'user/reserves/reserve_btn', recruit: @recruit %>
+<div id="wrapper">
+  <div class="recruit_detail_inner">
+    <% if @recruit.user == current_user %>
+      <%= render 'user/recruits/detail', recruit: @recruit, form_list: @form_list, entry_list: @entry_list %>
+      <div class="reserve_list_btn_area">
+        <%= link_to list_recruit_reserves_path(@recruit.id), class: "btn btn__reserve_list" do %>
+          <i class="far fa-list-alt">予約リスト</i>
+        <% end %>
       </div>
     <% else %>
-      <p>予約人数に到達しました</p>
+      <%= render 'user/recruits/detail', recruit: @recruit, form_list: @form_list, entry_list: @entry_list %>
+      <% if @recruit.reserves_count < @recruit.capacity %>
+        <div class="reserve_btn_area">
+          <%= render 'user/reserves/reserve_btn', recruit: @recruit %>
+        </div>
+      <% else %>
+        <p>予約人数に到達しました</p>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   <div class="recruit_comment_list">
     <%= render 'user/recruit_comments/list', recruit: @recruit %>
   </div>
@@ -24,7 +25,7 @@
     <%= form_with model:[@recruit, @recruit_comment] do |f| %>
       <div class="comment_text_field">
         <%= f.text_field :comment, class: "comment_text_input" %>
-          <button type="submit" class="btn">
+          <button type="submit" class="btn btn__submit">
             <i class="fas fa-paper-plane"></i>
           </button>
       </div>

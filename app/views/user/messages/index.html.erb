@@ -1,18 +1,22 @@
-<div id="message_room_wrapper">
-  <p>メッセージ</p>
-  <div class="message_room_list">
-    <ul class="list">
-      <% @user_rooms.each do |user_room| %>
-        <% user = user_room.user %>
-        <li class="item">
-          <%= link_to message_path(user.id) do %>
-            <%= attachment_image_tag user, :icon_image, :fill, 60, 60, fallback: "no-icon.png", size:"60x60", class: "face_icon"  %>
-            <%= "#{user.nickname}さんとのチャット" %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-    <%= paginate @user_rooms %>
-    <%= render 'layouts/loader' %>
+<div id="wrapper">
+  <div class="inner">
+    <div class="head_link">
+      <h2>メッセージ</h2>
+    </div>
+    <div class="message_room_list">
+      <ul class="list">
+        <% @user_rooms.each do |user_room| %>
+          <% user = user_room.user %>
+          <li class="item">
+            <%= link_to message_path(user.id) do %>
+              <%= attachment_image_tag user, :icon_image, :fill, 60, 60, fallback: "no-icon.png", size:"60x60", class: "face_icon"  %>
+              <%= "#{user.nickname}さんとのチャット" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <%= paginate @user_rooms %>
+      <%= render 'layouts/loader' %>
+    </div>
   </div>
 </div>

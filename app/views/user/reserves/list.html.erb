@@ -1,12 +1,23 @@
-<h4>予約リスト</h4>
-<%= link_to "募集へ戻る", recruit_path(@recruit), class: "btn" %>
-<% if @recruit.recruit_status != "end_recruit" %>
-  <div class="reserve_list_area">
-    <%= render 'user/reserves/list', reserves: @reserves, recruit: @recruit %>
+<div id="wrapper">
+  <div class="head_link">
+    <span>
+      <%= link_to recruit_path(@recruit), class: "btn btn__back" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    </span>
+    <span>
+      <h2>募集詳細</h2>
+    </span>
   </div>
-  <div class="confirm_btn">
-    <%= render 'user/reserves/confirm', reserves: @reserves, recruit: @recruit %>
-  </div>
-<% else %>
-  <p>募集は終了しました</p>
-<% end %>
+
+  <% if @recruit.recruit_status != "end_recruit" %>
+    <div class="reserve_list_area">
+      <%= render 'user/reserves/list', reserves: @reserves, recruit: @recruit %>
+    </div>
+    <div class="confirm_btn_area">
+      <%= render 'user/reserves/confirm', reserves: @reserves, recruit: @recruit %>
+    </div>
+  <% else %>
+    <p>募集は終了しました</p>
+  <% end %>
+</div>
