@@ -10,19 +10,17 @@
         <h2><%= @user.nickname %> さんとのチャット</h2>
       </span>
     </div>
-    <div class="message_list_wrapper">
-      <ul class="list">
-        <% @messages.each do |message| %>
-          <%= render 'user/messages/chat', message: message %>
-        <% end %>
-      </ul>
-    </div>
+    <ul class="list">
+      <% @messages.each do |message| %>
+        <%= render 'user/messages/chat', message: message %>
+      <% end %>
+    </ul>
     <div class="comment_form_area">
       <%= form_with model: @message, data: {remote: true} do |f| %>
         <div class="comment_text_field">
           <%= f.text_field :content, class: "comment_text_input" %>
           <%= f.hidden_field :room_id %>
-          <button type="submit" class="btn btn__submit">
+          <button type="submit" class="btn btn__send_message">
             <i class="fas fa-paper-plane"></i>
           </button>
         </div>

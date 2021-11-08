@@ -1,8 +1,10 @@
 <div class="follow_count_area">
   <%= link_to followings_user_path do %>
-    <p class="following_count"><%= user.following.count %><small>フォロー中</small></p>
+    <p class="following_count"><%= user.following.count %></p>
+    <small>フォロー中</small>
   <% end %>
   <%= link_to followers_user_path do %>
-    <p class="follower_count"><%= user.followed.count %><small>フォロワー</small></p>
+    <p class="follower_count"><%= user.followed.count %></p>
+    <small>フォロワー</small>
   <% end %>
 </div>

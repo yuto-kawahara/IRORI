@@ -25,14 +25,9 @@
     padding: 15px 0;
     font-size: 1.1em;
   }
-  
-  & .lamp {
-      width:33.3%;
-  height:2px;
-  background:#333;
-  display:block;
-  position:absolute;
-  top:40px;
-  transition: all .3s ease-in;
+  & .active {
+    font-weight: bold;
+    color: #fff;
+    background: $cSubBase;
   }
 }

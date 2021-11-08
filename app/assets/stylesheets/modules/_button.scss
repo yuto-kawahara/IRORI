@@ -1,15 +1,21 @@
 .btn {
   display: inline-block;
   background-color: #fff;
+  letter-spacing: 0.125em;
   border: 1px solid #000;
   border-radius: 30px;
   font-weight: bold;
   padding: 10px;
-  margin: 10px auto;
+  margin: 0 auto;
   cursor: pointer;
+  font-size: 1.1em;
   transition: all 0.3s;
 
-  &__submit {
+  &:hover {
+    filter: brightness(70%);
+  }
+
+  &__send_message {
     border: none;
     width: 50px;
     height: 40px;
@@ -19,7 +25,6 @@
     border-bottom-left-radius: 0;
     color: #fff;
     background: $cSubBase;
-    font-size: 1.1em;
   }
 
   &__recruit {
@@ -31,7 +36,6 @@
     padding: 0 30px;
     color: #fff;
   }
-
 
   &__approve {
     border: 5px double #30ba4e;
@@ -78,16 +82,19 @@
     color: #fff;
   }
 
-  &__follow {
-    border: none;
-    background: $cSubBase;
-    color: #fff;
-  }
-
+  &__submit,
+  &__img_select,
+  &__profile_edit,
+  &__follow,
   &__unfollow {
     border: none;
     background: $cSubBase;
     color: #fff;
+    padding: 8px 15px;
+  }
+
+  &__img_select {
+    margin-top: 20px;
   }
 
   &__back {
