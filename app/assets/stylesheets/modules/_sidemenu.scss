@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  border-right: 12px solid #62CBC9;
+  border-right: 12px solid $cBase;
 
   & .side_menu {
     position: absolute;
@@ -18,7 +18,7 @@
       border-radius: 20px 0 0 20px;
 
       &:hover {
-        background-color: #62CBC9;
+        background-color: $cBase;
         & a {
           color: #fff;
           & svg {
@@ -36,7 +36,7 @@
 
       &.active {
         border-radius: 20px 0 0 20px;
-        background-color: #62CBC9;
+        background-color: $cBase;
         color: #fff;
         fill: #fff;
       }

@@ -4,14 +4,19 @@ select,
 textarea {
   border: 1px solid #DDDDDD;
   border-radius: 20px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   box-shadow: 0 0 1px 0 rgba(0,0,0,0.5);
   padding: 7px;
   &:focus {
     border: 1px solid #ff9900;
     box-shadow: 0 0 1px 0 rgba(255,153,0,1);
     outline: 0;
+  }
+
+  &.comment_text_input {
+    font-size: 1.125em;
+    height: 40px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
 
@@ -60,12 +65,6 @@ textarea {
   align-items: center;
 }
 
-.comment_text_input {
-  font-size: 1.125em;
-  height: 40px;
-
-}
-
 .user_group {
   display: flex;
   flex-direction: column;
@@ -92,6 +91,7 @@ textarea {
   vertical-align: top;
   background: #fff;
   text-align: left;
+  padding: 10px 30px;
 }
 
 .post_control {

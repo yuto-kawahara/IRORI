@@ -16,10 +16,12 @@ Rails.application.routes.draw do
     end
 
     root to: 'homes#top'
-    get '/home'    => 'homes#home'
-    get '/setting' => 'homes#setting'
-    get '/help'    => 'homes#help'
-    get '/contact' => 'homes#contact'
+    get '/home'      => 'homes#home'
+    get '/setting'   => 'homes#setting'
+    get '/help'      => 'homes#help'
+    get '/contact'   => 'homes#contact'
+    get '/new/mail'  => 'homes#new_mail'
+    get '/send/mail' => 'homes#send_mail'
 
     resources :users, param: :nickname, only: [:update] do
       member do
@@ -48,5 +50,6 @@ Rails.application.routes.draw do
     resources :reserves, only: [:update]
     resources :notifications, only: [:index]
     resources :messages, only: [:create, :destory, :index, :show]
+
   end
 end

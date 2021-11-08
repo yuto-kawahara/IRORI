@@ -10,22 +10,23 @@
   transition: all 0.3s;
 
   &__submit {
-    border: 1px solid #DDDDDD;
+    border: none;
     width: 50px;
     height: 40px;
     margin: 0;
     padding: 7px 10px;
-    border-top-right-radius: 30px;
     border-top-left-radius: 0;
-    border-bottom-right-radius: 30px;
     border-bottom-left-radius: 0;
+    color: #fff;
+    background: $cSubBase;
+    font-size: 1.1em;
   }
 
   &__recruit {
     display: flex;
     border: none;
     width: 80%;
-    background: #62CBC9;
+    background: $cBase;
     text-align: center;
     padding: 0 30px;
     color: #fff;
@@ -73,19 +74,19 @@
   &__message {
     margin-right: 20px;
     border: none;
-    background: #62CBC9;
+    background: $cSubBase;
     color: #fff;
   }
 
   &__follow {
     border: none;
-    background: #62CBC9;
+    background: $cSubBase;
     color: #fff;
   }
 
   &__unfollow {
     border: none;
-    background: #62CBC9;
+    background: $cSubBase;
     color: #fff;
   }
 
