@@ -26,13 +26,14 @@ Rails.application.routes.draw do
       member do
         get    '/'             => 'users#show', as: :profile
         get    '/profile_edit' => 'users#edit', as: :profile_edit
-        get    'reserve', 'schedule', 'followings', 'followers'
+        get    'schedule', 'followings', 'followers'
       end
       collection do
         delete 'withdraw'
         get    'unsubscribe'
       end
       resource :relationships, only: [:create, :destroy]
+      resources :evaluations, only: [:index, :create, :destroy]
     end
 
     resources :recruits do
@@ -40,9 +41,9 @@ Rails.application.routes.draw do
         get  'schedule'
       end
       resources :recruit_comments, only: [:edit, :update, :create, :destroy]
-      resource :reserves, only: [:create, :destroy] do
+      resources :reserves, only: [:create, :destroy] do
         collection do
-          get 'list', 'confirm', 'complete'
+          get 'waiting', 'confirm', 'complete'
         end
       end
     end

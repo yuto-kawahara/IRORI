@@ -1,0 +1,38 @@
+<div id="wrapper">
+  <div class="inner">
+    <div class="head_link">
+      <h2>卓報告</h2>
+    </div>
+    <div class="review_wrapper">
+      <div class="review_post_area">
+        <%= form_with model:[current_user, @evaluation], local: true do |f| %>
+          <div class="post_control">
+            <%= f.label :reviewee_id, "お礼を言う相手", class: "post_title" %>
+            <%= f.text_field :reviewee_id  %>
+          </div>
+          <div class="post_control">
+            <label class="post_title">
+              評価 <div id="evaluate_stars"></div>
+            </label>
+          </div>
+          <div class="post_control">
+            <%= f.label :comment, "メッセージ", class: "post_title" %>
+            <%= f.text_area :comment %>
+          </div>
+          <%= f.submit "評価する", class: "btn btn__submit" %>
+        <% end %>
+      </div>
+      <div class="review_list_area">
+        <% if @evaluations.present? %>
+          <ul class="list">
+            <%= render @evaluations %>
+          </ul>
+          <%= paginate @evaluations %>
+          <%= render 'layouts/loader' %>
+        <% else %>
+          <p>まだ誰も評価していません</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

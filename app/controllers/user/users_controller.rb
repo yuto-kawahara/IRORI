@@ -21,7 +21,14 @@ class User::UsersController < ApplicationController
   end
 
   def withdraw
-    current_user.update_attribute(:user_status, "quit_user")
+    delete_flg = "_quited_user_" + I18n.l(Time.current, format: :long)
+    deleted_name = current_user.nickname + delete_flg
+    deleted_email = current_user.email + delete_flg
+    current_user.assign_attributes(nickname: deleted_name,
+                                   email: deleted_email,
+                                   user_status: "quit_user")
+    current_user.skip_email_changed_notification!
+    current_user.save!
     reset_session
     redirect_to root_path
   end

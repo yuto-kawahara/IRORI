@@ -39,7 +39,7 @@ class User::ReservesController < ApplicationController
     end
   end
 
-  def list
+  def waiting
     @reserves = @recruit.reserves
   end
 

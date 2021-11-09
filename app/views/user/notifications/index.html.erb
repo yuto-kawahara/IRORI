@@ -3,7 +3,7 @@
     <div class="head_link">
       <h2>通知</h2>
     </div>
-    <% if @notifications.exists? %>
+    <% if @notifications.present? %>
       <ul class="list">
         <%= render @notifications %>
       </ul>

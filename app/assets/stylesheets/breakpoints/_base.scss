@@ -82,6 +82,7 @@ li {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  height: 7vh;
   background: #fff;
   width: 100%;
   z-index: 200;
@@ -359,4 +360,16 @@ li {
 .follow_intro {
   font-size: .9em;
   color: #787878;
+}
+
+.review_wrapper {
+  display: flex;
+  & .review_post_area {
+    padding: 10px 30px;
+  }
+  & .review_list_area {
+    overflow-y: scroll;
+    height: 92vh;
+    width: 50vw;
+  }
 }

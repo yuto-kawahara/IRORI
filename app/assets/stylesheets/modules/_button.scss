@@ -81,7 +81,7 @@
     background: $cSubBase;
     color: #fff;
   }
-
+  &__reserve_confirm,
   &__help,
   &__contact,
   &__logout,
@@ -95,6 +95,13 @@
     background: $cSubBase;
     color: #fff;
     padding: 8px 15px;
+  }
+
+  &__reserve_confirm {
+    &.no_active {
+      background: #CCC;
+      pointer-events: none;
+    }
   }
 
   &__img_select {
