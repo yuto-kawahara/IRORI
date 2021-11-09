@@ -9,6 +9,5 @@ $(document).on('turbolinks:load', function () {
     else {
       $(this).removeClass('active');
     }
-
   });
 });

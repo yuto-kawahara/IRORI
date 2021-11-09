@@ -1,5 +1,6 @@
 class Recruit < ApplicationRecord
-  scope :following_user_recruit, -> (user) { where(user_id: user.following_user ) }
+  scope :valid,  -> { where(user_id: User.valid) }
+  scope :following_user_recruit, -> (user) { where(user_id: user.following_user.valid ) }
   scope :status, -> (status)  { where(recruit_status: status ) }
   scope :sorted, -> { order(created_at: :desc ) }
   scope :closed, -> { where(recruit_status: "end_recruit") }
@@ -22,7 +23,7 @@ class Recruit < ApplicationRecord
   validates :discord_server_link, presence: true, length: { maximum: 200 }
 
   enum recruit_status:{
-    not_recruit: 0,     #未募集
+    not_recruit: 0,    #未募集
     now_recruit: 1,    #募集中
     few_recruit: 2,    #残り僅か
     end_recruit: 3     #募集終了

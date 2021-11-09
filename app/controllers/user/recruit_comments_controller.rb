@@ -18,6 +18,7 @@ class User::RecruitCommentsController < ApplicationController
 
   def set_recruit
     @recruit = Recruit.find(params[:recruit_id])
+    @recruit_comments = @recruit.recruit_comments.valid
   end
 
   def comment_params

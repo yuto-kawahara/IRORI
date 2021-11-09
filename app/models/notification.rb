@@ -1,4 +1,5 @@
 class Notification < ApplicationRecord
+  scope :valid,  -> { where(visitor_id: User.valid) }
   scope :unread, -> { where(checked: false ) }
   scope :sorted, -> { order(created_at: :desc ) }
 

@@ -4,7 +4,7 @@ class User::HomesController < ApplicationController
 
   def home
     @recruits = Recruit.following_user_recruit(current_user).sorted
-    @recruits = @recruits.includes(:user).page(params[:page])
+    @recruits = @recruits.page(params[:page])
   end
 
   def setting

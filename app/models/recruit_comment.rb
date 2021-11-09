@@ -1,4 +1,5 @@
 class RecruitComment < ApplicationRecord
+  scope :valid,  -> { where(user_id: User.valid) }
   belongs_to :user
   belongs_to :recruit
   has_many   :notifications, dependent: :destroy

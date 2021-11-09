@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 
   def unread_exist_notification
     notifications = current_user.passive_notifications.unread
+    notifications = notifications.valid
     if notifications.blank?
       @unread = false
     end

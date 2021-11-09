@@ -114,7 +114,7 @@ user = User.new(
 user.save!
 
 
-100.times do |n|
+10.times do |n|
   Recruit.create!(
     user_id: 1,
     title: "マダミス#{n}",
@@ -124,9 +124,8 @@ user.save!
     explanation: "募集中です",
     discord_server_link: "https://discord"
   )
-
 end
-100.times do |n|
+10.times do |n|
   Recruit.create!(
     user_id: 2,
     title: "ボドゲ#{n}",
@@ -136,5 +135,4 @@ end
     explanation: "募集中です",
     discord_server_link: "https://discord"
   )
-
 end

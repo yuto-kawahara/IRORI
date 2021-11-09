@@ -19,7 +19,7 @@
     <% end %>
   </div>
   <div class="recruit_comment_list">
-    <%= render 'user/recruit_comments/list', recruit: @recruit %>
+    <%= render 'user/recruit_comments/list', recruit: @recruit, recruit_comments: @recruit_comments %>
   </div>
   <div class="comment_form_area">
     <%= form_with model:[@recruit, @recruit_comment] do |f| %>

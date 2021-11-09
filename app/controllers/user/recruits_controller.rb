@@ -7,11 +7,12 @@ class User::RecruitsController < ApplicationController
   end
 
   def index
-    @recruits = Recruit.includes(:user)
+    @recruits = Recruit.valid.includes(:user)
   end
 
   def show
     @recruit_comment = RecruitComment.new
+    @recruit_comments = @recruit.recruit_comments.valid
     @reserve = Reserve.new
     @entry_list = @recruit.entry_conditions
     @form_list = @recruit.play_forms
@@ -62,7 +63,7 @@ class User::RecruitsController < ApplicationController
   def schedule
     date = params[:date]
     @recruits = Recruit.where(start_time: date.in_time_zone.all_day)
-    @recruits = @recruits.order(start_time: :desc ).page(params[:page])
+    @recruits = @recruits.valid.order(start_time: :desc ).page(params[:page])
   end
 
   private

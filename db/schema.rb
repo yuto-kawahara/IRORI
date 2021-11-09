@@ -35,14 +35,6 @@ ActiveRecord::Schema.define(version: 2021_11_08_053902) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "inquiries", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "subject", null: false
-    t.text "message", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false

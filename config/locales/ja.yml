@@ -2,8 +2,8 @@
     enums:
       user:
         user_status:
-          quit_user: "退会"
           valid_user: "有効"
+          quit_user: "退会"
       recruit:
         recruit_status:
           not_recruit: "未募集"

@@ -6,6 +6,9 @@ textarea {
   border-radius: 20px;
   box-shadow: 0 0 1px 0 rgba(0,0,0,0.5);
   padding: 7px;
+  font-family : inherit;
+  font-size : 100%;
+
   &:focus {
     border: 1px solid #ff9900;
     box-shadow: 0 0 1px 0 rgba(255,153,0,1);
@@ -65,16 +68,20 @@ textarea {
   align-items: center;
 }
 
-.user_group {
+
+@mixin flex {
   display: flex;
   flex-direction: column;
+}
+
+.user_group {
+  @include flex;
   align-items: center;
   width: 100%;
   padding: 20px 0;
 }
 .user_control {
-  display: flex;
-  flex-direction: column;
+  @include flex;
   margin-bottom: 20px;
   width: 60%;
 }
@@ -85,9 +92,8 @@ textarea {
 }
 
 .post_group {
+  @include flex;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
   vertical-align: top;
   background: #fff;
   text-align: left;
@@ -118,4 +124,8 @@ textarea {
 .post_title {
   font-weight: bold;
   margin-bottom: 10px;
+}
+
+.setting_group {
+  margin: 30px;
 }

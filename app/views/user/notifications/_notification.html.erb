@@ -6,7 +6,6 @@
     <% end %>
     <%= notification_form(notification) %>
     <small><%= " (#{time_ago_in_words(notification.created_at)}前)" %></small>
-    <!--<hr>-->
   </span>
   <% if !@comment.nil? %>
     <p class="notice__comment"><%= @comment %></p>

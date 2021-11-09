@@ -1,5 +1,6 @@
 class User::UsersController < ApplicationController
-  before_action :ensure_correct_user, except: [:index]
+  before_action :ensure_correct_user
+  before_action :quit_user_exclusion, except: [:withdraw]
 
   def show
     @recruits = @user.recruits.sorted.page(params[:page])
@@ -20,17 +21,17 @@ class User::UsersController < ApplicationController
   end
 
   def withdraw
-    current_user.destroy
+    current_user.update_attribute(:user_status, "quit_user")
     reset_session
-    redirect_to root_path, notice: "退会しました。"
+    redirect_to root_path
   end
 
   def followings
-    @users = @user.following_user.page(params[:page])
+    @users = @user.following_user.valid.sorted.page(params[:page])
   end
 
   def followers
-    @users = @user.follower_user.page(params[:page])
+    @users = @user.follower_user.valid.sorted.page(params[:page])
   end
 
   def reserve
@@ -58,6 +59,12 @@ class User::UsersController < ApplicationController
     @user = User.find_by(nickname: params[:nickname])
     if @user == current_user
       @user = current_user
+    end
+  end
+
+  def quit_user_exclusion
+    if @user.user_status == "quit_user"
+      redirect_to profile_user_path(current_user)
     end
   end
 end

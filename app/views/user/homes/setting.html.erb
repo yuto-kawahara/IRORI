@@ -1,12 +1,27 @@
-<h1>設定ページ</h1>
-<%= link_to "ヘルプ", help_path %>
-<%= link_to "問い合わせ", contact_path %>
-<%= link_to destory_user_session_path, method: :delete do %>
-  <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-  <span class="title">ログアウト</span>
-<% end %>
-<%= link_to withdraw_users_path, method: :delete do %>
-  <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-  <span class="title">退会する</span>
-<% end %>
-
+<div id="wrapper">
+  <div class="inner">
+    <div class="head_link">
+      <h2>設定</h2>
+    </div>
+    <div class="setting_group">
+      <%= link_to help_path, class: "btn btn__help" do %>
+        <i class="fas fa-question"> ヘルプ</i>
+      <% end %>
+    </div>
+    <div class="setting_group">
+      <%= link_to contact_path, class: "btn btn__contact" do %>
+        <i class="fas fa-envelope"> 問い合わせ</i>
+      <% end %>
+    </div>
+    <div class="setting_group">
+      <%= link_to destory_user_session_path, method: :delete, class: "btn btn__logout" do %>
+        <i class="fas fa-sign-out-alt"> ログアウト</i>
+      <% end %>
+    </div>
+    <div class="setting_group">
+      <%= link_to withdraw_users_path, method: :delete, class: "btn btn__withdraw" do %>
+        <i class="fas fa-user-times"> 退会する</i>
+      <% end %>
+    </div>
+  </div>
+</div>

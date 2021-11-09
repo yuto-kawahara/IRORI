@@ -1,4 +1,5 @@
 class Reserve < ApplicationRecord
+  scope :valid,  -> { where(user_id: User.valid) }
   scope :status, -> (status)  { where(reserve_status: status ) }
 
   belongs_to :user

@@ -1,0 +1,20 @@
+  <ul class="list">
+    <% users.each do |user| %>
+      <li class="item">
+        <%= link_to profile_user_path(user) do %>
+          <div class="follow_head">
+            <div class="profile_area">
+              <%= attachment_image_tag user, :icon_image, :fill, 50, 50, fallback: "no-icon.png", size:"50x50", class: "face_icon"  %>
+              <%= user.nickname %>
+            </div>
+            <div class="follow_area">
+              <%= render 'user/relationships/follow', user: user %>
+            </div>
+          </div>
+          <div class="follow_intro">
+            <%= user.introduction %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>

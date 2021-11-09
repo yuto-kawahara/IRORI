@@ -1,68 +1,72 @@
-<ul class="list">
-  <% recruits.each do |recruit| %>
-    <li class="item">
-      <%= link_to recruit_path(recruit), class: "recruit_detail_link" do %>
-        <p class="recruit_title">
-          <%= recruit.title %>
-        </p>
-        <div class="recruit_content">
-          <div class="recruit_status_area">
-            <% case recruit.recruit_status
-                 when "not_recruit" %>
+<% unless recruits.blank? %>
+  <ul class="list">
+    <% recruits.each do |recruit| %>
+      <li class="item">
+        <%= link_to recruit_path(recruit), class: "recruit_detail_link" do %>
+          <p class="recruit_title">
+            <%= recruit.title %>
+          </p>
+          <div class="recruit_content">
+            <div class="recruit_status_area">
+              <% case recruit.recruit_status
+                   when "not_recruit" %>
 
-            　<% when "now_recruit" %>
-                <div class="icon_status">
-                  <ion-icon name="ellipse-outline", class="status_now"></ion-icon>
-                  <small class="now"><%= recruit.recruit_status_i18n %></small>
-                </div>
-              <% when "few_recruit" %>
-                <div class="icon_status">
-                  <ion-icon name="triangle-outline", class="status_few"></ion-icon>
-                  <small class="few"><%= recruit.recruit_status_i18n %></small>
-                </div>
-              <% when "end_recruit" %>
-                <div class="icon_status">
-                  <ion-icon name="close-outline", class="status_end"></ion-icon>
-                  <small class="end"><%= recruit.recruit_status_i18n %></small>
-                </div>
-            <% end %>
-          </div>
-          <div class="user_post_info_area">
-            <div class="profile_area">
-              <dt>GM</dt>
-              <dd>
-                <%= attachment_image_tag recruit.user, :icon_image, :fill, 30, 30, fallback: "no-icon.png", size:"30x30", class: "face_icon"  %></p>
-                <%= recruit.user.nickname %>
-              </dd>
-            </div>
-            <div class="recruit_area">
-              <dl>
-                <dt>募集日時</dt>
-                <dd><%= recruit.start_time.strftime("%m月%d日 %H:%M～") %></dd>
-              </dl>
-              <dl>
-                <dt>所要時間</dt>
-                <dd><%= "#{recruit.time_required}時間" %></dd>
-              </dl>
-              <dl>
-                <dt>定員</dt>
-                <dd><%= "#{recruit.capacity}人" %></dd>
-              </dl>
-              <p>< プレイ形態 ></p>
-              <% recruit.entry_conditions.each do |form| %>
-                <small class="tag"><%= form.name %></small>
-              <% end %>
-              <p>< 参加条件 ></p>
-              <% recruit.play_forms.each do |form| %>
-                <small class="tag"><%= form.name %></small>
+              　<% when "now_recruit" %>
+                  <div class="icon_status">
+                    <ion-icon name="ellipse-outline", class="status_now"></ion-icon>
+                    <small class="now"><%= recruit.recruit_status_i18n %></small>
+                  </div>
+                <% when "few_recruit" %>
+                  <div class="icon_status">
+                    <ion-icon name="triangle-outline", class="status_few"></ion-icon>
+                    <small class="few"><%= recruit.recruit_status_i18n %></small>
+                  </div>
+                <% when "end_recruit" %>
+                  <div class="icon_status">
+                    <ion-icon name="close-outline", class="status_end"></ion-icon>
+                    <small class="end"><%= recruit.recruit_status_i18n %></small>
+                  </div>
               <% end %>
             </div>
+            <div class="user_post_info_area">
+              <div class="profile_area">
+                <dt>GM</dt>
+                <dd>
+                  <%= attachment_image_tag recruit.user, :icon_image, :fill, 30, 30, fallback: "no-icon.png", size:"30x30", class: "face_icon"  %></p>
+                  <%= recruit.user.nickname %>
+                </dd>
+              </div>
+              <div class="recruit_area">
+                <dl>
+                  <dt>募集日時</dt>
+                  <dd><%= recruit.start_time.strftime("%m月%d日 %H:%M～") %></dd>
+                </dl>
+                <dl>
+                  <dt>所要時間</dt>
+                  <dd><%= "#{recruit.time_required}時間" %></dd>
+                </dl>
+                <dl>
+                  <dt>定員</dt>
+                  <dd><%= "#{recruit.capacity}人" %></dd>
+                </dl>
+                <p>< プレイ形態 ></p>
+                <% recruit.entry_conditions.each do |form| %>
+                  <small class="tag"><%= form.name %></small>
+                <% end %>
+                <p>< 参加条件 ></p>
+                <% recruit.play_forms.each do |form| %>
+                  <small class="tag"><%= form.name %></small>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </div>
 
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-<%= paginate recruits %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate recruits %>
 <%= render 'layouts/loader' %>
+<% else %>
+  <p>新しい投稿はありません</p>
+<% end %>

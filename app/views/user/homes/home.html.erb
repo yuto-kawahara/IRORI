@@ -3,12 +3,8 @@
     <div class="head_link">
       <h2>ホーム</h2>
     </div>
-    <% unless @recruits.blank? %>
-      <div class="user_recruit_list">
-        <%= render 'user/recruits/list', recruits: @recruits %>
-      </div>
-    <% else %>
-      <p>新しい投稿はありません</p>
-    <% end %>
+    <div class="user_recruit_list">
+      <%= render 'user/recruits/list', recruits: @recruits %>
+    </div>
   </div>
 </div>

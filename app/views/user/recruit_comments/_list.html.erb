@@ -1,5 +1,5 @@
 <ul class=list>
-  <% recruit.recruit_comments.each do |comment| %>
+  <% recruit_comments.each do |comment| %>
     <% recruit_comment_user = comment.user %>
     <li class="item">
       <%= link_to profile_user_path(recruit_comment_user), class: "user_#{recruit_comment_user.id} profile_img" do %>

@@ -316,7 +316,6 @@ li {
 	text-decoration: none;
 	color: #fff;
 	background: orange;
-// 	border: 1px solid #0000ee;
 	border-radius: 2em;
 }
 .recruit_detail_inner {
@@ -344,4 +343,20 @@ li {
 }
 .confirm_btn_area {
   text-align: center;
+}
+
+.prewrap {
+  white-space: pre-wrap;
+}
+
+.follow_head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.follow_intro {
+  font-size: .9em;
+  color: #787878;
 }
