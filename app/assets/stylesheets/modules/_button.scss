@@ -115,4 +115,13 @@
     margin: 0;
     padding: 6px;
   }
+
+  &__new_report {
+    position: fixed;
+    bottom: 10vh;
+    right: 20vh;
+    font-size: 4em;
+    background: #fff;
+    color: $cBase;
+  }
 }

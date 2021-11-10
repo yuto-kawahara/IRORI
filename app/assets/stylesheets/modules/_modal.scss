@@ -1,0 +1,24 @@
+#modal {
+  position: fixed;   /* スクロールで移動しないようmodalの位置を固定します */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.2s;
+  z-index: 999;
+  width: 40vw;
+}
+
+#mask {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 998;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

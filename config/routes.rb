@@ -33,7 +33,7 @@ Rails.application.routes.draw do
         get    'schedule', 'followings', 'followers'
       end
       resource :relationships, only: [:create, :destroy]
-      resources :evaluations, only: [:index, :create, :destroy]
+      resources :evaluations, only: [:new, :index, :create, :destroy]
     end
 
     resources :recruits do

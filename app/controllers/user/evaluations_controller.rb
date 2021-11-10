@@ -1,4 +1,8 @@
 class User::EvaluationsController < ApplicationController
+  def new
+    @evaluation = Evaluation.new
+  end
+
   def index
     @users = User.valid
     @evaluation = Evaluation.new

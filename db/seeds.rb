@@ -157,3 +157,12 @@ end
     discord_server_link: "https://discord"
   )
 end
+
+100.times do |n|
+  Evaluation.create!(
+    reviewer_id: 1,
+    reviewee_id: 5,
+    stars: 4.5,
+    comment: "テスト"
+  )
+end

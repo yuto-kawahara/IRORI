@@ -361,14 +361,3 @@ li {
   font-size: .9em;
   color: #787878;
 }
-
-.review_wrapper {
-  display: flex;
-  & .review_post_area {
-    padding: 10px 30px;
-    width: 40vw;
-  }
-  & .review_list_area {
-    width: 50vw;
-  }
-}
