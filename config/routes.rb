@@ -23,14 +23,14 @@ Rails.application.routes.draw do
     post '/send/mail' => 'homes#send_mail'
 
     resources :users, param: :nickname, only: [:update] do
+      collection do
+        delete 'withdraw'
+        get    'search', 'unsubscribe'
+      end
       member do
         get    '/'             => 'users#show', as: :profile
         get    '/profile_edit' => 'users#edit', as: :profile_edit
         get    'schedule', 'followings', 'followers'
-      end
-      collection do
-        delete 'withdraw'
-        get    'unsubscribe'
       end
       resource :relationships, only: [:create, :destroy]
       resources :evaluations, only: [:index, :create, :destroy]

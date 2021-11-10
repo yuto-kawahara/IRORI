@@ -112,6 +112,27 @@ user = User.new(
   password: "test121",
   )
 user.save!
+user = User.new(
+  email: "tengu1@test.com",
+  nickname: "1ダケ",
+  introduction: "よろしくお願いいたします",
+  password: "test121",
+  )
+user.save!
+user = User.new(
+  email: "tengu2@test.com",
+  nickname: "2テングダケ",
+  introduction: "よろしくお願いいたします",
+  password: "test121",
+  )
+user.save!
+user = User.new(
+  email: "tengu3@test.com",
+  nickname: "3テングダケ",
+  introduction: "よろしくお願いいたします",
+  password: "test121",
+  )
+user.save!
 
 
 10.times do |n|

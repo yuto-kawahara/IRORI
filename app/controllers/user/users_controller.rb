@@ -1,6 +1,6 @@
 class User::UsersController < ApplicationController
   before_action :ensure_correct_user
-  before_action :quit_user_exclusion, except: [:withdraw]
+  before_action :quit_user_exclusion, except: [:withdraw, :search]
 
   def show
     @recruits = @user.recruits.sorted.page(params[:page])
@@ -53,6 +53,15 @@ class User::UsersController < ApplicationController
       unless reserve.blank?
         @recruits.push(reserve.recruit)
       end
+    end
+  end
+
+  def search
+    @users = User.valid.not_current(current_user)
+    @users = @users.where('nickname LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html
+      format.json
     end
   end
 

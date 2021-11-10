@@ -78,7 +78,7 @@ textarea {
   @include flex;
   align-items: center;
   width: 100%;
-  padding: 20px 0;
+  padding-top: 20px;
 }
 .user_control {
   @include flex;
@@ -105,7 +105,9 @@ textarea {
   position: relative;
   margin-bottom: 15px;
   & .control {
+    display: flex;
     margin-bottom: 10px;
+    align-items: center;
   }
 
   & small {
@@ -122,8 +124,8 @@ textarea {
   }
 }
 .post_title {
+  display: block;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .setting_group {

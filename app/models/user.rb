@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   scope :valid,  -> { where(user_status: "valid_user") }
   scope :sorted, -> { order(created_at: :desc ) }
+  scope :not_current, -> (user) { where.not(id: user.id ) }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

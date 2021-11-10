@@ -366,10 +366,9 @@ li {
   display: flex;
   & .review_post_area {
     padding: 10px 30px;
+    width: 40vw;
   }
   & .review_list_area {
-    overflow-y: scroll;
-    height: 92vh;
     width: 50vw;
   }
 }

@@ -7,16 +7,27 @@
       <div class="review_post_area">
         <%= form_with model:[current_user, @evaluation], local: true do |f| %>
           <div class="post_control">
-            <%= f.label :reviewee_id, "お礼を言う相手", class: "post_title" %>
-            <%= f.text_field :reviewee_id  %>
+            <div class="user_search_area">
+              <div class="control">
+                <%= f.label "お礼を言う相手", class: "post_title" %>
+                <small class="badge_mandatory">必須</small>
+              </div>
+              <%= f.text_field :nickname, autocomplete: "off", autofocus: true, placeholder: "検索", id: "user_search_form"%>
+              <ul class="search_result"></ul>
+            </div>
           </div>
           <div class="post_control">
-            <label class="post_title">
-              評価 <div id="evaluate_stars"></div>
-            </label>
+            <div class="control">
+              <label class="post_title">評価</label>
+              <small class="badge_mandatory">必須</small>
+            </div>
+            <div id="evaluate_stars"></div>
           </div>
           <div class="post_control">
-            <%= f.label :comment, "メッセージ", class: "post_title" %>
+            <div class="control">
+              <%= f.label :comment, "メッセージ", class: "post_title" %>
+              <small class="badge_mandatory">必須</small>
+            </div>
             <%= f.text_area :comment %>
           </div>
           <%= f.submit "評価する", class: "btn btn__submit" %>

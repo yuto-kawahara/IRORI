@@ -13,7 +13,7 @@ class User::MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)
     @message.save
     users = @message.room.users
-    user = users.where.not(id: current_user.id).first
+    user = users.not_current(current_user).first
     create_notification(current_user, user, nil, nil, @message.id, "message")
   end
 

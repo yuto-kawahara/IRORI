@@ -15,4 +15,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require vendors/jquery.raty
+//= require vendors/infinite-scroll.pkgd.min
+//= require address-location
+//= require review
+//= require tab-switch
+//= require img-preview
+//= require infinite-scroll
+
 //= require_tree .
