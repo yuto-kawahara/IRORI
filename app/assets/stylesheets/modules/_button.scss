@@ -113,9 +113,9 @@
     color: $cBase;
   }
 
-  &__comment_delete,
-  &__recruit_edit,
-  &__recruit_delete {
+  &__comment_delete {
+  // &__recruit_edit,
+  // &__recruit_delete {
     position: absolute;
     display: flex;
     width: 30px;
@@ -126,14 +126,20 @@
     justify-content: center;
   }
 
-  &__recruit_edit {
-    top: 26px;
-    right: 81px;
+  &__recruit_edit,
+  &__recruit_delete {
+    display: flex;
+    font-size: 1em;
+    align-items: center;
+    justify-content: space-around;
   }
 
-  &__recruit_delete {
-    top: 26px;
-    right: 44px;
+  &__recruit_edit {
+    margin-bottom: 10px;
+  }
+
+  &__reserve_list {
+    margin-right: 10px;
   }
 
   &__comment_delete {

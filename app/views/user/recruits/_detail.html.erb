@@ -1,6 +1,11 @@
 <div class="recruit_detail_table">
   <% if @recruit.user == current_user %>
-    <%= render 'user/recruits/change', recruit: recruit %>
+    <div class="recruit_detail_head">
+      <%= render 'user/reserves/waiting', recruit: recruit %>
+        <label for="three_point_reader" class="three_point_reader" ><i class="fas fa-ellipsis-h"></i></label>
+        <input type="checkbox" id="three_point_reader">
+        <%= render 'user/recruits/change', recruit: recruit %>
+    </div>
   <% end %>
   <table>
     <tbody>

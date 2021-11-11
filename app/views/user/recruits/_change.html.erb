@@ -1,8 +1,10 @@
 <div class="recruit_change_area">
   <%= link_to edit_recruit_path(recruit), class: "btn btn__recruit_edit" do %>
     <i class="fas fa-pen"></i>
+    <span>編集する</span>
   <% end %>
   <%= link_to recruit_path(recruit), method: :delete, class: "btn btn__recruit_delete", data: {confirm: "削除しますか？"} do %>
     <i class="fas fa-trash-alt"></i>
+    <span>削除する</span>
   <% end %>
 </div>
