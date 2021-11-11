@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_115144) do
     t.integer "recruit_id"
     t.integer "recruit_comment_id"
     t.integer "message_id"
+    t.integer "evaluation_id"
     t.string "action", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false

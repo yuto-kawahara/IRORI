@@ -1,18 +1,12 @@
 .navigation {
-  position: relative;
   width: 100%;
   height: 100%;
   border-right: 12px solid $cBase;
 
   & .side_menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding-top: 40px;
+    padding-top: 10vh;
 
     &__list {
-      position: relative;
       list-style: none;
       width: 100%;
       border-radius: 20px 0 0 20px;
@@ -28,7 +22,6 @@
       }
     }
     &__link {
-      position: relative;
       display: flex;
       width: 100%;
       text-decoration: none;
@@ -83,13 +76,11 @@
   }
 
   & ion-icon {
-    position: relative;
     font-size: 1.5em;
     z-index: 1;
   }
 
   & .title {
-    position: relative;
     display: block;
     padding-left: 10px;
     height: 60px;
@@ -101,17 +92,4 @@
 svg {
   min-width: 24px;
   height: 24px;
-}
-
-.recruit_btn_area_side {
-  position: absolute;
-  width: 100%;
-  bottom: 100px;
-
-  & .recruit_title {
-    height: 60px;
-    line-height: 60px;
-    white-space: nowrap;
-    font-size: 1.3rem;
-  }
 }

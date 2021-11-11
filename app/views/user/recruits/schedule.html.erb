@@ -1,3 +1,15 @@
-<div class="user_recruit_list">
-  <%= render 'user/recruits/list', recruits: @recruits %>
+<div id="wrapper">
+  <div class="head_link">
+    <span>
+      <%= link_to recruits_path, class: "btn btn__back" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    </span>
+    <span>
+      <h2>募集カレンダー</h2>
+    </span>
+  </div>
+  <div class="user_recruit_list">
+    <%= render 'user/recruits/list', recruits: @recruits %>
+  </div>
 </div>

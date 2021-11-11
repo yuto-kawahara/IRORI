@@ -8,13 +8,25 @@ class User::ReservesController < ApplicationController
   def create
     @reserve = @recruit.reserves.create(user_id: current_user.id)
     @reserve.update_attributes(reserve_status: "wait_reserve")
-    create_notification(current_user, @recruit.user, @recruit.id, nil, nil, "reserve")
+    create_notification(current_user,
+                        @recruit.user,
+                        @recruit.id,
+                        nil,
+                        nil,
+                        nil,
+                        "reserve")
   end
 
   def destroy
     reserve = @recruit.reserves.find_by(user_id: current_user.id)
     reserve.destroy
-    create_notification(current_user, @recruit.user, @recruit.id, nil, nil, "cancel")
+    create_notification(current_user,
+                        @recruit.user,
+                        @recruit.id,
+                        nil,
+                        nil,
+                        nil,
+                        "cancel")
   end
 
   def update

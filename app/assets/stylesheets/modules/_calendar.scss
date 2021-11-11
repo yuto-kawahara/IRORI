@@ -1,13 +1,10 @@
 .simple-calendar {
   & .calendar-heading {
-    text-align: center;
-    font-size: 24px;
+    font-size: 1.7em;
     width: 100%;
-  }
-
-  & .next-prev-button {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     & a {
       cursor: pointer;
       background: #B78D4A;
@@ -73,4 +70,8 @@
     font-size: 1.2em;
     text-decoration: underline;
   }
+}
+
+.user_calendar_area {
+  padding: 30px;
 }

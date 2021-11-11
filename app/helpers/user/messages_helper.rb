@@ -13,11 +13,17 @@ module User::MessagesHelper
       UserRoom.create(user_id: send_user.id, room_id: @room.id)
       UserRoom.create(user_id: receive_user.id, room_id: @room.id)
     end
-    @messages = @room.messages
+    @messages = @room.messages.includes(:user, :room)
     @message = send_user.messages.new(room_id: @room.id, content: message)
     if send_method == "broadcast"
       @message.save
-      create_notification(send_user, receive_user, nil, nil, @message.id, "message" )
+      create_notification(send_user,
+                          receive_user,
+                          nil,
+                          nil,
+                          @message.id,
+                          nil,
+                          "message" )
     end
   end
 

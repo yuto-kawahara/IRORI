@@ -1,11 +1,14 @@
 <div id="wrapper">
   <div class="inner">
+    <div class="head_link">
+      <h2>プロフィール</h2>
+    </div>
     <div class="user_profile_inner">
       <div class="profile_action_area">
         <%= attachment_image_tag @user, :icon_image, :fill, 130, 130, fallback: "no-icon.png", size:"130x130", class: "face_icon" %>
         <% if @user != current_user %>
           <div class="user_action_btn">
-            <%= render 'user/messages/message', user: @user %>
+            <%= render 'user/messages/message_btn', user: @user %>
             <%= render 'user/relationships/follow', user: @user %>
           </div>
         <% else %>

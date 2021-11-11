@@ -16,10 +16,10 @@ Rails.application.routes.draw do
     end
 
     root to: 'homes#top'
-    get '/home'      => 'homes#home'
-    get '/setting'   => 'homes#setting'
-    get '/help'      => 'homes#help'
-    get '/contact'   => 'homes#contact'
+    get  '/home'      => 'homes#home'
+    get  '/setting'   => 'homes#setting'
+    get  '/help'      => 'homes#help'
+    get  '/contact'   => 'homes#contact'
     post '/send/mail' => 'homes#send_mail'
 
     resources :users, param: :nickname, only: [:update] do
@@ -47,6 +47,9 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    resources :evaluations, only: [:show]
+    get '/evaluations' => 'evaluations#other_index', as: :other_user_evaluations
     resources :reserves, only: [:update]
     resources :notifications, only: [:index]
     resources :messages, only: [:create, :destory, :index, :show]

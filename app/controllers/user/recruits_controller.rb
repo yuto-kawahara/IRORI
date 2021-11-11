@@ -7,7 +7,7 @@ class User::RecruitsController < ApplicationController
   end
 
   def index
-    @recruits = Recruit.valid.includes(:user)
+    @recruits = Recruit.valid.includes(:user, )
   end
 
   def show
@@ -46,7 +46,6 @@ class User::RecruitsController < ApplicationController
     play_form_ids = params[:recruit][:play_form_ids]
     entry_condition_ids = params[:recruit][:entry_condition_ids]
     if @recruit.save
-      binding.pry
       RecruitPlayForm.bulk_create(@recruit.id, play_form_ids)
       RecruitEntryCondition.bulk_create(@recruit.id, entry_condition_ids)
       redirect_to recruit_path(@recruit)
@@ -63,6 +62,7 @@ class User::RecruitsController < ApplicationController
   def schedule
     date = params[:date]
     @recruits = Recruit.where(start_time: date.in_time_zone.all_day)
+    @recruits = @recruits.includes(:user, :entry_conditions, :play_forms)
     @recruits = @recruits.valid.order(start_time: :desc ).page(params[:page])
   end
 

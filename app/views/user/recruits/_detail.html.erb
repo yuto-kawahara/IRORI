@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <th>日時</th>
-        <td><%= recruit.start_time.strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= "#{recruit.start_time.strftime("%Y/%m/%d %H:%M")}～" %></td>
       </tr>
       <tr>
         <th>所要時間</th>
@@ -34,7 +34,7 @@
         <td>
           <ul>
             <% form_list.each do |form| %>
-              <li class="list_tag"><%= form.name %></li>
+              <li class="tag"><%= form.name %></li>
             <% end %>
           </ul>
         </td>
@@ -44,7 +44,7 @@
         <td>
           <ul>
             <% entry_list.each do |entry| %>
-              <li class="list_tag"><%= entry.name %></li>
+              <li class="tag"><%= entry.name %></li>
             <% end %>
           </ul>
         </td>
@@ -53,11 +53,9 @@
         <th>説明</th>
         <td class="prewrap"><%= recruit.explanation %></td>
       </tr>
-      <tr>
-        <td>
-          <%= attachment_image_tag recruit, :image, :fill, 300, 300 %>
-        </td>
-      </tr>
     </tbody>
   </table>
+  <div class="recruit_img">
+    <%= attachment_image_tag recruit, :image %>
+  </div>
 </div>

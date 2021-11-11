@@ -1,0 +1,21 @@
+var modal = $('#modal');
+var mask = $('#mask');
+
+modal.append("<%= j(render 'user/evaluations/show', evaluation: @evaluation) %>");
+mask.removeClass("hidden");
+mask.click(function(){
+  mask.addClass("hidden");
+  modal.empty();
+});
+
+var review_stars = $('.review_stars');
+if (review_stars != null) {
+  review_stars.empty();
+  review_stars.raty({
+    readOnly: true,
+    score: function() {
+      return review_stars.attr('data-score');
+    },
+    path: '/assets/'
+  });
+}

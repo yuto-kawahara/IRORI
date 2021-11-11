@@ -1,0 +1,11 @@
+<div class="review_list_area">
+  <% if evaluations.present? %>
+    <ul class="list", id="review_list">
+      <%= render evaluations %>
+    </ul>
+    <%= paginate evaluations %>
+    <%= render 'layouts/loader' %>
+  <% else %>
+    <p>まだ誰も評価していません</p>
+  <% end %>
+</div>

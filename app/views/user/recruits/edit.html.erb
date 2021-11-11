@@ -1,6 +1,15 @@
 <div id="wrapper">
   <div class="inner">
-    <h1>募集編集フォーム</h1>
+    <div class="head_link">
+      <span>
+        <%= link_to recruit_path(@recruit), class: "btn btn__back" do %>
+          <i class="fas fa-arrow-left"></i>
+        <% end %>
+      </span>
+      <span>
+        <h2>募集詳細</h2>
+      </span>
+    </div>
     <%= render 'user/recruits/form', recruit: @recruit %>
   </div>
 </div>

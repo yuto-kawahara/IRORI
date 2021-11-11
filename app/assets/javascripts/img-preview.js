@@ -10,19 +10,16 @@ $(document).on('turbolinks:load', function() {
 
       if (faceicon != null) {
         faceicon.src = src;
-        fileReader.readAsDataURL(file);
-        return;
       }
-
-      var html= `<div class='item_img' data-image="${file.name}">
-                   <div class='item_img__inner'>
-                     <img src="${src}" class="upload_img">
-                     <button type='button' class='btn btn__img_delete'>
-                       <i class="fas fa-times"></i>
-                     </button>
-                   </div>
-                 </div>`;
-      $('.img_wrapper').before(html);
+      else {
+        var html= `<div class='item_img' data-image="${file.name}">
+                     <div class='item_img__inner'>
+                       <img src="${src}" class="upload_img">
+                       <i class="fas fa-times-circle btn__img_delete"></i>
+                     </div>
+                   </div>`;
+        $('.img_wrapper').before(html);
+      }
     };
     fileReader.readAsDataURL(file);
   });

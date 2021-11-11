@@ -1,11 +1,25 @@
-<li class="item">
+<li class="item item_<%= evaluation.id %>">
   <span>
     <% reviewee = evaluation.reviewee %>
-    <%= link_to profile_user_path(reviewee) do %>
-      <%= attachment_image_tag reviewee, :icon_image, :fill, 40, 40, fallback: "no-icon.png", size:"40x40", class: "face_icon" %>
-      <%= reviewee.nickname %>
-    <% end %>
+    <% reviewer = evaluation.reviewer %>
+    <small class="reviewer_head">
+      <%= link_to profile_user_path(reviewer) do %>
+        <%= "#{reviewer.nickname} さんの投稿" %>
+      <% end %>
+    </small>
+    <div class="reviewee_area">
+      <%= link_to profile_user_path(reviewee) do %>
+        <%= attachment_image_tag reviewee, :icon_image, :fill, 40, 40, fallback: "no-icon.png", size:"40x40", class: "face_icon" %>
+        <%= "#{reviewee.nickname} さん" %>
+      <% end %>
+      <small><%= evaluation.created_at.strftime("%Y/%m/%d %H:%M") %></small>
+    </div>
     <div class="review_stars" data-score="<%= evaluation.stars %>"></div>
     <p class="prewrap"><%= evaluation.comment %></p>
   </span>
+  <% if current_user == reviewer %>
+  	<%= link_to user_evaluation_path(current_user, evaluation), method: :delete, remote: true, class: "btn btn__comment_delete" do %>
+  	  <i class="fas fa-trash-alt"></i>
+  	<% end %>
+  <% end %>
 </li>

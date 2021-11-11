@@ -1,11 +1,19 @@
-<%= month_calendar events: @recruits do |date, recruits| %>
-  <%= date.day %>
-  <div class="event_area">
-    <% unless recruits.blank? %>
-      <% recruits.each do |recruit| %>
-        <%= "#{recruit.start_time.strftime("%H:%M")}～" %><br>
-        <%= link_to recruit.title, recruit_path(recruit) %><br>
-      <% end %>
+<div id="wrapper">
+  <div class="head_link">
+    <h2><%= "#{current_user.nickname}さんのスケジュール" %></h2>
+  </div>
+  <div class="user_calendar_area">
+    <%= month_calendar events: @recruits do |date, recruits| %>
+      <%= date.day %>
+      <div class="event_area">
+        <% unless recruits.blank? %>
+          <% recruits.each do |recruit| %>
+            <%= "#{recruit.start_time.strftime("%H:%M")}～" %><br>
+            <%= link_to recruit.title, recruit_path(recruit) %><br>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
+</div>
+

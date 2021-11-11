@@ -5,7 +5,13 @@ class User::RelationshipsController < ApplicationController
   def create
     current_user.follow(@user)
     @users = current_user.following_user.page(params[:page]).sorted
-    create_notification(current_user, @user, nil, nil, nil, "follow")
+    create_notification(current_user,
+                        @user,
+                        nil,
+                        nil,
+                        nil,
+                        nil,
+                        "follow")
   end
 
   def destroy

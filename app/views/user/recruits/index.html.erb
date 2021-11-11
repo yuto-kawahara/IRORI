@@ -1,8 +1,15 @@
-<%= month_calendar events: @recruits do |date, recruits| %>
-  <%= date.day %>
-  <div  class="event_count">
-    <% unless recruits.blank? %>
-      <%= link_to "#{recruits.count}件", schedule_recruits_path(:date => date) %>
+<div id="wrapper">
+  <div class="head_link">
+    <h2>募集カレンダー</h2>
+  </div>
+  <div class="user_calendar_area">
+    <%= month_calendar events: @recruits do |date, recruits| %>
+      <%= date.day %>
+      <div  class="event_count">
+        <% unless recruits.blank? %>
+          <%= link_to "#{recruits.count}件", schedule_recruits_path(:date => date) %>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
+</div>

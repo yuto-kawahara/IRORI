@@ -4,7 +4,8 @@
       <%= render 'user/recruits/detail', recruit: @recruit, form_list: @form_list, entry_list: @entry_list %>
       <div class="reserve_list_btn_area">
         <%= link_to waiting_recruit_reserves_path(@recruit.id), class: "btn btn__reserve_list" do %>
-          <i class="far fa-list-alt">予約リスト</i>
+          <i class="far fa-list-alt"></i>
+          <span>予約リスト</span>
         <% end %>
       </div>
     <% else %>

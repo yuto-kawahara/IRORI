@@ -1,8 +1,8 @@
 body {
   font-size: 1rem;
   letter-spacing: 0.125em;
-  line-height: 1.2;
-  font-family: 'Noto Sans JP', sans-serif;
+  // line-height: 1.2;
+  font-family: 'Kaisei Decol', serif;
   overflow-y: scroll;
 }
 
@@ -42,6 +42,7 @@ li {
 }
 
 .item {
+  position: relative;
   border: 1px solid #DDDDDD;
   padding: 10px 20px;
   margin-bottom: 20px;
@@ -86,9 +87,6 @@ li {
   background: #fff;
   width: 100%;
   z-index: 200;
-  & a {
-    margin-right: 20px;
-  }
 }
 
 .user_profile_inner {
@@ -135,6 +133,7 @@ li {
   height: auto;
   border: 3px solid #fff;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .user_recruit_list {
@@ -241,7 +240,7 @@ li {
 }
 
 .recruit_detail_table {
-  border-radius: 10px;
+  border-radius: 8px;
   border-collapse: collapse;
   background: #dbffed;
 
@@ -260,6 +259,15 @@ li {
   & td {
     padding: 10px;
     border-left: 1px solid #fff;
+  }
+
+  & .recruit_img {
+    padding: 10px;
+    & > img {
+      width: 50%;
+      height: 50%;
+      border-radius: 8px;
+    }
   }
 }
 .recruit_comment_list {
@@ -322,19 +330,8 @@ li {
 .recruit_detail_inner {
   position: relative;
   padding: 20px 30px 0 30px;
-
-  & .recruit_edit_btn {
-    position: absolute;
-    top: 26px;
-    right: 72px;
-  }
-
-  & .recruit_delete_btn {
-    position: absolute;
-    top: 26px;
-    right: 44px;
-  }
 }
+
 .reserve_list_area {
   & .item {
     display: flex;
@@ -360,4 +357,37 @@ li {
 .follow_intro {
   font-size: .9em;
   color: #787878;
+}
+.review_list_area {
+  position: relative;
+
+  & .comment_delete_btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+}
+.reviewer_head,
+.reviewee_area,
+.review_stars {
+  display: block;
+  margin-bottom: 10px;
+}
+.reviewee_area {
+  font-weight: bold;
+}
+.review_stars {
+  border-bottom: 1px dashed #DDD;
+}
+
+.review_show_area {
+  & .item {
+    background: #fff;
+  }
+}
+
+.edit_face_icon {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
 }

@@ -14,7 +14,13 @@ class User::MessagesController < ApplicationController
     @message.save
     users = @message.room.users
     user = users.not_current(current_user).first
-    create_notification(current_user, user, nil, nil, @message.id, "message")
+    create_notification(current_user,
+                        user,
+                        nil,
+                        nil,
+                        @message.id,
+                        nil,
+                        "message")
   end
 
   def show

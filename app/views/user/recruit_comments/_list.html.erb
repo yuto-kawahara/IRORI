@@ -15,7 +15,7 @@
         <p><%= comment.comment %></p>
       </div>
     	<% if current_user == recruit_comment_user %>
-      	<%= link_to recruit_recruit_comment_path(recruit, comment), method: :delete, remote: true, class: "comment_delete_btn" do %>
+      	<%= link_to recruit_recruit_comment_path(recruit, comment), method: :delete, remote: true, class: "btn btn__comment_delete" do %>
       	  <i class="fas fa-trash-alt"></i>
       	<% end %>
       <% end %>

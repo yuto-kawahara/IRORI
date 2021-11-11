@@ -5,22 +5,26 @@
     </div>
     <div class="setting_group">
       <%= link_to help_path, class: "btn btn__help" do %>
-        <i class="fas fa-question"> ヘルプ</i>
+        <i class="fas fa-question"></i>
+        <span>ヘルプ</span>
       <% end %>
     </div>
     <div class="setting_group">
       <%= link_to contact_path, class: "btn btn__contact" do %>
-        <i class="fas fa-envelope"> 問い合わせ</i>
+        <i class="fas fa-envelope"></i>
+        <span>問い合わせ</span>
       <% end %>
     </div>
     <div class="setting_group">
       <%= link_to destory_user_session_path, method: :delete, class: "btn btn__logout" do %>
-        <i class="fas fa-sign-out-alt"> ログアウト</i>
+        <i class="fas fa-sign-out-alt"></i>
+        <span>ログアウト</span>
       <% end %>
     </div>
     <div class="setting_group">
-      <%= link_to withdraw_users_path, method: :delete, class: "btn btn__withdraw" do %>
-        <i class="fas fa-user-times"> 退会する</i>
+      <%= link_to withdraw_users_path, method: :delete, class: "btn btn__withdraw", data: {confirm: "本当に退会しますか？"} do %>
+        <i class="fas fa-user-times"></i>
+        <span>退会する</span>
       <% end %>
     </div>
   </div>
