@@ -64,9 +64,9 @@ var evaluate_stars = $('#evaluate_stars');
 if (evaluate_stars != null) {
   evaluate_stars.empty();
   evaluate_stars.raty({
-    starOn: '/assets/star-on.png',
-    starOff: '/assets/star-off.png',
-    starHalf: '/assets/star-half.png',
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
     scoreName: 'evaluation[stars]',
     half: true
   });
