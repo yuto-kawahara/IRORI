@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function () {
         score: function() {
           return review_stars.attr('data-score');
         },
-        path: "/"
+        path: "/images/"
       });
     }
   }
