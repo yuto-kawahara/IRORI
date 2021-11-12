@@ -1,0 +1,45 @@
+.footer_menu {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  border-top: 5px solid $cBase;
+
+  &__list {
+    width: 25%;
+  }
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7px;
+
+    &.active {
+      background-color: $cBase;
+      color: #fff;
+      fill: #fff;
+    }
+  }
+
+  & .icon {
+    position: relative;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  & .icon_svg {
+    @extend .font-lg;
+    line-height: 19px;
+  }
+
+  & ion-icon {
+    @extend .font-lg;
+    z-index: 1;
+  }
+  svg {
+    min-width: 24px;
+    height: 24px;
+  }
+}
+

@@ -1,8 +1,26 @@
+/******************************************************************
+
+Stylesheet: ベーススタイル
+
+******************************************************************/
+.font-sm {
+  font-size: .6em;
+}
+.font-md {
+  font-size: .8em;
+}
+.font-lr {
+  font-size: 1.0em;
+}
+.font-lg {
+  font-size: 1.3em;
+}
+
 body {
-  font-size: 1rem;
   letter-spacing: 0.125em;
-  // line-height: 1.2;
-  font-family: 'Kaisei Decol', serif;
+  // font-family: ronde-b, sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
+  // font-family: 'Kaisei Decol', serif;
   overflow-y: scroll;
 }
 
@@ -18,23 +36,32 @@ li {
 #container {
   max-width: 1200px;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
 #side_area {
-  position: fixed;
-  width: 20vw;
-  height: 100%;
+  display: none;
 }
 
 #main_area {
   position: relative;
-  width: 60vw;
-  min-height: 100vh;
-  margin-left: 20vw;
   border: 1px solid #DDD;
+  width: 100%;
+  min-height: 100vh;
+  margin-left: 0;
+  padding-bottom: 10vh;
 }
+
+#footer {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  background: #fff;
+}
+
 
 .list {
   padding: 15px 30px;
@@ -42,9 +69,10 @@ li {
 }
 
 .item {
+  @extend .font-md;
   position: relative;
   border: 1px solid #DDDDDD;
-  padding: 10px 20px;
+  padding: 10px;
   margin-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0px 0px 2px rgb(0, 0, 0 / 1.2);
@@ -70,6 +98,7 @@ li {
 }
 
 @mixin badge {
+  @extend .font-sm;
   color: #fff;
   border-radius: 5px;
   padding: 1px 2px;
@@ -91,16 +120,16 @@ li {
 
 .user_profile_inner {
   border-bottom: 1px solid #DDD;
-  padding: 20px 30px;
+  padding: 20px;
 
   & .profile_name {
+    @extend .font-lg;
     font-weight: bold;
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   & .profile_intro {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    @extend .font-lr;
+    margin-bottom: 10px;
   }
 
 }
@@ -113,6 +142,7 @@ li {
 
 .user_action_btn {
   display: flex;
+  align-items: center;
 }
 
 .follow_count_area {
@@ -146,8 +176,7 @@ li {
   & .recruit_content {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
-    font-size: .9em;
+    padding: 10px;
     border: 1px solid #DDD;
     border-top: none;
     border-bottom-left-radius: 8px;
@@ -159,22 +188,25 @@ li {
       width: 100%;
     }
     & dt {
-      width: 15%;
+      @extend .font-md;
+      font-weight: bold;
+      width: 34%;
     }
     & dd {
+      @extend .font-md;
       display: flex;
       align-items: center;
-      width: 85%;
       margin: 0;
     }
     & p {
-      margin-bottom: 5px;
+      @extend .font-md;
+      font-weight: bold;
     }
   }
 
   & .recruit_status_area {
-    width: 10%;
-    margin-right: 20px;
+    width: 25%;
+    margin-right: 10px;
   }
 
   & .user_post_info_area {
@@ -188,9 +220,8 @@ li {
   }
 
   & ion-icon {
-    font-size: 3.5em;
+    font-size: 4.5em;
   }
-
 
   & .now {
     @include badge;
@@ -222,11 +253,11 @@ li {
     align-items: center;
   }
   & .recruit_title {
+    @extend .font-lg;
     border-bottom: 1px solid #DDDDDD;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    padding: 10px 30px;
-    font-size: 1.4em;
+    padding: 10px;
     font-weight: bold;
     color: #fff;
     background: $cSubBase;
@@ -268,15 +299,15 @@ li {
   }
 
   & th {
-    font-size: 1.1em;
+    @extend .font-md;
     font-weight: bold;
-    width: 15%;
-    padding: 5px 10px;
+    width: 30%;
     color: #474747;
   }
 
   & td {
-    padding: 10px;
+    @extend .font-md;
+    padding: 7px;
     border-left: 1px solid #fff;
   }
 
@@ -318,26 +349,41 @@ li {
 }
 
 .notice {
+
   &__head {
     display: flex;
     align-items: center;
+  }
+
+  &__form {
+    @extend .font-md;
     margin-bottom: 10px;
     border-bottom: 1px dashed #DDD;
+    & span {
+      white-space: nowrap;
+    }
+
   }
+
+  & a {
+    white-space: nowrap;
+  }
+
+
   &_nickname,
   &_action {
     font-weight: bold;
   }
   &__comment {
-    font-size: .8em;
+    @extend .font-md;
     color: #787878;
   }
 }
 
 .tag {
+  @extend .font-sm;
   display: inline-block;
 	margin: 0 .1em .6em 0;
-	font-size: .85em;
 	padding: .3em;
 	line-height: 1;
 	text-decoration: none;
@@ -370,10 +416,9 @@ li {
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  font-size: 1.1em;
 }
 .follow_intro {
-  font-size: .9em;
+  @extend .font-md;
   color: #787878;
 }
 .review_list_area {

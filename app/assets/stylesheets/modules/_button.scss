@@ -1,11 +1,11 @@
 .btn {
+  @extend .font-md;
   display: inline-block;
   letter-spacing: 0.125em;
   border-radius: 30px;
   font-weight: bold;
   margin: 0 auto;
   cursor: pointer;
-  font-size: 1.1em;
   transition: all 0.3s;
   border: none;
   background: $cSubBase;
@@ -28,13 +28,13 @@
   }
 
   &__recruit {
+    @extend .font-lg;
     display: flex;
     width: 80%;
     background: $cBase;
     color: #fff;
     align-items: center;
     justify-content: center;
-    font-size: 1.5em;
     margin-top: 5vh;
     padding: 10px;
   }
@@ -88,7 +88,7 @@
   }
 
   &__img_delete {
-    font-size: 1.5em;
+    @extend .font-lg;
     color: red;
     cursor: pointer;
   }
@@ -98,10 +98,9 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin-right: 20px;
-    padding: 18px;
   }
 
   &__new_report {
@@ -114,8 +113,6 @@
   }
 
   &__comment_delete {
-  // &__recruit_edit,
-  // &__recruit_delete {
     position: absolute;
     display: flex;
     width: 30px;
@@ -149,5 +146,23 @@
     right: 10px;
     font-size: 1em;
     padding: 15px;
+  }
+}
+
+@media (min-width: 600px) {
+  .btn__recruit {
+    margin-top: 30vh;
+    & span {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  .btn__recruit {
+    margin-top: 5vh;
+    & span {
+      display: block;
+    }
   }
 }

@@ -17,6 +17,7 @@
     }
 
     & .says {
+      @extend .font-md;
       display: inline-block;
       position: relative;
       max-width: 70%;

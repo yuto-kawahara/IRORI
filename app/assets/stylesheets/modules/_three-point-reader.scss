@@ -6,13 +6,13 @@
 }
 }
 .three_point_reader {
-  width: 40px;
-  height: 40px;
+  @extend .font-lg;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: $cBase;
+  background: $cSubBase;
   cursor: pointer;
   display: flex;
-  font-size: 1.4em;
   align-items: center;
   justify-content: center;
   color: #fff;

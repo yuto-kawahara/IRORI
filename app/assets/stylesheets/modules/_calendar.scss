@@ -1,6 +1,8 @@
 .simple-calendar {
+
   & .calendar-heading {
-    font-size: 1.7em;
+    @extend .font-lg;
+    font-weight: bold;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -11,9 +13,8 @@
       color: #fff;
       border: 1px solid #B78D4A;
       border-radius: 4px;
-      font-size: 1rem;
-      padding: 0.5rem 2rem;
-      margin: 1rem 0;
+      padding: 0 25px;
+      margin: 20px 0;
     }
   }
 
@@ -40,7 +41,6 @@
   }
 
   & td.day {
-    height: 15vh;
     vertical-align: top;
   }
 
@@ -62,16 +62,16 @@
   }
 
   & .event_area {
-    font-size: 0.7em;
+    @extend .font-sm;
   }
 
   & .event_count {
+    @extend .font-md;
     margin: 20px 0;
-    font-size: 1.2em;
     text-decoration: underline;
   }
 }
 
 .user_calendar_area {
-  padding: 30px;
+  padding: 0 30px;
 }

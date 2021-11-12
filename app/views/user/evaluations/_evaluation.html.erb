@@ -6,13 +6,13 @@
       <%= link_to profile_user_path(reviewer) do %>
         <%= "#{reviewer.nickname} さんの投稿" %>
       <% end %>
+      <%= evaluation.created_at.strftime("%Y/%m/%d %H:%M") %>
     </small>
     <div class="reviewee_area">
       <%= link_to profile_user_path(reviewee) do %>
         <%= attachment_image_tag reviewee, :icon_image, :fill, 40, 40, fallback: "no-icon.png", size:"40x40", class: "face_icon" %>
         <%= "#{reviewee.nickname} さん" %>
       <% end %>
-      <small><%= evaluation.created_at.strftime("%Y/%m/%d %H:%M") %></small>
     </div>
     <div class="review_stars" data-score="<%= evaluation.stars %>"></div>
     <p class="prewrap"><%= evaluation.comment %></p>

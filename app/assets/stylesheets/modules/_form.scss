@@ -16,7 +16,7 @@ textarea {
   }
 
   &.comment_text_input {
-    font-size: 1.125em;
+    @extend .font-lr;
     height: 40px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -46,7 +46,7 @@ textarea {
 }
 
 .select_item {
-  font-size: .8em;
+  @extend .font-md;
   margin-bottom: 7px;
   & label {
     display: flex;
@@ -60,9 +60,9 @@ textarea {
 
 .comment_form_area {
   position: fixed;
-  bottom: 0;
+  bottom: 10vh;
   padding: 10px;
-  width: 60vw;
+  width: 100vw;
   background: #DDD;
   z-index: 2;
 }
@@ -101,7 +101,7 @@ textarea {
   vertical-align: top;
   background: #fff;
   text-align: left;
-  padding: 30px;
+  padding: 20px;
 }
 
 .post_control {
@@ -116,7 +116,7 @@ textarea {
 
   & small {
     @include badge;
-    font-size: 5px;
+    @extend .font-md;
     margin-left: 10px;
   }
 
@@ -128,8 +128,13 @@ textarea {
   }
 }
 .post_title {
+  @extend .font-md;
   display: block;
   font-weight: bold;
+}
+
+.post_caution {
+  @extend .font-sm;
 }
 
 .setting_group {
