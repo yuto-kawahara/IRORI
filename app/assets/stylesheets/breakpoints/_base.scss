@@ -4,13 +4,13 @@ Stylesheet: ベーススタイル
 
 ******************************************************************/
 .font-sm {
-  font-size: .6em;
+  font-size: .7em;
 }
 .font-md {
-  font-size: .8em;
+  font-size: .9em;
 }
 .font-lr {
-  font-size: 1.0em;
+  font-size: 1.1em;
 }
 .font-lg {
   font-size: 1.3em;
@@ -41,7 +41,17 @@ li {
 }
 
 #side_area {
-  display: none;
+  position: fixed;
+  width: 70vw;
+  height: 100%;
+  transform: translateX(-70vw);
+  padding-left: 6vw;
+  z-index: 998;
+  background: #fff;
+  transition: all .3s;
+  &.open {
+    transform: translateX(0vw);
+  }
 }
 
 #main_area {
@@ -64,7 +74,7 @@ li {
 
 
 .list {
-  padding: 15px 30px;
+  padding: 10px;
   margin-bottom: 60px;
 }
 
@@ -108,7 +118,7 @@ li {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #DDD;
-  padding: 10px 30px;
+  padding: 10px 48px;
   position: -webkit-sticky;
   position: sticky;
   top: 0;

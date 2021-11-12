@@ -35,7 +35,7 @@
     color: #fff;
     align-items: center;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 3vh;
     padding: 10px;
   }
 
@@ -106,7 +106,7 @@
   &__new_report {
     position: fixed;
     bottom: 10vh;
-    right: 20vh;
+    right: 3vh;
     font-size: 4em;
     background: #fff;
     color: $cBase;
@@ -142,27 +142,12 @@
   &__comment_delete {
     width: 10px;
     height: 10px;
-    top: 10px;
+    top: 40px;
     right: 10px;
     font-size: 1em;
     padding: 15px;
   }
-}
-
-@media (min-width: 600px) {
-  .btn__recruit {
-    margin-top: 30vh;
-    & span {
-      display: none;
-    }
-  }
-}
-
-@media (min-width: 960px) {
-  .btn__recruit {
-    margin-top: 5vh;
-    & span {
-      display: block;
-    }
+  &__submit {
+    @extend .font-lr
   }
 }

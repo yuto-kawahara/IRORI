@@ -116,7 +116,6 @@ textarea {
 
   & small {
     @include badge;
-    @extend .font-md;
     margin-left: 10px;
   }
 

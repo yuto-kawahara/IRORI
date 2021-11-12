@@ -72,10 +72,5 @@
       <% end %>
     </li>
   </ul>
-  <div class="recruit_btn_area">
-    <%= link_to new_recruit_path, class: "btn btn__recruit" do %>
-      <ion-icon name="bonfire-outline"></ion-icon>
-      <span>募集する</span>
-    <% end %>
-  </div>
+  <%= render 'user/recruits/recruit_btn' %>
 </div>

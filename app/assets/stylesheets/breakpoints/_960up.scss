@@ -7,13 +7,13 @@ Stylesheet: 960px以上のタブレットやモニタで適用
   font-size: .7em;
 }
 .font-md {
-  font-size: 1.1em;
+  font-size: 1.0em;
 }
 .font-lr {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 .font-lg {
-  font-size: 1.6em;
+  font-size: 1.4em;
 }
 
 #container {
@@ -32,4 +32,17 @@ Stylesheet: 960px以上のタブレットやモニタで適用
 
 .comment_form_area {
   width: 60vw;
+}
+
+
+.btn {
+  &__recruit {
+    margin-top: 5vh;
+    & span {
+      display: block;
+    }
+  }
+  &__new_report {
+    right: 21vh;
+  }
 }
