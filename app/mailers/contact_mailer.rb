@@ -5,6 +5,6 @@ class ContactMailer < ApplicationMailer
 
   def send_mail(contact)
     @contact = contact
-    mail from: @contact.user.email, to: ENV['ADMIN_EMAIL'], subject: @contact.subject
+    mail from: @contact.user.email, to: Rails.application.credentials[:admin][:email], subject: @contact.subject
   end
 end
