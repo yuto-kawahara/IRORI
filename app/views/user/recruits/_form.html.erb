@@ -3,7 +3,7 @@
     <div class="post_control">
       <div class="control">
         <%= f.label :GM, "GM:", class: "post_title" %>
-        <%= attachment_image_tag current_user, :icon_image, :fill, 30, 30, fallback: "no-icon.png", size:"30x30", class: "face_icon"  %>
+        <%= attachment_image_tag current_user, :icon_image, fallback: "no-icon.png", class: "face_icon icon_sm"  %>
         <%= current_user.nickname %>
       </div>
     </div>

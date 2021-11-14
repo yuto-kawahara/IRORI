@@ -4,7 +4,7 @@
         <%= link_to profile_user_path(user) do %>
           <div class="follow_head">
             <div class="profile_area">
-              <%= attachment_image_tag user, :icon_image, :fill, 50, 50, fallback: "no-icon.png", size:"50x50", class: "face_icon"  %>
+              <%= attachment_image_tag user, :icon_image, fallback: "no-icon.png", class: "face_icon icon_lr"  %>
               <%= user.nickname %>
             </div>
             <div class="follow_area">

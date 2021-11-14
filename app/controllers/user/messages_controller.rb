@@ -14,6 +14,7 @@ class User::MessagesController < ApplicationController
     @message.save
     users = @message.room.users
     user = users.not_current(current_user).first
+    # メッセージを送信後に相手ユーザーに通知する
     create_notification(current_user,
                         user,
                         nil,

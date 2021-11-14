@@ -1,1 +1,19 @@
-<h1>予約確定しました。</h1>
+<div id="wrapper">
+  <div class="head_link">
+    <span>
+      <%= link_to recruit_path(@recruit), class: "btn btn__back" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    </span>
+    <span>
+      <h2>予約完了</h2>
+    </span>
+  </div>
+  <div class="area area__reserve_complete">
+    <p>
+       予約確定しました。<br>
+       参加者全員にDiscordのサーバーリンクを送信しました。<br>
+       全員のサーバー参加を確認してください。
+    </p>
+  </div>
+</div>

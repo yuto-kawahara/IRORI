@@ -1,3 +1,13 @@
-<h1>トップページ</h1>
-<%= link_to "新規登録", new_user_registration_path %>
-<%= link_to "ログイン", new_user_session_path %>
+<div id="top_wrapper">
+  <div class="top_img"></div>
+  <div class="top_section">
+    <div class="copy">
+      <p class="top_title">IRORIへようこそ</p>
+      <p class="sub_title">さぁボードゲームで遊んでみましょう。</p>
+    </div>
+    <div class="account_sign">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn__signup" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn__login" %>
+    </div>
+  </div>
+</div>

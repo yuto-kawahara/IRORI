@@ -3,7 +3,7 @@
     <% recruit_comment_user = comment.user %>
     <li class="item">
       <%= link_to profile_user_path(recruit_comment_user), class: "user_#{recruit_comment_user.id} profile_img" do %>
-      	<%= attachment_image_tag recruit_comment_user, :icon_image, :fill, 50, 50, fallback: "no-icon.png", size: "50x50", class: "face_icon"  %>
+      	<%= attachment_image_tag recruit_comment_user, :icon_image, fallback: "no-icon.png",  class: "face_icon icon_lr"  %>
     	<% end %>
       <div class="comment_area">
         <div class="comment_user_profile">

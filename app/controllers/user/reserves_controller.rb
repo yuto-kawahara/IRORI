@@ -7,7 +7,9 @@ class User::ReservesController < ApplicationController
 
   def create
     @reserve = @recruit.reserves.create(user_id: current_user.id)
+    # 予約時に予約ステータスを返信待ちに更新
     @reserve.update_attributes(reserve_status: "wait_reserve")
+    # 予約されたことを投稿主に通知する
     create_notification(current_user,
                         @recruit.user,
                         @recruit.id,
@@ -20,6 +22,7 @@ class User::ReservesController < ApplicationController
   def destroy
     reserve = @recruit.reserves.find_by(user_id: current_user.id)
     reserve.destroy
+    # 予約キャンセルされたことを投稿主に通知する
     create_notification(current_user,
                         @recruit.user,
                         @recruit.id,
@@ -36,6 +39,7 @@ class User::ReservesController < ApplicationController
     remain_few = (@recruit.capacity * 0.7).floor
     remain_last = (@recruit.capacity * 0.9).floor
 
+    # 予約数が募集人員の7～9割以内に到達した時に募集ステータスを残り僅かに更新
     if (@reserves.count >= remain_few) && (@reserves.count <= remain_last)
       @recruit.update_attributes(recruit_status: "few_recruit")
     end
@@ -66,7 +70,7 @@ class User::ReservesController < ApplicationController
       user = reserve.user
       server_link = text_url_to_link(reserve.recruit.discord_server_link)
       message = "サーバー招待を送信します\nご入室ください\n#{server_link}"
-
+      # 予約確定時に全参加者にサーバーリンクを送信する
       room_create_search(current_user, user, message, "broadcast")
     end
   end

@@ -23,10 +23,11 @@ class Recruit < ApplicationRecord
   validates :discord_server_link, presence: true, length: { maximum: 200 }
 
   enum recruit_status:{
-    not_recruit: 0,    #未募集
-    now_recruit: 1,    #募集中
-    few_recruit: 2,    #残り僅か
-    end_recruit: 3     #募集終了
+    not_recruit:      0,     #未募集
+    now_recruit:      1,     #募集中
+    few_recruit:      2,     #残り僅か
+    end_recruit:      3,     #募集終了
+    reminded_recruit: 4      #募集リマインド完了
   }
 
   def reserve_exist?(user)
@@ -34,15 +35,19 @@ class Recruit < ApplicationRecord
   end
 
   def self.remind_user
-    # @message = Message.new(user_id: 4, room_id: 2, content: "テスト")
-    # @message.save
-    # MessagesController.helpers.room_create_search(2, "テスト", "broadcast")
-    @recruit = Recruit.all
-    @recruit.each do |recruit|
-      # if recruit.hold_datetime < Time.current
-        recruit.reserves.each do |reserve|
-          MessagesController.helpers.room_create_search(recruit.user, reserve.user_id, "テスト", "broadcast")
+    @recruits = Recruit.where(recruit_status: "end_recruit")
+    if @recruits.present?
+      @recruits.each do |recruit|
+        # 募集日時の前日のAM8:00にリマインドを一斉送信
+        if ((recruit.start_time - 1) < Time.current)
+          reserves = recruit.reserves
+          reserves.each do |reserve|
+            message = "「#{recruit.title}」の前日リマインドです。\nサーバーにまだ入室していない場合は入室してください。"
+            User::MessagesController.helpers.room_create_search(recruit.user, reserve.user, message, "broadcast")
+          end
+          recruit.update_attributes(recruit_status: "reminded_recruit")
         end
+      end
     end
   end
 end

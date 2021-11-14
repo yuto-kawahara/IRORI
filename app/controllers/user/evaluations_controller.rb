@@ -30,6 +30,7 @@ class User::EvaluationsController < ApplicationController
     @evaluation.reviewee_id = reviewee.id
 
     if @evaluation.save
+      # 評価されたことを相手ユーザーに通知する
       create_notification(current_user,
                           reviewee,
                           nil,

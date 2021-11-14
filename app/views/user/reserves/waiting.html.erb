@@ -6,18 +6,22 @@
       <% end %>
     </span>
     <span>
-      <h2>募集詳細</h2>
+      <h2>予約リスト</h2>
     </span>
   </div>
-
-  <% if @recruit.recruit_status != "end_recruit" %>
-    <div class="reserve_list_area">
-      <%= render 'user/reserves/list', reserves: @reserves, recruit: @recruit %>
-    </div>
-    <div class="confirm_btn_area">
-      <%= render 'user/reserves/confirm', reserves: @reserves, recruit: @recruit %>
-    </div>
-  <% else %>
-    <p>募集は終了しました</p>
-  <% end %>
+  <div class="area area__reserve_list">
+    <% if ((@recruit.recruit_status != "end_recruit") && (@recruit.recruit_status != "reminded_recruit")) %>
+      <div class="reserve_list">
+        <%= render 'user/reserves/list', reserves: @reserves, recruit: @recruit %>
+      </div>
+      <div class="confirm_btn_area">
+        <%= render 'user/reserves/confirm', reserves: @reserves, recruit: @recruit %>
+      </div>
+    <% else %>
+      <p>募集は終了しました</p>
+      <div class="reserve_list">
+        <%= render 'user/reserves/list', reserves: @reserves, recruit: @recruit %>
+      </div>
+    <% end %>
+  </div>
 </div>

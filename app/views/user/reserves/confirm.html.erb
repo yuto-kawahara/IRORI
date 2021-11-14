@@ -1,5 +1,16 @@
-<% @reserves.each do |reserve| %>
-  <%= attachment_image_tag reserve.user, :icon_image, :fill, 40, 40, fallback: "no-icon.png", size:"40x40", class: "face_icon"  %>
-  <%= reserve.user.nickname %>
-<% end %>
-<%= link_to "確定", complete_recruit_reserves_path, class: "btn" %>
+<div id="wrapper">
+  <div class="head_link">
+    <h2>予約確認</h2>
+  </div>
+  <div class="area area__reserve_confirm">
+    <ul class="list">
+      <% @reserves.each do |reserve| %>
+        <li class="item">
+          <%= attachment_image_tag reserve.user, :icon_image, fallback: "no-icon.png", class: "face_icon icon_md"  %>
+          <%= reserve.user.nickname %>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to "予約確定", complete_recruit_reserves_path, class: "btn" %>
+  </div>
+</div>

@@ -22,6 +22,7 @@ class User::UsersController < ApplicationController
   end
 
   def withdraw
+    # deviseの一意制約を回避するため退会時にユーザー名とメールアドレスに退会フラグを付与する
     delete_flg = "_quited_user_" + I18n.l(Time.current, format: :long)
     deleted_name = current_user.nickname + delete_flg
     deleted_email = current_user.email + delete_flg

@@ -10,32 +10,34 @@
         <h2>プロフィール</h2>
       </span>
     </div>
-    <%= form_with model: @user, local:true do |f| %>
-      <div class="user_group">
-        <div class="user_control">
-          <%= f.label:icon_image, "プロフィール画像", class: "user_title" %>
-          <div class="img_wrapper">
-            <div class="img_inner">
-              <%= attachment_image_tag @user, :icon_image, :fill, 130, 130, fallback: "no-icon.png", size:"130x130", class: "edit_face_icon face_icon"  %>
-              <label for="img_refile" class="btn btn__img_select">
-                <i class="fas fa-camera"></i> 画像を選択
-              </label>
-              <%= f.attachment_field :icon_image, id: "img_refile"%>
+    <div class="area area__profile_edit">
+      <%= form_with model: @user, local:true do |f| %>
+        <div class="user_group">
+          <div class="user_control">
+            <%= f.label:icon_image, "プロフィール画像", class: "user_title" %>
+            <div class="img_wrapper">
+              <div class="img_inner">
+                <%= attachment_image_tag @user, :icon_image, fallback: "no-icon.png", class: "edit_face_icon face_icon icon_lg"  %>
+                <label for="img_refile" class="btn btn__img_select">
+                  <i class="fas fa-camera"></i> 画像を選択
+                </label>
+                <%= f.attachment_field :icon_image, id: "img_refile"%>
+              </div>
             </div>
           </div>
+          <div class="user_control">
+            <%= f.label:nickname, "ニックネーム", class: "user_title" %>
+            <%= f.text_field :nickname, class: "" %>
+          </div>
+          <div class="user_control">
+            <%= f.label:Introduction, "自己紹介", class: "user_title" %>
+            <%= f.text_area :introduction, class: "" %>
+          </div>
+          <div class="user_control">
+            <%= f.submit '変更を保存', class: "btn btn__submit" %>
+          </div>
         </div>
-        <div class="user_control">
-          <%= f.label:nickname, "ニックネーム", class: "user_title" %>
-          <%= f.text_field :nickname, class: "" %>
-        </div>
-        <div class="user_control">
-          <%= f.label:Introduction, "自己紹介", class: "user_title" %>
-          <%= f.text_area :introduction, class: "" %>
-        </div>
-        <div class="user_control">
-          <%= f.submit '変更を保存', class: "btn btn__submit" %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

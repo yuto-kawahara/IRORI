@@ -30,10 +30,18 @@ Stylesheet: 960px以上のタブレットやモニタで適用
   margin-left: 20vw;
 }
 
+.area {
+  width: 55vw;
+}
+
+.icon_lg {
+  width: 110px;
+  height: 110px;
+}
+
 .comment_form_area {
   width: 60vw;
 }
-
 
 .btn {
   &__recruit {
@@ -44,5 +52,50 @@ Stylesheet: 960px以上のタブレットやモニタで適用
   }
   &__new_report {
     right: 21vh;
+  }
+}
+
+#top_wrapper {
+
+  & .top_img {
+    width: 50vw;
+    height: 100vh;
+    background-image: url("/images/bg-top-img.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(80%);
+    opacity: .8;
+
+    &__login {
+      background-size: cover;
+      background-image: url("/images/bg-login-img.png");
+    }
+  }
+
+  & .top_section {
+    height: 100vh;
+    width: 50%;
+    top: 0;
+    left: 50%;
+    transform: translate(0%, 0%);
+    border-radius: 0px;
+  }
+
+
+  & .top_title {
+    font-size: 4.2em;
+  }
+
+  & .sub_title {
+    font-size: 2em;
+  }
+
+  & .btn {
+    &__signup {
+      width: 20vw;
+    }
+    &__login {
+      width: 20vw;
+    }
   }
 }

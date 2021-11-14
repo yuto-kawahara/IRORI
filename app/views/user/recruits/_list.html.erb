@@ -26,13 +26,18 @@
                     <ion-icon name="close-outline", class="status_end"></ion-icon>
                     <small class="end"><%= recruit.recruit_status_i18n %></small>
                   </div>
+                <% when "reminded_recruit" %>
+                  <div class="icon_status">
+                    <ion-icon name="checkmark-outline", class="status_reminded"></ion-icon>
+                    <small class="reminded"><%= recruit.recruit_status_i18n %></small>
+                  </div>
               <% end %>
             </div>
             <div class="user_post_info_area">
               <div class="profile_area">
                 <dt>GM</dt>
                 <dd>
-                  <%= attachment_image_tag recruit.user, :icon_image, :fill, 30, 30, fallback: "no-icon.png", size:"30x30", class: "face_icon"  %></p>
+                  <%= attachment_image_tag recruit.user, :icon_image, fallback: "no-icon.png", class: "face_icon icon_sm"  %></p>
                   <%= recruit.user.nickname %>
                 </dd>
               </div>

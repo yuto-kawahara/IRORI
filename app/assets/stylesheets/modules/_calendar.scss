@@ -6,15 +6,13 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     & a {
       cursor: pointer;
-      background: #B78D4A;
+      background: $cSubBase;
       color: #fff;
-      border: 1px solid #B78D4A;
       border-radius: 4px;
       padding: 0 25px;
-      margin: 20px 0;
+      margin-bottom: 20px;
     }
   }
 
@@ -36,7 +34,7 @@
   }
 
   & th {
-    background: #d65e72;
+    background: $cSubBase;
     color: #fff;
   }
 
@@ -70,8 +68,4 @@
     margin: 20px 0;
     text-decoration: underline;
   }
-}
-
-.user_calendar_area {
-  padding: 0 30px;
 }

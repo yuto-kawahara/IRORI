@@ -8,6 +8,7 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   width: 10vw;
   padding-left: 0;
   transform: translateX(0vw);
+  z-index: 996;
 }
 
 #main_area {
@@ -17,6 +18,15 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 
 #footer {
   display: none;
+}
+
+.area {
+  width: 80vw;
+}
+
+.icon_lg {
+  width: 90px;
+  height: 90px;
 }
 
 .head_link {
@@ -47,4 +57,25 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 
 #modal {
   width: 60vw;
+}
+
+#top_wrapper {
+
+
+  & .top_section {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50vh;
+    width: 50vw;
+    border-radius: 8px;
+  }
+  & .btn {
+    &__signup {
+      width: 40vw;
+    }
+    &__login {
+      width: 40vw;
+    }
+  }
 }

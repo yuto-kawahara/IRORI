@@ -1,13 +1,24 @@
 <div id="wrapper">
-  <h3>送信が完了しました</h3>
-  <div>
-    <div>内容は以下の通りです。</div>
-      <div>
-        [タイトル]<p> <%= @contact.subject %></p>
-      </div>
-      <div>
-        [本文]<p> <%= safe_join(@contact.message.split("\n"),tag(:br)) %></p>
-      </div>
+  <div class="head_link">
+    <span>
+      <%= link_to setting_path, class: "btn btn__back" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    </span>
+    <span>
+      <h2>送信完了</h2>
+    </span>
+  </div>
+  <div class="area area__send_mail">
+    <div class="mail_head">
+      <p>送信が完了しました。</p>
+      <p>内容は以下の通りです。</p>
+    </div>
+    <div class="mail_content">
+      <p><タイトル></p>
+      <p> <%= @contact.subject %></p>
+      <p><お問い合わせ内容></p>
+      <p> <%= safe_join(@contact.message.split("\n"),tag(:br)) %></p>
     </div>
   </div>
 </div>

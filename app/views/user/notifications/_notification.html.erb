@@ -2,7 +2,7 @@
   <div class="notice__head">
     <% visitor = notification.visitor %>
     <%= link_to profile_user_path(visitor) do %>
-      <%= attachment_image_tag visitor, :icon_image, :fill, 40, 40, fallback: "no-icon.png", size:"40x40", class: "face_icon" %>
+      <%= attachment_image_tag visitor, :icon_image, fallback: "no-icon.png", class: "face_icon icon_md" %>
     <% end %>
     <span class="notice__form">
       <%= notification_form(notification) %>

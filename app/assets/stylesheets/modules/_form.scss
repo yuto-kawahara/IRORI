@@ -1,5 +1,5 @@
-input[type=text],
-input[type=datetime-local],
+// input[type=text],
+input,
 select,
 textarea {
   border: 1px solid #DDDDDD;
@@ -8,6 +8,7 @@ textarea {
   padding: 7px;
   font-family: inherit;
   font-size: 100%;
+  width: 100%;
 
   &:focus {
     border: 1px solid #ff9900;
@@ -23,17 +24,9 @@ textarea {
   }
 }
 
-input {
-  font-family: inherit;
-}
-
-input[type=text] {
-  width: 100%;
-}
-
 input[type=datetime-local],
 select {
-  width: 30%;
+  width: 60%;
 }
 
 textarea {
@@ -50,7 +43,7 @@ textarea {
   margin-bottom: 7px;
   & label {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
   }
 
   & input {
@@ -101,7 +94,6 @@ textarea {
   vertical-align: top;
   background: #fff;
   text-align: left;
-  padding: 20px;
 }
 
 .post_control {

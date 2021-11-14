@@ -4,19 +4,21 @@
     <% status = reserve.reserve_status %>
     <li class="item">
       <%= link_to profile_user_path(user) do %>
-        <%= attachment_image_tag user, :icon_image, :fill, 40, 40, fallback: "no-icon.png", size:"40x40", class: "face_icon"  %>
+        <%= attachment_image_tag user, :icon_image, fallback: "no-icon.png", class: "face_icon icon_md"  %>
         <%= user.nickname %>
       <% end %>
-      <div class="reserve_judge_area">
-        <% case status
-             when "approve_reserve" %>
-            <%= render 'user/reserves/confirm_btn', reserve: reserve, recruit: recruit, approve_active: "active", reject_active: "no_active" %>
-          <% when "reject_reserve" %>
-            <%= render 'user/reserves/confirm_btn', reserve: reserve, recruit: recruit, approve_active: "no_active", reject_active: "active" %>
-          <% else %>
-            <%= render 'user/reserves/confirm_btn', reserve: reserve, recruit: recruit, approve_active: "no_active", reject_active: "no_active" %>
-        <% end %>
-      </div>
+      <% if ((@recruit.recruit_status != "end_recruit") && (@recruit.recruit_status != "reminded_recruit")) %>
+        <div class="reserve_judge_area">
+          <% case status
+               when "approve_reserve" %>
+              <%= render 'user/reserves/confirm_btn', reserve: reserve, recruit: recruit, approve_active: "active", reject_active: "no_active" %>
+            <% when "reject_reserve" %>
+              <%= render 'user/reserves/confirm_btn', reserve: reserve, recruit: recruit, approve_active: "no_active", reject_active: "active" %>
+            <% else %>
+              <%= render 'user/reserves/confirm_btn', reserve: reserve, recruit: recruit, approve_active: "no_active", reject_active: "no_active" %>
+          <% end %>
+        </div>
+      <% end %>
     </li>
   <% end %>
 </ul>

@@ -5,6 +5,7 @@ class User::RelationshipsController < ApplicationController
   def create
     current_user.follow(@user)
     @users = current_user.following_user.page(params[:page]).sorted
+    # フォローした時に相手ユーザーに通知する
     create_notification(current_user,
                         @user,
                         nil,
