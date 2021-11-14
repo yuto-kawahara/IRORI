@@ -2,8 +2,7 @@
   <% if @recruit.user == current_user %>
     <div class="recruit_detail_head">
       <%= render 'user/reserves/waiting', recruit: recruit %>
-        <label for="three_point_reader" class="three_point_reader" ><i class="fas fa-ellipsis-h"></i></label>
-        <input type="checkbox" id="three_point_reader">
+        <div class="three_point_reader" ><i class="fas fa-ellipsis-h"></i></div>
         <%= render 'user/recruits/change', recruit: recruit %>
     </div>
   <% end %>

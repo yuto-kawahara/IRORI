@@ -60,22 +60,25 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 }
 
 #top_wrapper {
-
+  & .top_img {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/images/bg-top-img.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    // opacity: .8;
+    &__login {
+      background-image: url("/images/bg-login-img.png");
+    }
+  }
 
   & .top_section {
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 50vh;
+    height: auto;
     width: 50vw;
     border-radius: 8px;
-  }
-  & .btn {
-    &__signup {
-      width: 40vw;
-    }
-    &__login {
-      width: 40vw;
-    }
   }
 }

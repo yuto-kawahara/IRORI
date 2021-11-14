@@ -1,19 +1,19 @@
-#three_point_reader {
-  display: none;
-  &:checked ~ .recruit_change_area {
-  visibility: visible;
-  opacity: 1;
-}
-}
 .three_point_reader {
-  @extend .font-lg;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: $cSubBase;
+  position: absolute;
+  top: 5px;
+  right: 10px;
   cursor: pointer;
+  color: #DDD;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  // background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+
+  &:hover {
+    background: #fff;
+    filter: brightness(80%);
+  }
 }

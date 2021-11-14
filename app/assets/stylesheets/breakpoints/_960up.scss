@@ -43,6 +43,11 @@ Stylesheet: 960px以上のタブレットやモニタで適用
   width: 60vw;
 }
 
+
+#modal {
+  width: 40vw;
+}
+
 .btn {
   &__recruit {
     margin-top: 5vh;
@@ -56,20 +61,10 @@ Stylesheet: 960px以上のタブレットやモニタで適用
 }
 
 #top_wrapper {
-
   & .top_img {
     width: 50vw;
     height: 100vh;
-    background-image: url("/images/bg-top-img.png");
     background-size: cover;
-    background-repeat: no-repeat;
-    filter: brightness(80%);
-    opacity: .8;
-
-    &__login {
-      background-size: cover;
-      background-image: url("/images/bg-login-img.png");
-    }
   }
 
   & .top_section {
@@ -81,21 +76,11 @@ Stylesheet: 960px以上のタブレットやモニタで適用
     border-radius: 0px;
   }
 
-
   & .top_title {
     font-size: 4.2em;
   }
 
   & .sub_title {
     font-size: 2em;
-  }
-
-  & .btn {
-    &__signup {
-      width: 20vw;
-    }
-    &__login {
-      width: 20vw;
-    }
   }
 }

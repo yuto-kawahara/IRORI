@@ -50,7 +50,26 @@ class User::RecruitsController < ApplicationController
       RecruitEntryCondition.bulk_create(@recruit.id, entry_condition_ids)
       redirect_to recruit_path(@recruit)
     else
-      render :new
+      create_input_valid(@recruit.errors)
+      redirect_to new_recruit_path
+    end
+  end
+
+  def create_input_valid(errors)
+    if errors.details.include?(:title)
+      flash[:title] = "タイトルを入力してください"
+    end
+    if errors.details.include?(:start_time)
+      flash[:start_time] = "募集日時を選択してください"
+    end
+    if errors.details.include?(:time_required)
+      flash[:time_required] = "所要時間を選択してください"
+    end
+    if errors.details.include?(:capacity)
+      flash[:capacity] = "募集人員を選択してください"
+    end
+    if errors.details.include?(:discord_server_link)
+      flash[:discord_server_link] = "Discordのサーバーリンクを入力してください"
     end
   end
 

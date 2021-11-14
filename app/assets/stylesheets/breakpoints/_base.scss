@@ -87,6 +87,7 @@ li {
   width: 100%;
   height: 10vh;
   background: #fff;
+  z-index: 995;
 }
 
 .list {
@@ -100,7 +101,15 @@ li {
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 8px;
-  box-shadow: 0px 0px 2px rgb(0, 0, 0 / 1.2);
+  // box-shadow: 0px 0px 2px rgb(0, 0, 0 / 1.2);
+  transition: all .3s;
+  background: #fff;
+  z-index: 10;
+
+  &:hover {
+    // background: rgba(0, 0, 0, .2);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, .3);
+  }
 }
 
 .upload_img {
@@ -136,10 +145,9 @@ li {
   padding: 10px 48px;
   position: -webkit-sticky;
   position: sticky;
+  background: #fff;
   top: 0;
   height: 7vh;
-  background: #939597;
-  color: #fff;
   width: 100%;
   z-index: 200;
 }
@@ -186,7 +194,6 @@ li {
 }
 
 .face_icon {
-  height: auto;
   border: 3px solid #fff;
   border-radius: 50%;
   object-fit: cover;
@@ -304,16 +311,11 @@ li {
 }
 
 .recruit_detail_table {
+  position: relative;
   border-radius: 8px;
   padding: 10px;
   border-collapse: collapse;
   background: #dbffed;
-
-  & .recruit_detail_head {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-  }
 
   & .recruit_change_area {
     position: absolute;
@@ -325,6 +327,13 @@ li {
     transition: all .3s;
     background: #fff;
     padding: 10px;
+    box-shadow: 0px 0px 15px rgba(101, 119, 134, 20%);
+
+    &.open {
+      visibility: visible;
+      opacity: 1;
+      z-index: 11;
+    }
   }
 
   & tr {
@@ -334,7 +343,7 @@ li {
   & th {
     @extend .font-md;
     font-weight: bold;
-    width: 30%;
+    width: 40%;
     color: #474747;
   }
 
@@ -518,11 +527,11 @@ li {
     &__signup {
       text-align: center;
       margin-top: 20px;
-      width: 90vw;
+      width: 100%;
     }
     &__login {
       text-align: center;
-      width: 90vw;
+      width: 100%;
       margin-top: 20px;
     }
   }

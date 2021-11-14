@@ -39,7 +39,7 @@ textarea {
 }
 
 .select_item {
-  @extend .font-md;
+  @extend .font-sm;
   margin-bottom: 7px;
   & label {
     display: flex;
@@ -96,6 +96,15 @@ textarea {
   text-align: left;
 }
 
+.review_group {
+  @include flex;
+  border-radius: 8px;
+  vertical-align: top;
+  background: #fff;
+  text-align: left;
+  padding: 20px;
+}
+
 .post_control {
   display: block;
   position: relative;
@@ -130,4 +139,9 @@ textarea {
 
 .setting_group {
   margin: 30px;
+}
+
+.input_valid {
+  color: red;
+  @extend .font-sm;
 }

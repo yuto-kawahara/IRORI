@@ -1,32 +1,32 @@
-<div class="review_post_area">
-  <%= form_with model:[current_user, evaluation], local: true do |f| %>
-    <div class="post_group">
-      <div class="post_control">
-        <div class="user_search_area">
-          <div class="control">
-            <%= f.label "お礼を言う相手", class: "post_title" %>
-            <small class="badge_mandatory">必須</small>
-          </div>
-          <%= f.text_field :nickname, autocomplete: "off", autofocus: true, placeholder: "ユーザーを探す", id: "user_search_form"%>
-          <ul class="search_result"></ul>
-        </div>
-      </div>
-      <div class="post_control">
+<%= form_with model:[current_user, evaluation], remote: true do |f| %>
+  <div class="review_group">
+    <div class="post_control">
+      <div class="user_search_area">
         <div class="control">
-          <label class="post_title">評価</label>
+          <%= f.label "お礼を言う相手", class: "post_title" %>
           <small class="badge_mandatory">必須</small>
         </div>
-        <div id="evaluate_stars"></div>
+        <p class="input_valid input_valid_nickname"><%= flash[:nickname] %></p>
+        <%= f.text_field :nickname, autocomplete: "off", autofocus: true, placeholder: "ユーザーを探す", id: "user_search_form", maxlength: "50"%>
+        <ul class="search_result"></ul>
       </div>
-      <div class="post_control">
-        <div class="control">
-          <%= f.label :comment, "メッセージ", class: "post_title" %>
-          <small class="badge_mandatory">必須</small>
-        </div>
-        <%= f.text_area :comment %>
-        <p class="post_caution">※相手を誹謗中傷するような内容の投稿はお控えください。</p>
-      </div>
-      <%= f.submit "評価する", class: "btn btn__submit" %>
     </div>
-  <% end %>
-</div>
+    <div class="post_control">
+      <div class="control">
+        <label class="post_title">評価</label>
+        <small class="badge_mandatory">必須</small>
+      </div>
+      <div id="evaluate_stars"></div>
+    </div>
+    <div class="post_control">
+      <div class="control">
+        <%= f.label :comment, "メッセージ", class: "post_title" %>
+        <small class="badge_mandatory">必須</small>
+      </div>
+      <p class="input_valid input_valid_comment"><%= flash[:comment] %></p>
+      <%= f.text_area :comment, maxlength: "500" %>
+      <p class="post_caution">※相手を誹謗中傷するような内容の投稿はお控えください。</p>
+    </div>
+    <%= f.submit "評価する", class: "btn btn__submit" %>
+  </div>
+<% end %>

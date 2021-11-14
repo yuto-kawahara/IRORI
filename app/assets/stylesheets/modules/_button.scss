@@ -89,7 +89,7 @@
 
   &__img_delete {
     @extend .font-lg;
-    color: red;
+    color: #F4212E;
     cursor: pointer;
   }
 
@@ -110,17 +110,7 @@
     font-size: 4em;
     background: #fff;
     color: $cBase;
-  }
-
-  &__comment_delete {
-    position: absolute;
-    display: flex;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    font-size: 1em;
-    align-items: center;
-    justify-content: center;
+    z-index: 995;
   }
 
   &__recruit_edit,
@@ -131,23 +121,37 @@
     justify-content: space-around;
   }
 
+  &__recruit_delete {
+    color: #F4212E;
+  }
+
   &__recruit_edit {
     margin-bottom: 10px;
+    color: #30ba4e;
   }
 
   &__reserve_list {
     margin-right: 10px;
   }
-
   &__comment_delete {
-    width: 10px;
-    height: 10px;
-    top: 40px;
+    position: absolute;
+
+  }
+  &__comment_delete {
+    position: absolute;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    font-size: 1em;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
     right: 10px;
     font-size: 1em;
-    padding: 15px;
+    padding: 0;
   }
   &__submit {
-    @extend .font-lr
+    @extend .font-lr;
+    width: auto;
   }
 }

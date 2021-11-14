@@ -17,11 +17,11 @@
             <%= f.label :subject, "タイトル", class: "post_title" %>
             <small class="badge_mandatory">必須</small>
           </div>
-          <%= f.text_field :subject %>
+          <%= f.text_field :subject, maxlength: "100" %>
         </div>
         <div class="post_control">
           <div class="control">
-            <%= f.label:message, "お問い合わせ内容", class: "post_title" %>
+            <%= f.label:message, "お問い合わせ内容", class: "post_title", maxlength: "1000" %>
             <small class="badge_mandatory">必須</small>
           </div>
           <%= f.text_area :message %>

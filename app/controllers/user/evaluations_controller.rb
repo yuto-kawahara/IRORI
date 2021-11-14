@@ -27,7 +27,19 @@ class User::EvaluationsController < ApplicationController
   def create
     @evaluation = current_user.reviewer.new(evaluation_params)
     reviewee = User.find_by(nickname: params[:evaluation][:nickname])
-    @evaluation.reviewee_id = reviewee.id
+    @users = User.valid
+    @evaluations = Evaluation.where(reviewer_id: current_user.id).sorted.page(params[:page])
+    if reviewee.nil?
+      @evaluation = Evaluation.new
+      flash[:nickname] = "存在しないユーザーです"
+      respond_to do |format|
+        format.html
+        format.js { render 'user/evaluations/new', evaluation: @evaluation }
+      end
+      return
+    else
+      @evaluation.reviewee_id = reviewee.id
+    end
 
     if @evaluation.save
       # 評価されたことを相手ユーザーに通知する
@@ -40,10 +52,13 @@ class User::EvaluationsController < ApplicationController
                           "review")
       redirect_to user_evaluations_path
     else
-      @users = User.valid
       @evaluation = Evaluation.new
-      @evaluations = Evaluation.where(reviewer_id: current_user.id).sorted.page(params[:page])
-      render :index
+      flash[:comment] = "メッセージを入力してください"
+
+      respond_to do |format|
+        format.html
+        format.js { render 'user/evaluations/new', evaluation: @evaluation }
+      end
     end
   end
 

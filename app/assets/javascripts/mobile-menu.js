@@ -2,6 +2,7 @@
 $(document).on('turbolinks:load', function () {
   var side_area = $('#side_area');
   var mask = $('#mask');
+  var modal = $('#modal');
 
   side_area.removeClass('open');
   mask.addClass("hidden");
@@ -17,13 +18,8 @@ $(document).on('turbolinks:load', function () {
   });
 
   $(window).resize(function(){
-    var width = $(window).width();
-
-    if (width >= 600) {
-      mask.addClass("hidden");
-    }
-    else {
-      side_area.removeClass('open');
-    }
+    modal.empty();
+    mask.addClass("hidden");
+    side_area.removeClass('open');
   });
 });

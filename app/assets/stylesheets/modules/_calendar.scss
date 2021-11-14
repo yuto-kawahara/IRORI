@@ -6,6 +6,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+
     & a {
       cursor: pointer;
       background: $cSubBase;
@@ -20,6 +21,7 @@
     outline: 2px solid #ddd;
     border-collapse: collapse;
     width: 100%;
+    background: #fff;
   }
 
   & th {

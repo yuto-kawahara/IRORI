@@ -1,12 +1,23 @@
 var modal = $('#modal');
 var mask = $('#mask');
 
+modal.empty();
+
 modal.append("<%= j(render 'user/evaluations/new', evaluation: @evaluation) %>");
+var valid_nickname = $('.input_valid_nickname');
+var valid_comment = $('.input_valid_comment');
+valid_nickname.empty();
+valid_comment.empty();
+
 mask.removeClass("hidden");
 mask.click(function(){
   mask.addClass("hidden");
   modal.empty();
 });
+valid_nickname.empty();
+valid_comment.empty();
+valid_nickname.append("<%= flash[:nickname] %>")
+valid_comment.append("<%= flash[:comment] %>")
 
 var search_form = $('#user_search_form');
 var search_result = $('.search_result');

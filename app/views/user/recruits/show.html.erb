@@ -24,7 +24,7 @@
   <div class="comment_form_area">
     <%= form_with model:[@recruit, @recruit_comment] do |f| %>
       <div class="comment_text_field">
-        <%= f.text_field :comment, class: "comment_text_input" %>
+        <%= f.text_field :comment, class: "comment_text_input", maxlength: "500" %>
           <button type="submit" class="btn btn__send_message">
             <i class="fas fa-paper-plane"></i>
           </button>

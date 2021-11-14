@@ -14,7 +14,8 @@ class User::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to profile_user_path(@user)
     else
-      render :edit
+      flash[:alert] = "ニックネームを入力してください"
+      redirect_to profile_edit_user_path(params[:nickname])
     end
   end
 

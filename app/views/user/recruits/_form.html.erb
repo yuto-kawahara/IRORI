@@ -13,7 +13,8 @@
         <%= f.label :title, "タイトル:", class: "post_title" %>
         <small class="badge_mandatory">必須</small>
       </div>
-      <%= f.text_field :title, autofocus: true %>
+      <p class="input_valid"><%= flash[:title] %></p>
+      <%= f.text_field :title, autofocus: true, maxlength: "200" %>
     </div>
 
     <div class="post_control">
@@ -21,6 +22,7 @@
         <%= f.label :start_time, "日時選択:", class: "post_title" %>
         <small class="badge_mandatory">必須</small>
       </div>
+      <p class="input_valid"><%= flash[:start_time] %></p>
       <%= f.datetime_field :start_time %>
     </div>
 
@@ -29,6 +31,7 @@
         <%= f.label :time_required, "所要時間:", class: "post_title" %>
         <small class="badge_mandatory">必須</small>
       </div>
+      <p class="input_valid"><%= flash[:time_required] %></p>
       <%= f.select :time_required, options_for_select((1..10).map{|n| ["#{n}時間", n]}, selected: recruit.time_required),{ include_blank: '所要時間を選択してください'} %>
     </div>
 
@@ -38,6 +41,7 @@
         <%= f.label :capacity, "定員:", class: "post_title" %>
         <small class="badge_mandatory">必須</small>
       </div>
+      <p class="input_valid"><%= flash[:capacity] %></p>
       <%= f.select :capacity, options_for_select((1..10).map{|n| ["#{n}人", n]}, selected: recruit.capacity),{ include_blank: '定員を選択してください'} %>
     </div>
 
@@ -46,7 +50,8 @@
         <%= f.label :discord_server_link, "Discordサーバーリンク:", class: "post_title" %>
         <small class="badge_mandatory">必須</small>
       </div>
-      <%= f.text_field :discord_server_link %>
+      <p class="input_valid"><%= flash[:discord_server_link] %></p>
+      <%= f.text_field :discord_server_link, maxlength: "200" %>
     </div>
 
     <div class="post_control">
@@ -54,7 +59,7 @@
         <%= f.label :explanation, "説明:", class: "post_title" %>
         <small class="badge_any">任意</small>
       </div>
-      <%= f.text_area :explanation %>
+      <%= f.text_area :explanation, maxlength: "1000" %>
     </div>
 
     <div class="post_control">

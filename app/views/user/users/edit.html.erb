@@ -27,11 +27,12 @@
           </div>
           <div class="user_control">
             <%= f.label:nickname, "ニックネーム", class: "user_title" %>
-            <%= f.text_field :nickname, class: "" %>
+            <p class="input_valid"><%= flash[:alert] %></p>
+            <%= f.text_field :nickname, maxlength: "50" %>
           </div>
           <div class="user_control">
             <%= f.label:Introduction, "自己紹介", class: "user_title" %>
-            <%= f.text_area :introduction, class: "" %>
+            <%= f.text_area :introduction, maxlength: "300" %>
           </div>
           <div class="user_control">
             <%= f.submit '変更を保存', class: "btn btn__submit" %>
