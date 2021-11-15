@@ -13,7 +13,7 @@ module User::MessagesHelper
       UserRoom.create(user_id: send_user.id, room_id: room.id)
       UserRoom.create(user_id: receive_user.id, room_id: room.id)
     end
-    @messages = room.messages.includes(:user, :room)
+    @messages = room.messages.includes(:user)
     @message = send_user.messages.new(room_id: room.id, content: message)
     if send_method == "broadcast"
       @message.save

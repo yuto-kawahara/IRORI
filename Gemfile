@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop-airbnb'
+  gem 'bullet', '~> 6.1', '>= 6.1.5'
 end
 
 group :test do
@@ -76,7 +77,6 @@ group :production do
   gem 'mysql2'
 end
 gem 'whenever', '~> 1.0'
-gem 'bullet', '~> 6.1', '>= 6.1.5'
 gem 'counter_culture', '~> 3.0'
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'

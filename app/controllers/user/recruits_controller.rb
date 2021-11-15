@@ -7,7 +7,7 @@ class User::RecruitsController < ApplicationController
   end
 
   def index
-    @recruits = Recruit.valid.includes(:user)
+    @recruits = Recruit.valid
   end
 
   def show

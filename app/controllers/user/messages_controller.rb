@@ -4,7 +4,8 @@ class User::MessagesController < ApplicationController
 
   def index
     @rooms = current_user.rooms
-    @user_rooms = UserRoom.where(room_id: @rooms).sorted
+    @user_rooms = UserRoom.includes(:user)
+    @user_rooms = @user_rooms.where(room_id: @rooms).sorted
     @user_rooms = @user_rooms.where.not(user_id: current_user.id)
     @user_rooms = @user_rooms.valid.page(params[:page])
   end
