@@ -7,7 +7,7 @@ class User::RecruitsController < ApplicationController
   end
 
   def index
-    @recruits = Recruit.valid.includes(:user, )
+    @recruits = Recruit.valid.includes(:user)
   end
 
   def show
@@ -26,10 +26,10 @@ class User::RecruitsController < ApplicationController
     entry_condition_ids = params[:recruit][:entry_condition_ids]
 
     if @recruit.update(recruit_params)
-      unless play_form_ids.present?
+      if play_form_ids.blank?
         RecruitPlayForm.bulk_create(@recruit.id, play_form_ids)
       end
-      unless entry_condition_ids.present?
+      if entry_condition_ids.blank?
         RecruitEntryCondition.bulk_create(@recruit.id, entry_condition_ids)
       end
       redirect_to recruit_path
@@ -82,7 +82,7 @@ class User::RecruitsController < ApplicationController
     date = params[:date]
     @recruits = Recruit.where(start_time: date.in_time_zone.all_day)
     @recruits = @recruits.includes(:user, :entry_conditions, :play_forms)
-    @recruits = @recruits.valid.order(start_time: :desc ).page(params[:page])
+    @recruits = @recruits.valid.order(start_time: :desc).page(params[:page])
   end
 
   private

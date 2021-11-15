@@ -55,7 +55,7 @@ class User::UsersController < ApplicationController
     @other_recruits.each do |recruit|
       reserve = recruit.reserves.includes(:user, :recruit)
       reserve = reserve.find_by(user_id: current_user.id)
-      unless reserve.blank?
+      if reserve.present?
         @recruits.push(reserve.recruit)
       end
     end

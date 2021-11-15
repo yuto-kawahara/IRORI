@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   scope :valid,  -> { where(user_status: "valid_user") }
-  scope :sorted, -> { order(created_at: :desc ) }
-  scope :not_current, -> (user) { where.not(id: user.id ) }
+  scope :sorted, -> { order(created_at: :desc) }
+  scope :not_current, -> (user) { where.not(id: user.id) }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -32,9 +32,9 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :introduction, length: { maximum: 300 }
 
-  enum user_status:{
-    valid_user: 0,   #有効
-    quit_user:  1    #退会
+  enum user_status: {
+    valid_user: 0,   # 有効
+    quit_user:  1    # 退会
   }
 
   def follow(user)

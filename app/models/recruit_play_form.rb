@@ -4,7 +4,7 @@ class RecruitPlayForm < ApplicationRecord
 
   def self.bulk_create(recruit_id, ids)
     ids.each do |id|
-      unless where(recruit_id: recruit_id, play_form_id: id).present?
+      if where(recruit_id: recruit_id, play_form_id: id).blank?
         create(recruit_id: recruit_id, play_form_id: id)
       end
     end

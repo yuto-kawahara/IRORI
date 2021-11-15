@@ -1,8 +1,8 @@
 class Recruit < ApplicationRecord
   scope :valid,  -> { where(user_id: User.valid) }
-  scope :following_user_recruit, -> (user) { where(user_id: [user.id, user.following_user.valid] ) }
-  scope :status, -> (status)  { where(recruit_status: status ) }
-  scope :sorted, -> { order(created_at: :desc ) }
+  scope :following_user_recruit, -> (user) { where(user_id: [user.id, user.following_user.valid]) }
+  scope :status, -> (status) { where(recruit_status: status) }
+  scope :sorted, -> { order(created_at: :desc) }
   scope :closed, -> { where(recruit_status: "end_recruit") }
 
   belongs_to :user
@@ -22,12 +22,12 @@ class Recruit < ApplicationRecord
   validates :explanation,         length: { maximum: 1000 }
   validates :discord_server_link, presence: true, length: { maximum: 200 }
 
-  enum recruit_status:{
-    not_recruit:      0,     #未募集
-    now_recruit:      1,     #募集中
-    few_recruit:      2,     #残り僅か
-    end_recruit:      3,     #募集終了
-    reminded_recruit: 4      #募集リマインド完了
+  enum recruit_status: {
+    not_recruit:      0,     # 未募集
+    now_recruit:      1,     # 募集中
+    few_recruit:      2,     # 残り僅か
+    end_recruit:      3,     # 募集終了
+    reminded_recruit: 4      # 募集リマインド完了
   }
 
   def reserve_exist?(user)
@@ -39,7 +39,7 @@ class Recruit < ApplicationRecord
     if @recruits.present?
       @recruits.each do |recruit|
         # 募集日時の前日のAM8:00にリマインドを一斉送信
-        if ((recruit.start_time - 1) < Time.current)
+        if (recruit.start_time - 1) < Time.current
           reserves = recruit.reserves
           reserves.each do |reserve|
             message = "「#{recruit.title}」の前日リマインドです。\nサーバーにまだ入室していない場合は入室してください。"
