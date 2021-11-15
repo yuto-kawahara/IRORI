@@ -1,2 +1,4 @@
-$(".recruit_comment_list").html("<%= j(render 'user/recruit_comments/list', recruit: @recruit, recruit_comments: @recruit_comments) %>");
+$(".item_<%= @recruit_comment.id %>").remove();
 $(".comment_text_input").val("");
+var cover = $('#cover');
+cover.removeClass("hidden");

@@ -17,8 +17,8 @@ class User::RecruitCommentsController < ApplicationController
   end
 
   def destroy
-    recruit_comment = @recruit.recruit_comments.find(params[:id])
-    recruit_comment.destroy
+    @recruit_comment = @recruit.recruit_comments.find(params[:id])
+    @recruit_comment.destroy
   end
 
   private

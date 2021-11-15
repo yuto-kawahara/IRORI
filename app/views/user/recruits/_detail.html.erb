@@ -1,9 +1,8 @@
 <div class="recruit_detail_table">
   <% if @recruit.user == current_user %>
     <div class="recruit_detail_head">
-      <%= render 'user/reserves/waiting', recruit: recruit %>
-        <div class="three_point_reader" ><i class="fas fa-ellipsis-h"></i></div>
-        <%= render 'user/recruits/change', recruit: recruit %>
+      <div class="ellipsis_h" ><i class="fas fa-ellipsis-h"></i></div>
+      <%= render 'user/recruits/change', recruit: recruit %>
     </div>
   <% end %>
   <table>

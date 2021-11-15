@@ -130,8 +130,18 @@
     color: #30ba4e;
   }
 
+  &__reserve,
+  &__cancel,
   &__reserve_list {
-    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 35px;
+    height: 35px;
+    margin: 0;
+    & span {
+      display: none;
+    }
   }
   &__comment_delete {
     position: absolute;

@@ -1,25 +1,31 @@
 <li class="item item_<%= evaluation.id %>">
-  <span>
-    <% reviewee = evaluation.reviewee %>
-    <% reviewer = evaluation.reviewer %>
-    <small class="reviewer_head">
+  <% reviewee = evaluation.reviewee %>
+  <% reviewer = evaluation.reviewer %>
+  <div class="review_head">
+    <small>
       <%= link_to profile_user_path(reviewer) do %>
         <%= "#{reviewer.nickname} さんの投稿" %>
       <% end %>
       <%= evaluation.created_at.strftime("%Y/%m/%d %H:%M") %>
     </small>
-    <div class="reviewee_area">
-      <%= link_to profile_user_path(reviewee) do %>
-        <%= attachment_image_tag reviewee, :icon_image, fallback: "no-icon.png", class: "face_icon icon_md" %>
-        <%= "#{reviewee.nickname} さん" %>
-      <% end %>
-    </div>
-    <div class="review_stars" data-score="<%= evaluation.stars %>"></div>
-    <p class="prewrap"><%= evaluation.comment %></p>
-  </span>
-  <% if current_user == reviewer %>
-  	<%= link_to user_evaluation_path(current_user, evaluation), method: :delete, remote: true, class: "btn btn__comment_delete" do %>
-  	  <i class="fas fa-trash-alt"></i>
-  	<% end %>
-  <% end %>
+    <% if current_user == reviewer %>
+      <div class="ellipsis_v" >
+        <i class="fas fa-ellipsis-v ellipsis_v__icon"></i>
+        <div class="option_modal">
+        	<%= link_to user_evaluation_path(current_user, evaluation), method: :delete, remote: true, class: "btn__recruit_delete" do %>
+        	  <i class="fas fa-trash-alt"></i>
+        	  <span>削除する</span>
+        	<% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="reviewee_area">
+    <%= link_to profile_user_path(reviewee) do %>
+      <%= attachment_image_tag reviewee, :icon_image, fallback: "no-icon.png", class: "face_icon icon_md" %>
+      <%= "#{reviewee.nickname} さん" %>
+    <% end %>
+  </div>
+  <div class="review_stars" data-score="<%= evaluation.stars %>"></div>
+  <p class="prewrap"><%= evaluation.comment %></p>
 </li>

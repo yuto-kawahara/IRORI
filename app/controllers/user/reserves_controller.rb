@@ -20,8 +20,8 @@ class User::ReservesController < ApplicationController
   end
 
   def destroy
-    reserve = @recruit.reserves.find_by(user_id: current_user.id)
-    reserve.destroy
+    @reserve = @recruit.reserves.find_by(user_id: current_user.id)
+    @reserve.destroy
     # 予約キャンセルされたことを投稿主に通知する
     create_notification(current_user,
                         @recruit.user,
@@ -39,7 +39,7 @@ class User::ReservesController < ApplicationController
     remain_few = (@recruit.capacity * 0.7).floor
     remain_last = (@recruit.capacity * 0.9).floor
 
-    # 予約数が募集人員の7～9割以内に到達した時に募集ステータスを残り僅かに更新
+    # 予約数が募集人員の7～9割以内に到達した時に募集ステータスを"残り僅か"に更新
     if (@reserves.count >= remain_few) && (@reserves.count <= remain_last)
       @recruit.update_attributes(recruit_status: "few_recruit")
     end
@@ -48,10 +48,8 @@ class User::ReservesController < ApplicationController
     case status
       when "approve_reserve" then
         @reserve.update_attributes(reserve_status: "approve_reserve")
-        @active = "active"
       when "reject_reserve" then
         @reserve.update_attributes(reserve_status: "reject_reserve")
-        @active = "no_active"
     end
   end
 

@@ -1,13 +1,11 @@
 <div id="wrapper">
   <div class="inner">
     <div class="head_link">
-      <span>
+      <span class="head_link__inner">
         <%= link_to   profile_user_path(@user), class: "btn btn__back" do %>
           <i class="fas fa-arrow-left"></i>
         <% end %>
-      </span>
-      <span>
-        <h2>プロフィール</h2>
+        <h2 class="head_link__title">プロフィール</h2>
       </span>
     </div>
     <div class="area area__profile_edit">

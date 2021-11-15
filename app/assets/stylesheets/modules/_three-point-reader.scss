@@ -1,13 +1,12 @@
-.three_point_reader {
+.ellipsis_h {
   position: absolute;
   top: 5px;
   right: 10px;
   cursor: pointer;
-  color: #DDD;
+  color: #536471;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  // background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,5 +14,22 @@
   &:hover {
     background: #fff;
     filter: brightness(80%);
+  }
+}
+.ellipsis_v {
+  &__icon {
+    cursor: pointer;
+    color: #536471;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: #fff;
+      filter: brightness(80%);
+    }
   }
 }

@@ -8,4 +8,13 @@ class User::NotificationsController < ApplicationController
       notification.update_attribute(:checked, true)
     end
   end
+
+  def destroy
+    @notification = Notification.find(params[:id])
+    @notification.destroy
+  end
+
+  def destroy_all
+  end
+
 end

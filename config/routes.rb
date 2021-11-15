@@ -40,7 +40,7 @@ Rails.application.routes.draw do
         get 'schedule'
       end
       resources :recruit_comments, only: [:edit, :update, :create, :destroy]
-      resources :reserves, only: [:create, :destroy] do
+      resource :reserves, only: [:create, :destroy] do
         collection do
           get 'waiting', 'confirm', 'complete'
         end
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     resources :evaluations, only: [:show]
     get '/evaluations' => 'evaluations#other_index', as: :other_user_evaluations
     resources :reserves, only: [:update]
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index, :destroy]
     resources :messages, only: [:create, :destory, :index, :show]
   end
 end

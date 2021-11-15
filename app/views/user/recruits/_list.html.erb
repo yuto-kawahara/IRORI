@@ -1,7 +1,7 @@
 <% unless recruits.blank? %>
   <ul class="list">
     <% recruits.each do |recruit| %>
-      <li class="item">
+      <li class="item item__recruit">
         <%= link_to recruit_path(recruit), class: "recruit_detail_link" do %>
           <p class="recruit_title">
             <%= recruit.title %>
@@ -65,7 +65,6 @@
               </div>
             </div>
           </div>
-
         <% end %>
       </li>
     <% end %>

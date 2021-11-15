@@ -17,20 +17,20 @@ Stylesheet: ベーススタイル
 }
 
 .icon_sm {
+  width: 25px;
+  height: 25px;
+}
+.icon_md {
   width: 30px;
   height: 30px;
 }
-.icon_md {
+.icon_lr {
   width: 40px;
   height: 40px;
 }
-.icon_lr {
-  width: 50px;
-  height: 50px;
-}
 .icon_lg {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
 }
 
 body {
@@ -91,7 +91,8 @@ li {
 }
 
 .list {
-  margin-bottom: 60px;
+  margin-bottom: 100px;
+  margin-top: 20px;
 }
 
 .item {
@@ -101,14 +102,13 @@ li {
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 8px;
-  // box-shadow: 0px 0px 2px rgb(0, 0, 0 / 1.2);
   transition: all .3s;
   background: #fff;
-  z-index: 10;
 
-  &:hover {
-    // background: rgba(0, 0, 0, .2);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, .3);
+  &__recruit {
+    &:hover {
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, .3);
+    }
   }
 }
 
@@ -141,8 +141,9 @@ li {
 .head_link {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #DDD;
-  padding: 10px 48px;
+  padding: 10px 10px 10px 41px;
   position: -webkit-sticky;
   position: sticky;
   background: #fff;
@@ -150,6 +151,15 @@ li {
   height: 7vh;
   width: 100%;
   z-index: 200;
+  &__title {
+    @extend .font-lr;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .user_profile_inner {
@@ -317,6 +327,10 @@ li {
   border-collapse: collapse;
   background: #dbffed;
 
+  & .table_head {
+    display: flex;
+  }
+
   & .recruit_change_area {
     position: absolute;
     top: 7vh;
@@ -378,6 +392,14 @@ li {
     right: 20px;
   }
 
+  & .comment_area {
+    width: 100%;
+    &__head {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
   & .comment_user_profile {
     display: flex;
     margin-bottom: 7px;
@@ -393,7 +415,8 @@ li {
 .notice {
   &__head {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
   &__form {
@@ -466,7 +489,10 @@ li {
     right: 20px;
   }
 }
-.reviewer_head,
+.review_head {
+  display: flex;
+  justify-content: space-between;
+}
 .reviewee_area,
 .review_stars {
   display: block;
@@ -498,7 +524,7 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 100vh;
     width: 100vw;
     background: #DDD;

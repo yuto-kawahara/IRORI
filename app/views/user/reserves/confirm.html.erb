@@ -1,6 +1,11 @@
 <div id="wrapper">
   <div class="head_link">
-    <h2>予約確認</h2>
+    <span class="head_link__inner">
+      <%= link_to waiting_recruit_reserves_path, class: "btn btn__back" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+      <h2 class="head_link__title">予約確認</h2>
+    </span>
   </div>
   <div class="area area__reserve_confirm">
     <ul class="list">
@@ -11,6 +16,8 @@
         </li>
       <% end %>
     </ul>
-    <%= link_to "予約確定", complete_recruit_reserves_path, class: "btn" %>
+    <div class="confirm_btn_area">
+      <%= link_to "予約確定", complete_recruit_reserves_path, class: "btn" %>
+    </div>
   </div>
 </div>

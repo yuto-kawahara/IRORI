@@ -43,6 +43,17 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 }
 
 .btn {
+  &__reserve,
+  &__cancel,
+  &__reserve_list {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    & span {
+      display: inline-block;
+    }
+  }
+
   &__recruit {
     margin-top: 30vh;
     & span {
