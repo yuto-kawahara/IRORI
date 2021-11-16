@@ -10,7 +10,7 @@
             <% user = user_room.user %>
             <li class="item">
               <%= link_to message_path(user.id) do %>
-                <%= attachment_image_tag user, :icon_image, fallback: "no-icon.png", class: "face_icon icon_md"  %>
+                <%= attachment_image_tag user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md"  %>
                 <%= "#{user.nickname}さんとのチャット" %>
               <% end %>
             </li>

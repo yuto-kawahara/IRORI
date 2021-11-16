@@ -89,10 +89,13 @@ Stylesheet: 960px以上のタブレットやモニタで適用
   }
 
   & .top_title {
-    font-size: 4.2em;
+    font-size: 3.2em;
   }
 
   & .sub_title {
     font-size: 2em;
   }
+}
+.account_form {
+  width: 50%;
 }

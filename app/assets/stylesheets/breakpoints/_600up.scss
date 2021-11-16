@@ -78,9 +78,9 @@ Stylesheet: 600px以上のタブレットやモニタで適用
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    // opacity: .8;
     &__login {
-      background-image: url("/images/bg-login-img.png");
+      background-image: url("/images/bg-login.png");
+      background-color: #000;
     }
   }
 
@@ -100,7 +100,7 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   }
 
   & .status_expired {
-    font-size: 4.5em;
+    font-size: 3.5em;
   }
 }
 
@@ -111,10 +111,10 @@ Stylesheet: 600px以上のタブレットやモニタで適用
     & div {
       display: flex;
       align-items: center;
-      border: 2px solid #000;
       border-radius: 30px;
       padding: 5px;
-      background: #fff;
+      background: #87BFFA;
+      color: #fff;
     }
     & p {
       display: inline-block;
@@ -123,9 +123,8 @@ Stylesheet: 600px以上のタブレットやモニタで適用
       display: flex;
       width: 27px;
       height: 27px;
-      color: #fff;
       border-radius: 50%;
-      color: #000;
+      color: #fff;
       align-items: center;
       justify-content: center;
       margin-right: 5px;

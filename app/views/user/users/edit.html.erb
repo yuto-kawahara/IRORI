@@ -15,7 +15,7 @@
             <%= f.label:icon_image, "プロフィール画像", class: "user_title" %>
             <div class="img_wrapper">
               <div class="img_inner">
-                <%= attachment_image_tag @user, :icon_image, fallback: "no-icon.png", class: "edit_face_icon face_icon icon_lg"  %>
+                <%= attachment_image_tag @user, :icon_image, fallback: "/images/no-icon.png", class: "edit_face_icon face_icon icon_lg"  %>
                 <label for="img_refile" class="btn btn__img_select">
                   <i class="fas fa-camera"></i> 画像を選択
                 </label>

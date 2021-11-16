@@ -4,8 +4,18 @@
   border-right: 12px solid $cBase;
   overflow-x: hidden;
 
+  & .site_logo_link {
+    display: flex;
+    justify-content: center;
+    margin-top: 3vh;
+  }
+
+  & .site_logo {
+    width: 20vh;
+  }
+
   & .side_menu {
-    padding-top: 10vh;
+    padding-top: 3vh;
 
     &__list {
       list-style: none;

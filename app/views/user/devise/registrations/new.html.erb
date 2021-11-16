@@ -4,12 +4,12 @@
     <h2>新規登録</h2>
     <%= flash[:alert] %>
 
-    <%= form_with model: @user, url: user_registration_path, local: true do |f|%>
+    <%= form_with model: @user, url: user_registration_path, local: true, class: "account_form" do |f|%>
       <%= render "user/devise/shared/error_messages", resource: resource %>
 
       <div class="post_control">
         <%= f.label :nickname, "ニックネーム" %><br />
-        <%= f.text_field :nickname , autofocus: true, autocomplete: "name", maxlength: "50" %>
+        <%= f.text_field :nickname , autofocus: true, autocomplete: "name" %>
       </div>
 
       <div class="post_control">

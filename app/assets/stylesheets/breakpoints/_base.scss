@@ -283,7 +283,7 @@ li {
 
   & .expired {
     @include badge;
-    background: #000;
+    background: gray;
   }
 
   & .reminded {
@@ -301,8 +301,8 @@ li {
     color: orange;
   }
   & .status_expired {
-    font-size: 3em;
-    color: #000;
+    font-size: 2.5em;
+    color: gray;
   }
   & .status_reminded {
     color: #30ba4e;
@@ -375,7 +375,6 @@ li {
       display: flex;
       width: 27px;
       height: 27px;
-      color: #fff;
       border-radius: 50%;
       color: #000;
       align-items: center;
@@ -474,7 +473,7 @@ li {
 	line-height: 1;
 	text-decoration: none;
 	color: #fff;
-	background: orange;
+	background: #f59537;
 	border-radius: 2em;
 }
 
@@ -550,12 +549,16 @@ li {
     justify-content: space-evenly;
     height: 100vh;
     width: 100vw;
-    background: #DDD;
+    background: #EFF3F4;
     padding: 20px;
   }
 
+  & .top_site_logo {
+    width: 30vh;
+  }
+
   & .copy {
-    color: #fff;
+    color: #000;
   }
 
   & .top_title {

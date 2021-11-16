@@ -1,5 +1,9 @@
 class User::HomesController < ApplicationController
   def top
+    # ログイン中はトップページにアクセスできないように制限
+    if user_signed_in?
+      redirect_to profile_user_path(current_user.nickname)
+    end
   end
 
   def home

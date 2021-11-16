@@ -1,6 +1,6 @@
 <li class="item item_<%= recruit_comment.id %>">
   <%= link_to profile_user_path(recruit_comment.user), class: "user_#{recruit_comment.user.id} profile_img" do %>
-  	<%= attachment_image_tag recruit_comment.user, :icon_image, fallback: "no-icon.png",  class: "face_icon icon_md"  %>
+  	<%= attachment_image_tag recruit_comment.user, :icon_image, fallback: "/images/no-icon.png",  class: "face_icon icon_md"  %>
 	<% end %>
   <div class="comment_area">
     <div class="comment_area__head">

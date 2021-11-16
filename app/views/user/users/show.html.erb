@@ -4,7 +4,7 @@
   </div>
   <div class="user_profile_inner">
     <div class="profile_action_area">
-      <%= attachment_image_tag @user, :icon_image, fallback: "no-icon.png", class: "face_icon icon_lg" %>
+      <%= attachment_image_tag @user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_lg" %>
       <% if @user != current_user %>
         <div class="user_action_btn">
           <%= render 'user/messages/message_btn', user: @user %>

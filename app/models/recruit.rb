@@ -37,7 +37,7 @@ class Recruit < ApplicationRecord
 
   # 募集日時が過ぎている募集のステータスを"期限切れ"に更新
   def self.expired_recruit
-    @recruits = Recruit.includes(:user, :entry_conditions, :play_forms)
+    @recruits = Recruit.where.not(recruit_status: ["end_recruit", "expired_recruit"])
     if @recruits.present?
       @recruits.each do |recruit|
         if recruit.start_time < Time.current

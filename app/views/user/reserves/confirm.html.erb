@@ -11,7 +11,7 @@
     <ul class="list">
       <% @reserves.each do |reserve| %>
         <li class="item">
-          <%= attachment_image_tag reserve.user, :icon_image, fallback: "no-icon.png", class: "face_icon icon_md"  %>
+          <%= attachment_image_tag reserve.user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md"  %>
           <%= reserve.user.nickname %>
         </li>
       <% end %>
