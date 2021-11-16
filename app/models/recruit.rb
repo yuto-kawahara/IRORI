@@ -27,18 +27,31 @@ class Recruit < ApplicationRecord
     now_recruit:      1,     # 募集中
     few_recruit:      2,     # 残り僅か
     end_recruit:      3,     # 募集終了
-    reminded_recruit: 4      # 募集リマインド完了
+    expired_recruit:  4,     # 期限切れ
+    reminded_recruit: 5      # 募集リマインド完了
   }
 
   def reserve_exist?(user)
     reserves.where(user_id: user.id).exists?
   end
 
+  # 募集日時が過ぎている募集のステータスを"期限切れ"に更新
+  def self.expired_recruit
+    @recruits = Recruit.includes(:user, :entry_conditions, :play_forms)
+    if @recruits.present?
+      @recruits.each do |recruit|
+        if recruit.start_time < Time.current
+          recruit.update_attributes(recruit_status: "expired_recruit")
+        end
+      end
+    end
+  end
+
+  # 募集日時の前日のAM8:00にリマインドを一斉送信
   def self.remind_user
     @recruits = Recruit.where(recruit_status: "end_recruit")
     if @recruits.present?
       @recruits.each do |recruit|
-        # 募集日時の前日のAM8:00にリマインドを一斉送信
         if (recruit.start_time - 1) < Time.current
           reserves = recruit.reserves
           reserves.each do |reserve|

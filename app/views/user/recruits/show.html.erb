@@ -4,9 +4,15 @@
     <% if @recruit.user == current_user %>
       <%= render 'user/reserves/waiting', recruit: @recruit %>
     <% else %>
-      <div class="reserve_btn_area">
-        <%= render 'user/reserves/reserve_btn', recruit: @recruit %>
-      </div>
+      <% if @recruit.recruit_status != "expired_recruit" %>
+        <% if @recruit.capacity <= @recruit.reserves_count %>
+          <%= render 'user/reserves/reserve_btn', recruit: @recruit, active: "active" %>
+        <% else %>
+          <%= render 'user/reserves/reserve_btn', recruit: @recruit, active: "no_active" %>
+        <% end %>
+      <% else %>
+        <p>※募集は終了しました</p>
+      <% end %>
     <% end %>
   </div>
   <div class="area area__recruit_detail">

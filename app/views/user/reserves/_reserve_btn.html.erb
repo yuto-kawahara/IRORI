@@ -1,11 +1,13 @@
-<% if recruit.reserve_exist?(current_user) %>
-  <%= link_to recruit_reserves_path(recruit), method: :delete, remote: true, class: "btn btn__cancel" do %>
-    <i class="far fa-times-circle"></i>
-    <span>キャンセル</span>
+<div class="reserve_btn_area">
+  <% if recruit.reserve_exist?(current_user) %>
+    <%= link_to recruit_reserves_path(recruit), method: :delete, remote: true, class: "btn btn__cancel" do %>
+      <i class="far fa-times-circle"></i>
+      <span>キャンセル</span>
+    <% end %>
+  <% else %>
+    <%= link_to recruit_reserves_path(recruit), method: :post, remote: true, class: "btn btn__reserve" do %>
+      <i class="far fa-clock"></i>
+      <span>予約</span>
+    <% end %>
   <% end %>
-<% else %>
-  <%= link_to recruit_reserves_path(recruit), method: :post, remote: true, class: "btn btn__reserve" do %>
-    <i class="far fa-clock"></i>
-    <span>予約</span>
-  <% end %>
-<% end %>
+</div>

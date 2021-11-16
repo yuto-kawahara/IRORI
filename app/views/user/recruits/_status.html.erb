@@ -1,0 +1,29 @@
+<% case recruit.recruit_status
+     when "not_recruit" %>
+
+　<% when "now_recruit" %>
+    <div class="icon_status">
+      <ion-icon name="ellipse-outline", class="status_now"></ion-icon>
+      <small class="now"><%= recruit.recruit_status_i18n %></small>
+    </div>
+  <% when "few_recruit" %>
+    <div class="icon_status">
+      <ion-icon name="triangle-outline", class="status_few"></ion-icon>
+      <small class="few"><%= recruit.recruit_status_i18n %></small>
+    </div>
+  <% when "end_recruit" %>
+    <div class="icon_status">
+      <ion-icon name="close-outline", class="status_end"></ion-icon>
+      <small class="end"><%= recruit.recruit_status_i18n %></small>
+    </div>
+  <% when "expired_recruit" %>
+    <div class="icon_status">
+      <i class="fas fa-hourglass-end status_expired"></i>
+      <small class="expired"><%= recruit.recruit_status_i18n %></small>
+    </div>
+  <% when "reminded_recruit" %>
+    <div class="icon_status">
+      <ion-icon name="checkmark-outline", class="status_reminded"></ion-icon>
+      <small class="reminded"><%= recruit.recruit_status_i18n %></small>
+    </div>
+<% end %>

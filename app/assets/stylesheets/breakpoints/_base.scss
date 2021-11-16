@@ -136,6 +136,7 @@ li {
   color: #fff;
   border-radius: 5px;
   padding: 1px 2px;
+  margin-top: 5px;
 }
 
 .head_link {
@@ -175,7 +176,6 @@ li {
     @extend .font-lr;
     margin-bottom: 10px;
   }
-
 }
 
 .profile_action_area {
@@ -207,6 +207,7 @@ li {
   border: 3px solid #fff;
   border-radius: 50%;
   object-fit: cover;
+  background: #fff;
 }
 
 .user_recruit_list {
@@ -262,7 +263,7 @@ li {
   }
 
   & ion-icon {
-    font-size: 4.5em;
+    font-size: 3em;
   }
 
   & .now {
@@ -280,6 +281,11 @@ li {
     background: #0291C9;
   }
 
+  & .expired {
+    @include badge;
+    background: #000;
+  }
+
   & .reminded {
     @include badge;
     background: #30ba4e;
@@ -293,6 +299,10 @@ li {
   }
   & .status_few {
     color: orange;
+  }
+  & .status_expired {
+    font-size: 3em;
+    color: #000;
   }
   & .status_reminded {
     color: #30ba4e;
@@ -325,7 +335,7 @@ li {
   border-radius: 8px;
   padding: 10px;
   border-collapse: collapse;
-  background: #dbffed;
+  background: #EFF3F4;
 
   & .table_head {
     display: flex;
@@ -355,16 +365,29 @@ li {
   }
 
   & th {
-    @extend .font-md;
-    font-weight: bold;
-    width: 40%;
-    color: #474747;
+    & p {
+      @extend .font-md;
+      display: none;
+      font-weight: bold;
+    }
+    & span {
+      @extend .font-md;
+      display: flex;
+      width: 27px;
+      height: 27px;
+      color: #fff;
+      border-radius: 50%;
+      color: #000;
+      align-items: center;
+      justify-content: center;
+      margin-right: 5px;
+    }
   }
 
   & td {
     @extend .font-md;
     padding: 7px;
-    border-left: 1px solid #fff;
+    border-bottom: 2px dashed #fff;
   }
 
   & .recruit_img {

@@ -10,6 +10,7 @@
           now_recruit: "募集中"
           few_recruit: "残り僅か"
           end_recruit: "募集終了"
+          expired_recruit: "期限切れ"
           reminded_recruit: "ﾘﾏｲﾝﾄﾞ済"
       reserve:
         reserve_status:

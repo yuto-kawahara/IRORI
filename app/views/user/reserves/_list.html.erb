@@ -7,7 +7,9 @@
         <%= attachment_image_tag user, :icon_image, fallback: "no-icon.png", class: "face_icon icon_md"  %>
         <%= user.nickname %>
       <% end %>
-      <% if ((@recruit.recruit_status != "end_recruit") && (@recruit.recruit_status != "reminded_recruit")) %>
+      <% if ((@recruit.recruit_status != "end_recruit")\
+          && (@recruit.recruit_status != "reminded_recruit")\
+          && (@recruit.recruit_status != "expired_recruit")) %>
         <div class="reserve_judge_area">
           <% case status
                when "approve_reserve" %>

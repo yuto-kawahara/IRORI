@@ -8,7 +8,9 @@
     </span>
   </div>
   <div class="area area__reserve_list">
-    <% if ((@recruit.recruit_status != "end_recruit") && (@recruit.recruit_status != "reminded_recruit")) %>
+    <% if ((@recruit.recruit_status != "end_recruit")\
+        && (@recruit.recruit_status != "reminded_recruit")\
+        && (@recruit.recruit_status != "expired_recruit")) %>
       <div class="reserve_list">
         <%= render 'user/reserves/list', reserves: @reserves, recruit: @recruit %>
       </div>
