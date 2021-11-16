@@ -19,6 +19,10 @@ every 1.days, at: '8:00 am' do
   runner "Recruit.remind_user"
 end
 
+every 1.days, at: '0:00 am' do
+  runner "User.guest_delete"
+end
+
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
 #   runner "MyModel.some_method"

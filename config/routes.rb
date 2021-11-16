@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post   'users/password/edit' => 'devise/passwords#edit',       as: :edit_user_password
       patch  'users/password'      => 'devise/passwords#update'
       post   'users/password'      => 'devise/passwords#create'
+      post   'users/guest_login'   => 'devise/sessions#guest_login'
     end
 
     root to: 'homes#top'

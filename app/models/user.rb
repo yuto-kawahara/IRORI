@@ -34,7 +34,8 @@ class User < ApplicationRecord
 
   enum user_status: {
     valid_user: 0,   # 有効
-    quit_user:  1    # 退会
+    quit_user:  1,   # 退会
+    guest_user: 2    # ゲストユーザー
   }
 
   def follow(user)
@@ -51,6 +52,24 @@ class User < ApplicationRecord
 
   def to_param
     nickname
+  end
+
+  # ゲストログイン時にまだゲストユーザーが作成されていない場合は作成し、
+  # ゲストユーザーが作成されている場合はそのままログインする
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.nickname = 'ゲスト'
+      user.password = SecureRandom.urlsafe_base64
+      user.user_status = "guest_user"
+    end
+  end
+
+  # 毎日0:00にゲストユーザーを削除する
+  def self.guest_delete
+    user = User.where(email: 'guest@example.com')
+    if user.present?
+      user.destroy_all
+    end
   end
 
 end

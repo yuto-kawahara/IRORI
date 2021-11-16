@@ -3,6 +3,11 @@
 class User::Devise::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  def guest_login
+    user = User.guest
+    sign_in user
+    redirect_to root_path
+  end
   # GET /resource/sign_in
   # def new
   #   super
@@ -14,10 +19,9 @@ class User::Devise::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  def destroy
-    super
-    reset_session
-  end
+  # def destroy
+  #   super
+  # end
 
   # protected
 

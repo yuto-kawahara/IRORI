@@ -4,6 +4,7 @@
         user_status:
           valid_user: "有効"
           quit_user: "退会"
+          guest_user: "ゲストユーザー"
       recruit:
         recruit_status:
           not_recruit: "未募集"

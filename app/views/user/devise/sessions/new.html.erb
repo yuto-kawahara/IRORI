@@ -29,5 +29,8 @@
       <p>会員登録がお済でない方</p>
       <%= render "user/devise/shared/links" %>
     </div>
+    <div class="post_control">
+      <%= link_to "ゲストログイン(閲覧用)", users_guest_login_path, method: :post, class: "btn" %>
+    </div>
   </div>
 </div>
