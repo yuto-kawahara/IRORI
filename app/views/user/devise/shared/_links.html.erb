@@ -1,9 +1,19 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <div>
+    <%= link_to new_session_path(resource_name), class: "btn" do %>
+      <i class="fas fa-angle-left"></i>
+      <span>ログインへ</span>
+    <% end %>
+  </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <div>
+    <%= link_to new_registration_path(resource_name), class: "btn" do %>
+      <i class="fas fa-angle-left"></i>
+      <span>新規登録へ</span>
+    <% end %>
+  </div>
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

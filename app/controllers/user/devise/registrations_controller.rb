@@ -10,9 +10,46 @@ class User::Devise::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    build_resource(sign_up_params)
+    resource.save
+    create_input_valid(resource.errors)
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        # set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        # set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
+
+  def create_input_valid(errors)
+    if errors.details.include?(:nickname)
+      if errors.details[:nickname].any? { |e| e[:error] == :blank}
+        flash.now[:nickname] = "ニックネームを入力してください"
+      else
+        flash.now[:nickname] = "すでに使用されているユーザー名です"
+      end
+    end
+    if errors.details.include?(:email)
+      flash.now[:email] = "メールアドレスを入力してください"
+    end
+    if errors.details.include?(:password)
+      flash.now[:password] = "パスワードを入力してください"
+    end
+    if errors.details.include?(:password_confirmation)
+      flash.now[:password_confirmation] = "確認用パスワードを入力してください"
+    end
+  end
 
   # GET /resource/edit
   # def edit

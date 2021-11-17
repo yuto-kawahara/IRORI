@@ -2,7 +2,7 @@
   <div class="top_img top_img__login"></div>
   <div class="top_section">
     <h2>ログイン</h2>
-
+    <p class="input_valid"><%= flash[:alert] %></p>
     <%= form_with model: @user, url: user_session_path, local: true, class: "account_form" do |f| %>
       <div class="post_control">
         <%= f.label :email, "メールアドレス" %><br />

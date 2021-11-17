@@ -2,28 +2,28 @@
   <div class="top_img"></div>
   <div class="top_section">
     <h2>新規登録</h2>
-    <%= flash[:alert] %>
-
     <%= form_with model: @user, url: user_registration_path, local: true, class: "account_form" do |f|%>
-      <%= render "user/devise/shared/error_messages", resource: resource %>
-
       <div class="post_control">
         <%= f.label :nickname, "ニックネーム" %><br />
+        <p class="input_valid"><%= flash.now[:nickname] %></p>
         <%= f.text_field :nickname , autofocus: true, autocomplete: "name" %>
       </div>
 
       <div class="post_control">
         <%= f.label :email, "メールアドレス" %><br />
+        <p class="input_valid"><%= flash.now[:email] %></p>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
       <div class="post_control">
         <%= f.label :password, "パスワード(6文字以上)" %><br />
+        <p class="input_valid"><%= flash.now[:password] %></p>
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
 
       <div class="post_control">
         <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
+        <p class="input_valid"><%= flash.now[:password_confirmation] %></p>
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
