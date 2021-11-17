@@ -58,6 +58,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'pry-byebug'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -68,8 +72,6 @@ gem 'refile-mini_magick'
 gem 'kaminari','~> 1.2.1'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
-gem 'pry-byebug'
-gem 'rspec-rails'
 gem 'enum_help'
 gem 'simple_calendar', '~> 2.0'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
@@ -81,4 +83,3 @@ gem 'counter_culture', '~> 3.0'
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'mini_racer'
-gem 'mailcatcher'
