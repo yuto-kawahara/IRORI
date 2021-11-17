@@ -142,6 +142,10 @@
     & span {
       display: none;
     }
+    &.no_active {
+      background: #CCC;
+      pointer-events: none;
+    }
   }
   &__comment_delete {
     position: absolute;

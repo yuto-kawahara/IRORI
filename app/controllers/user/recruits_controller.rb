@@ -14,6 +14,7 @@ class User::RecruitsController < ApplicationController
     @recruit_comment = RecruitComment.new
     @recruit_comments = @recruit.recruit_comments.valid.includes(:user)
     @reserve = Reserve.new
+    @reserve_count = @recruit.reserves.where(reserve_status: "approve_reserve").count
     @entry_list = @recruit.entry_conditions
     @form_list = @recruit.play_forms
   end

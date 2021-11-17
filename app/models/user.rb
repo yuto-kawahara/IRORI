@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  scope :valid,  -> { where(user_status: "valid_user") }
+  scope :valid,  -> { where(user_status: ["valid_user", "guest_user"]) }
   scope :sorted, -> { order(created_at: :desc) }
   scope :not_current, -> (user) { where.not(id: user.id) }
 

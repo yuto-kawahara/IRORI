@@ -70,4 +70,19 @@
     margin: 20px 0;
     text-decoration: underline;
   }
+  & .schedule_content {
+    color: #000;
+  }
+
+  & .schedule_link {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & svg {
+    width: 25px;
+    height: 25px;
+    color: #000;
+  }
 }

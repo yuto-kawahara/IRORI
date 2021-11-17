@@ -53,7 +53,6 @@ module User::NotificationsHelper
         user = tag.a(@visitor.nickname, href: profile_user_path(@visitor), class: "notice_nickname")
         content = link_to "卓報告", evaluation_path(@visitor_review), class: "notice_action", remote: true
         user + "さんに" + content + "で評価されました"
-
     end
   end
 end

@@ -58,14 +58,16 @@ class User::UsersController < ApplicationController
   end
 
   def schedule
+    @schedule = []
     @recruits = current_user.recruits
-    @other_recruits = Recruit.where.not(user_id: current_user.id)
-    @other_recruits.each do |recruit|
-      reserve = recruit.reserves.includes(:user, :recruit)
-      reserve = reserve.find_by(user_id: current_user.id)
-      if reserve.present?
-        @recruits.push(reserve.recruit)
-      end
+    @reserves = current_user.reserves
+
+    @recruits.each do |recruit|
+      @schedule.push(recruit)
+    end
+
+    @reserves.each do |reserve|
+      @schedule.push(reserve.recruit)
     end
   end
 
