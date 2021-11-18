@@ -139,7 +139,7 @@ user.save!
   Recruit.create!(
     user_id: 1,
     title: "マダミス#{n}",
-    start_time: "2021-11-07 02:11:00",
+    start_time: "2021-11-18 02:11:00",
     time_required: 2,
     capacity: 1,
     explanation: "募集中です",
@@ -150,7 +150,7 @@ end
   Recruit.create!(
     user_id: 2,
     title: "ボドゲ#{n}",
-    start_time: "2021-11-08 02:11:00",
+    start_time: "2021-11-18 02:11:00",
     time_required: 4,
     capacity: 1,
     explanation: "募集中です",
