@@ -20,4 +20,8 @@
       <%= render 'index', evaluations: @evaluations %>
     </div>
   </div>
+  <%= link_to new_user_evaluation_path(current_user), remote: true, class: "btn__new_report" do %>
+    <i class="fas fa-plus-circle"></i>
+  <% end %>
+  <div id="modal"></div>
 </div>

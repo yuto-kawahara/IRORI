@@ -50,9 +50,9 @@ Rails.application.routes.draw do
         end
       end
     end
-
-    resources :evaluations, only: [:show]
     get '/evaluations' => 'evaluations#other_index', as: :other_user_evaluations
+    get '/evaluations/search' => 'evaluations#search'
+    resources :evaluations, only: [:show]
     resources :reserves, only: [:update]
     resources :notifications, only: [:index, :destroy]
     resources :messages, only: [:create, :destory, :index, :show]

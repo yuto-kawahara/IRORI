@@ -11,6 +11,7 @@ $(document).on('turbolinks:load', function () {
     }
   });
 
+
   $('.footer_menu__link').each(function() {
     var $href = $(this).attr('href');
 

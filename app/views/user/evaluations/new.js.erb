@@ -16,8 +16,8 @@ mask.click(function(){
 });
 valid_nickname.empty();
 valid_comment.empty();
-valid_nickname.append("<%= flash[:nickname] %>")
-valid_comment.append("<%= flash[:comment] %>")
+valid_nickname.append("<%= flash.now[:nickname] %>")
+valid_comment.append("<%= flash.now[:comment] %>")
 
 var search_form = $('#user_search_form');
 var search_result = $('.search_result');
