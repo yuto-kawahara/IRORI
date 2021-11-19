@@ -25,6 +25,7 @@ class User::RecruitsController < ApplicationController
   def update
     play_form_ids = params[:recruit][:play_form_ids]
     entry_condition_ids = params[:recruit][:entry_condition_ids]
+    start_time = params[:recruit][:start_time]
 
     if @recruit.update(recruit_params)
       if play_form_ids.blank?
@@ -33,9 +34,14 @@ class User::RecruitsController < ApplicationController
       if entry_condition_ids.blank?
         RecruitEntryCondition.bulk_create(@recruit.id, entry_condition_ids)
       end
+      # 更新した開始日程が現在時刻以上の場合、"募集中"に更新する
+      if start_time >= Time.current
+        @recruit.update_attributes(recruit_status: "now_recruit")
+      end
       redirect_to recruit_path
     else
-      render :edit
+      create_input_valid(@recruit.errors)
+      redirect_to edit_recruit_path
     end
 
   end

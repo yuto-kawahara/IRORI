@@ -378,7 +378,7 @@ li {
     &.open {
       visibility: visible;
       opacity: 1;
-      z-index: 11;
+      z-index: 51;
     }
   }
 
@@ -412,6 +412,7 @@ li {
   }
 
   & .recruit_img {
+    margin-top: 20px;
     & > img {
       width: 50%;
       height: 50%;
