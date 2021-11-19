@@ -9,13 +9,14 @@
 env :PATH, ENV['PATH']
 set :output, 'log/cron.log'
 set :environment, :production
+# set :environment, :development
 
 # every 1.days, at: '0:00 am' do
 every 1.minutes do
   runner "Recruit.expired_recruit"
 end
 
-every 1.days, at: '8:00 am' do
+every 1.minutes do
   runner "Recruit.remind_user"
 end
 
