@@ -139,7 +139,7 @@ user.save!
   Recruit.create!(
     user_id: 1,
     title: "マダミス#{n}",
-    start_time: "2021-11-18 02:11:00",
+    start_time: "2021-11-19 02:11:00",
     time_required: 2,
     capacity: 1,
     explanation: "募集中です",
@@ -157,12 +157,24 @@ end
     discord_server_link: "https://discord"
   )
 end
+100.times do |n|
+  Recruit.create!(
+    user_id: 3,
+    title: "マダミス#{n}",
+    start_time: "2021-11-19 02:11:00",
+    time_required: 2,
+    capacity: 1,
+    explanation: "募集中です",
+    discord_server_link: "https://discord"
+  )
+end
+
 
 100.times do |n|
   Evaluation.create!(
     reviewer_id: 1,
     reviewee_id: 5,
     stars: 4.5,
-    comment: "テスト"
+    comment: "テスト#{n}"
   )
 end

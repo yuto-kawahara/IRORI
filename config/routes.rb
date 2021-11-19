@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     get  '/contact'   => 'homes#contact'
     post '/send/mail' => 'homes#send_mail'
 
+    get '/search/user'    => 'searches#user'
+    get '/search/recruit' => 'searches#recruit'
+
     resources :users, param: :nickname, only: [:update] do
       collection do
         delete 'withdraw'

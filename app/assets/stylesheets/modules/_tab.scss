@@ -16,17 +16,73 @@
     border: none;
   }
 
-  &__link{
+  &__link {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     line-height: 3;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(80%);
+    }
   }
   & .active {
     font-weight: bold;
     color: #fff;
     background: $cSubBase;
+  }
+}
+
+.search_tab_area {
+  & input[type="radio"] {
+    display:none;
+  }
+
+  & .search_tab {
+    position: sticky;
+    top: 0;
+    display: flex;
+    border-bottom: 1px solid #DDD;
+  }
+
+  & .tab__item {
+    display: flex;
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    position: relative;
+    border-right: 1px solid #DDD;
+  }
+
+  & .tab__label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    line-height: 3;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(80%);
+    }
+  }
+
+  & #tab__content {
+    display: none;
+  }
+  & #tab__account:checked ~ .search_tab .account,
+  & #tab__recruit:checked ~ .search_tab .recruit {
+    font-weight: bold;
+    color: #fff;
+    background: $cSubBase;
+  }
+
+  & #tab__account:checked ~ .area__search_list .user_search_list,
+  & #tab__recruit:checked ~ .area__search_list .user_recruit_list {
+    display: block;
   }
 }
