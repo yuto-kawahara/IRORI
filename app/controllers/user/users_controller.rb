@@ -59,14 +59,14 @@ class User::UsersController < ApplicationController
 
   def schedule
     @schedule = []
-    @recruits = current_user.recruits
-    @reserves = current_user.reserves
+    recruits = current_user.recruits.includes(:user)
+    reserves = current_user.reserves.includes(:recruit)
 
-    @recruits.each do |recruit|
+    recruits.each do |recruit|
       @schedule.push(recruit)
     end
 
-    @reserves.each do |reserve|
+    reserves.each do |reserve|
       @schedule.push(reserve.recruit)
     end
   end

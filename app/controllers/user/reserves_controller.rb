@@ -83,6 +83,8 @@ class User::ReservesController < ApplicationController
         room_create_search(current_user, user, message, "broadcast")
       end
     end
+    # 予約確定時に投稿主のレベルアップ
+    Experience.level_up(current_user)
   end
 
   private
@@ -93,7 +95,7 @@ class User::ReservesController < ApplicationController
 
   def confirm_access_restrictions
     if @recruit.recruit_status == "end_recruit"
-      redirect_to reserve_list_recruit_path(@recruit.id)
+      redirect_to recruit_path(@recruit.id)
     end
   end
 end
