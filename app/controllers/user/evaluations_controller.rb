@@ -41,6 +41,10 @@ class User::EvaluationsController < ApplicationController
     end
 
     if @evaluation.save
+      if @evaluation.stars >= 2.5
+        # 評価時に星2.5以上で評価されたユーザーがレベルアップ
+        Experience.level_up(reviewee)
+      end
       # 評価されたことを相手ユーザーに通知する
       create_notification(current_user,
                           reviewee,

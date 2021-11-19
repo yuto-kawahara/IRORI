@@ -173,6 +173,27 @@ li {
     font-weight: bold;
     margin-bottom: 10px;
   }
+  & .profile_level {
+    @extend .font-md;
+    color: #fff;
+    border-radius: 30px;
+    padding: 3px 10px;
+    font-weight: bold;
+    background: #b87333;
+
+    &.regular_level {
+      background: linear-gradient(135deg, #0291C9 37%, #01619C 100%);
+    }
+    &.bronze_level {
+      background: linear-gradient(135deg, #BA6E40 0%, #C08D5E 91%, #C08D5E 48%, #B87333 27%, #AE6938 82%, #C08D5E 79%, #976B2F 72%);
+    }
+    &.silver_level {
+      background: linear-gradient(135deg, #C9CACA 0%, #9FA0A0 91%, #AEB3B5 48%, #EEEEEE 27%, #B9C3C9 82%, #9EACB4 79%, #DBDBDB 72%);
+    }
+    &.gold_level {
+      background: linear-gradient(135deg, #b8751e 0%, #ffce08 91%, #FEF0B2 48%, #fafad6 27%, #fefeb2 82%, #e1ce08 79%, #b8751e 72%);
+    }
+  }
   & .profile_intro {
     @extend .font-lr;
     margin-bottom: 10px;
