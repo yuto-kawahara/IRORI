@@ -23,7 +23,7 @@
         <small class="badge_mandatory">必須</small>
       </div>
       <p class="input_valid"><%= flash[:start_time] %></p>
-      <%= f.datetime_field :start_time %>
+      <%= f.datetime_field :start_time, min: Time.current.strftime("%Y/%m/%d %H:%M") %>
     </div>
 
     <div class="post_control">
@@ -42,7 +42,7 @@
         <small class="badge_mandatory">必須</small>
       </div>
       <p class="input_valid"><%= flash[:capacity] %></p>
-      <%= f.select :capacity, options_for_select((1..10).map{|n| ["#{n}人", n]}, selected: recruit.capacity),{ include_blank: '定員を選択してください'} %>
+      <%= f.select :capacity, options_for_select((1..20).map{|n| ["#{n}人", n]}, selected: recruit.capacity),{ include_blank: '定員を選択してください'} %>
     </div>
 
     <div class="post_control">
