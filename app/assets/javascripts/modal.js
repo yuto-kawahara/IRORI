@@ -15,22 +15,8 @@ $(document).on('turbolinks:load', function () {
 
   target.on('click', '.ellipsis_v', function() {
     cover.addClass("hidden");
-    $(this).find('.option_modal').toggleClass("open");
+    $(this).find('.option_modal').addClass("open");
   });
-
-  // // modal_v();
-  // if (target !== null) {
-  //   var observer = new MutationObserver(function(record) {
-  //     observer.disconnect();
-  //     var ellipsis_v = $('.ellipsis_v');
-  //     ellipsis_v.click(function() {
-  //       cover.addClass("hidden");
-  //       $(this).find('.option_modal').toggleClass("open");
-  //     });
-  //     observer.observe(target, config);
-  //   });
-  //   observer.observe(target, config);
-  // }
 
   cover.click(function() {
     cover.removeClass("hidden");
