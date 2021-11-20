@@ -1,14 +1,15 @@
 <li class="item item_<%= notification.id %> notice">
+  <% visitor = notification.visitor %>
+
   <div class="notice__head">
-    <% visitor = notification.visitor %>
-    <div class="notice_head__inner">
+    <div class="notice__inner">
       <%= link_to profile_user_path(visitor) do %>
         <%= attachment_image_tag visitor, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md" %>
       <% end %>
-      <span class="notice__form">
+      <div class="notice__form">
         <%= notification_form(notification) %>
         <small><%= " (#{time_ago_in_words(notification.created_at)}前)" %></small>
-      </span>
+      </div>
     </div>
     <div class="ellipsis_v" >
       <i class="fas fa-ellipsis-v ellipsis_v__icon"></i>

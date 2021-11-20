@@ -89,7 +89,7 @@ li {
 }
 
 .list {
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   margin-top: 20px;
 }
 
@@ -460,6 +460,10 @@ li {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+  }
+
+  &__inner {
+    display: flex;
   }
 
   &__form {
