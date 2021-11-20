@@ -1,37 +1,38 @@
 <div id="top_wrapper">
   <div class="top_img"></div>
   <div class="top_section">
+    <img src="/images/site-logo.png" alt="サイトロゴ" class="top_site_logo">
     <h2>新規登録</h2>
     <%= form_with model: @user, url: user_registration_path, local: true, class: "account_form" do |f|%>
       <div class="post_control">
         <%= f.label :nickname, "ニックネーム" %><br />
         <p class="input_valid"><%= flash.now[:nickname] %></p>
-        <%= f.text_field :nickname , autofocus: true, autocomplete: "name" %>
+        <%= f.text_field :nickname , autofocus: true, placeholder: "\uf406", autocomplete: "name" %>
       </div>
 
       <div class="post_control">
         <%= f.label :email, "メールアドレス" %><br />
         <p class="input_valid"><%= flash.now[:email] %></p>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, placeholder: "\uf0e0", autocomplete: "email" %>
       </div>
 
       <div class="post_control">
         <%= f.label :password, "パスワード(6文字以上)" %><br />
         <p class="input_valid"><%= flash.now[:password] %></p>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, placeholder: "\uf023", autocomplete: "new-password" %>
       </div>
 
       <div class="post_control">
         <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
         <p class="input_valid"><%= flash.now[:password_confirmation] %></p>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, placeholder: "\uf023", autocomplete: "new-password" %>
       </div>
 
       <div class="actions">
         <%= f.submit "新規登録", class: "btn btn__signup" %>
       </div>
     <% end %>
-    <div class="post_control">
+    <div class="account_control">
       <h5>既に登録済みの方</h5>
       <%= render "user/devise/shared/links" %>
     </div>
