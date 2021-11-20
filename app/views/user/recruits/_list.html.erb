@@ -32,11 +32,11 @@
                   <dd><%= "#{recruit.capacity}人" %></dd>
                 </dl>
                 <p>< プレイ形態 ></p>
-                <% recruit.entry_conditions.each do |form| %>
+                <% recruit.play_forms.each do |form| %>
                   <small class="tag"><%= form.name %></small>
                 <% end %>
                 <p>< 参加条件 ></p>
-                <% recruit.play_forms.each do |form| %>
+                <% recruit.entry_conditions.each do |form| %>
                   <small class="tag"><%= form.name %></small>
                 <% end %>
               </div>
