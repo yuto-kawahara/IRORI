@@ -59,7 +59,7 @@ class User::UsersController < ApplicationController
 
   def schedule
     @schedule = []
-    recruits = current_user.recruits.includes(:user)
+    recruits = current_user.recruits.where.not(recruit_status: "expired_recruit")
     reserves = current_user.reserves.includes(:recruit)
 
     recruits.each do |recruit|

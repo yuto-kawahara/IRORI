@@ -1,13 +1,9 @@
 class User::RecruitsController < ApplicationController
-  before_action :ensure_correct_recruit, except: [:new, :index, :create, :schedule]
+  before_action :ensure_correct_recruit, except: [:new, :create, :schedule, :today, :week, :month]
   before_action :set_app_requirements, only: [:new, :create, :edit]
 
   def new
     @recruit = Recruit.new
-  end
-
-  def index
-    @recruits = Recruit.valid
   end
 
   def show
@@ -90,6 +86,23 @@ class User::RecruitsController < ApplicationController
     @recruits = Recruit.where(start_time: date.in_time_zone.all_day)
     @recruits = @recruits.includes(:user, :entry_conditions, :play_forms)
     @recruits = @recruits.valid.order(start_time: :desc).page(params[:page])
+  end
+
+  def today
+    @recruits = Recruit.includes(:user, :entry_conditions, :play_forms)
+    @recruits = @recruits.where(start_time: Time.current.in_time_zone.all_day)
+    @recruits = @recruits.where.not(recruit_status: "expired_recruit")
+    @recruits = @recruits.valid.order(start_time: :desc).page(params[:page])
+  end
+
+  def week
+    @recruits = Recruit.valid
+    @recruits = @recruits.where.not(recruit_status: "expired_recruit")
+  end
+
+  def month
+    @recruits = Recruit.valid
+    @recruits = @recruits.where.not(recruit_status: "expired_recruit")
   end
 
   private

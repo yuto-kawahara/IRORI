@@ -86,3 +86,111 @@
     color: #000;
   }
 }
+
+.simple-calendar-week {
+
+  & .calendar-heading {
+    @extend .font-lg;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    & a {
+      cursor: pointer;
+      background: $cSubBase;
+      color: #fff;
+      border-radius: 4px;
+      padding: 0 25px;
+      margin-bottom: 20px;
+    }
+  }
+
+  & table {
+    outline: 2px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+    background: #fff;
+  }
+
+  & th {
+    color: #000;
+  }
+  & th, td {
+    outline: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  & th {
+    background: $cSubBase;
+    color: #fff;
+  }
+  & .week_day {
+    width: 15%;
+  }
+
+  & td.day {
+    vertical-align: top;
+  }
+
+  & td:first-child {
+    color: red;
+  }
+
+  & td:last-child {
+    color: blue;
+  }
+
+  & td.prev-month,
+  & td.next-month{
+    color: #ccc;
+  }
+
+  & td.today {
+    background-color: #F9F1C0;
+  }
+
+  & .event_area {
+    @extend .font-sm;
+  }
+
+  & .event_count {
+    @extend .font-md;
+    font-weight: bold;
+    width: 85%;
+    text-align: left;
+    text-decoration: underline;
+    & li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    & .icon_status {
+      font-size: .6em;
+      margin-right: 10px;
+    }
+    & small {
+      display: none;
+    }
+  }
+  & .schedule_content {
+    color: #000;
+  }
+
+  & .schedule_link {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & svg {
+    width: 25px;
+    height: 25px;
+    color: #000;
+  }
+}

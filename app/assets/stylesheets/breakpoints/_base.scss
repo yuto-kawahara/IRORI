@@ -37,6 +37,8 @@ body {
   letter-spacing: 0.125em;
   font-family: 'Kosugi Maru', sans-serif;
   overflow-y: scroll;
+  background: #EFF3F4;
+  // background-image: url("/images/bg-side.png");
 }
 
 a {
@@ -64,6 +66,7 @@ li {
   z-index: 998;
   background: #fff;
   transition: all .3s;
+  border-left: 1px solid #DDD;
   &.open {
     transform: translateX(0vw);
   }
@@ -76,6 +79,7 @@ li {
   min-height: 100vh;
   margin-left: 0;
   padding-bottom: 10vh;
+  background: #fff;
 }
 
 #footer {
@@ -96,9 +100,9 @@ li {
 .item {
   @extend .font-md;
   position: relative;
-  border: 1px solid #DDDDDD;
-  padding: 10px;
+  border: 1px solid #DDD;
   margin-bottom: 20px;
+  padding: 10px;
   border-radius: 8px;
   transition: all .3s;
   background: #fff;
@@ -239,7 +243,6 @@ li {
   & .recruit_content {
     display: flex;
     align-items: center;
-    padding: 10px;
     border: 1px solid #DDD;
     border-top: none;
     border-bottom-left-radius: 8px;
@@ -253,7 +256,7 @@ li {
     & dt {
       @extend .font-md;
       font-weight: bold;
-      width: 34%;
+      width: 28%;
     }
     & dd {
       @extend .font-md;
@@ -268,20 +271,39 @@ li {
   }
 
   & .recruit_status_area {
-    width: 25%;
-    margin-right: 10px;
+    width: 20%;
   }
 
   & .user_post_info_area {
     width: 90%;
   }
 
-  & .icon_status {
+  & .profile_area {
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
+  & .recruit_title {
+    @extend .font-lr;
+    border-bottom: 1px solid #DDDDDD;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 10px;
+    font-weight: bold;
+    color: #fff;
+    background: $cSubBase;
+  }
 
+  & .recruit_date {
+    @include badge;
+    text-align: center;
+    background: #000;
+  }
+}
+
+.icon_status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   & ion-icon {
     font-size: 3em;
   }
@@ -326,27 +348,6 @@ li {
   }
   & .status_reminded {
     color: #30ba4e;
-  }
-
-  & .profile_area {
-    display: flex;
-    align-items: center;
-  }
-  & .recruit_title {
-    @extend .font-lg;
-    border-bottom: 1px solid #DDDDDD;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    padding: 10px;
-    font-weight: bold;
-    color: #fff;
-    background: $cSubBase;
-  }
-
-  & .recruit_date {
-    @include badge;
-    text-align: center;
-    background: #000;
   }
 }
 
@@ -456,6 +457,33 @@ li {
 }
 
 .notice {
+  display: flex;
+  &__icon {
+    display: flex;
+    padding-top: 5px;
+    margin-right: 10px;
+    ion-icon {
+      @extend .icon_sm;
+    }
+    & .icon_follow {
+      color: #1D9BF0;
+    }
+    & .icon_comment {
+      color: #00BA7C;
+    }
+    & .icon_reserve {
+      color: #4C6EF5;
+    }
+    & .icon_cancel {
+      color: #F53A33;
+    }
+    & .icon_message {
+      color: #FE672E;
+    }
+    & .icon_review {
+      color: #FFDC5D;
+    }
+  }
   &__head {
     display: flex;
     align-items: flex-start;
@@ -463,7 +491,7 @@ li {
   }
 
   &__inner {
-    display: flex;
+    width: 100%;
   }
 
   &__form {
@@ -557,7 +585,6 @@ li {
     background: #fff;
   }
 }
-
 
 .area {
   width: 90vw;

@@ -9,6 +9,12 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   padding-left: 0;
   transform: translateX(0vw);
   z-index: 996;
+
+  & .side_menu {
+    & .hidden {
+      display: block;
+    }
+  }
 }
 
 #main_area {

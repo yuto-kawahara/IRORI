@@ -39,9 +39,12 @@ Rails.application.routes.draw do
       resources :evaluations, only: [:new, :index, :create, :destroy]
     end
 
-    resources :recruits do
+    resources :recruits, except: [:index] do
       collection do
         get 'schedule'
+        get 'schedule/today' => 'recruits#today'
+        get 'schedule/week'  => 'recruits#week'
+        get 'schedule/month' => 'recruits#month'
       end
       resources :recruit_comments, only: [:edit, :update, :create, :destroy]
       resource :reserves, only: [:create, :destroy] do

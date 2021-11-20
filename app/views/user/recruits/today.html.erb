@@ -1,0 +1,11 @@
+<div id="wrapper">
+  <div class="head_link">
+    <h2 class="head_link__title">募集</h2>
+  </div>
+  <%= render 'user/recruits/calendar_tab' %>
+  <div class="area area__recruit_calendar">
+    <div class="user_recruit_list">
+      <%= render 'user/recruits/list', recruits: @recruits %>
+    </div>
+  </div>
+</div>

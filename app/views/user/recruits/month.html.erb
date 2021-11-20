@@ -2,6 +2,7 @@
   <div class="head_link">
     <h2 class="head_link__title">募集</h2>
   </div>
+  <%= render 'user/recruits/calendar_tab' %>
   <div class="area area__recruit_calendar">
     <%= month_calendar events: @recruits do |date, recruits| %>
       <%= date.day %>

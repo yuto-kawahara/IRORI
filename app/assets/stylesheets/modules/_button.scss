@@ -103,7 +103,9 @@
     margin: 0;
     margin-right: 20px;
   }
-
+  &__message {
+    margin-right: 10px;
+  }
   &__new_report {
     position: fixed;
     bottom: 10vh;
