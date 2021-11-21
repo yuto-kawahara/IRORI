@@ -184,6 +184,7 @@ GEM
       ruby2_keywords (~> 0.0.1)
     mysql2 (0.5.3)
     netrc (0.11.0)
+    news-api (0.2.0)
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
@@ -397,6 +398,7 @@ DEPENDENCIES
   mailcatcher
   mini_racer
   mysql2
+  news-api
   pry-byebug
   puma (~> 3.11)
   rails (~> 5.2.5)

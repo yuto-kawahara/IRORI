@@ -27,7 +27,7 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 }
 
 .area {
-  width: 80vw;
+  width: 85vw;
 }
 
 .icon_lg {
@@ -114,26 +114,5 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   & th {
     width: 25%;
     padding: 10px;
-    & div {
-      display: flex;
-      align-items: center;
-      border-radius: 30px;
-      padding: 5px 10px;
-      background: $cSubBase;
-      color: #fff;
-    }
-    & p {
-      display: inline-block;
-    }
-    & span {
-      display: flex;
-      width: 27px;
-      height: 27px;
-      border-radius: 50%;
-      color: #fff;
-      align-items: center;
-      justify-content: center;
-      margin-right: 5px;
-    }
   }
 }

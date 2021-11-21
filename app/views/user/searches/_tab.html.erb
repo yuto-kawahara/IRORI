@@ -1,0 +1,12 @@
+<ul class="tab">
+  <li class="tab__item">
+    <%= link_to search_user_path(:keyword => keyword), class: "tab__link" do %>
+      アカウント
+    <% end %>
+  </li>
+  <li class="tab__item">
+    <%= link_to search_recruit_path(:keyword => keyword), class: "tab__link" do %>
+      募集
+    <% end %>
+  </li>
+</ul>
