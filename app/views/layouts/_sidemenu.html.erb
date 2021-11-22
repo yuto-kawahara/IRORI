@@ -15,6 +15,12 @@
         <span class="title">プロフィール</span>
       <% end %>
     </li>
+    <li class="side_menu__list mobile_hidden">
+      <%= link_to search_user_path, class: "side_menu__link" do %>
+        <span class="icon"><ion-icon name="search-outline"></ion-icon></span>
+        <span class="title">検索</span>
+      <% end %>
+    </li>
     <li class="side_menu__list hidden">
       <%= link_to schedule_today_recruits_path, class: "side_menu__link" do %>
         <span class="icon icon_svg">

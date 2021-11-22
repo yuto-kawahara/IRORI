@@ -96,7 +96,10 @@
             <p>定員</p>
           </div>
         </th>
-        <td><%= "#{recruit.capacity}名" %></td>
+        <td>
+          <%= "#{recruit.capacity}名" %>
+          <%= "(#{remain_count(recruit)})" %>
+        </td>
       </tr>
       <tr>
         <th>
@@ -137,9 +140,22 @@
         </th>
         <td class="prewrap"><%= recruit.explanation %></td>
       </tr>
+      <tr>
+        <th>
+          <div>
+            <span><i class="far fa-image"></i></span>
+            <p>画像</p>
+          </div>
+        </th>
+        <td>
+          <div class="recruit_img">
+            <%= attachment_image_tag recruit, :image %>
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
-  <div class="recruit_img">
-    <%= attachment_image_tag recruit, :image %>
+  <div id="modal_image">
+    <img src="" alt="" class="target_image">
   </div>
 </div>

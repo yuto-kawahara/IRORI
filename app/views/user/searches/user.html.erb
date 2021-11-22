@@ -4,6 +4,9 @@
       <%= link_to home_path, class: "btn btn__back" do %>
         <i class="fas fa-arrow-left"></i>
       <% end %>
+      <div class="mobile_hidden">
+        <%= render 'user/searches/form', keyword: "" %>
+      </div>
     </span>
   </div>
   <%= render 'tab', keyword: @keyword %>

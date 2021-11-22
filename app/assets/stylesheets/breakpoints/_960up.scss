@@ -43,6 +43,7 @@ Stylesheet: 960px以上のタブレットやモニタで適用
 
 #side_area {
   width: 20vw;
+  z-index: 49;
 }
 
 #main_area {
@@ -113,4 +114,12 @@ Stylesheet: 960px以上のタブレットやモニタで適用
 }
 .account_form {
   width: 50%;
+}
+
+.target_image {
+  width: 40%;
+}
+
+.mobile_hidden {
+  display: none;
 }

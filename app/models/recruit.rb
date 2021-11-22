@@ -42,6 +42,7 @@ class Recruit < ApplicationRecord
       @recruits.each do |recruit|
         if recruit.start_time < Time.current
           recruit.update_attributes(recruit_status: "expired_recruit")
+          recruit.reserves.destroy_all
         end
       end
     end

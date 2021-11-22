@@ -61,7 +61,7 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   }
 
   &__recruit {
-    margin-top: 30vh;
+    margin-top: 25vh;
     & span {
       display: none;
     }
@@ -120,4 +120,8 @@ Stylesheet: 600px以上のタブレットやモニタで適用
     width: 25%;
     padding: 6px;
   }
+}
+
+.target_image {
+  width: 60%;
 }
