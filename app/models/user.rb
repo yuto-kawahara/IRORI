@@ -77,7 +77,7 @@ class User < ApplicationRecord
   def self.guest_delete
     user = User.where(email: 'guest@example.com')
     if user.present?
-      user.destroy_all
+      user.destroy
     end
   end
 
