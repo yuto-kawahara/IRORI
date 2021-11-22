@@ -1,0 +1,37 @@
+.privacy_policy {
+  margin-bottom: 20px;
+  &__title {
+    @extend .font-md;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  &__content {
+    @extend .font-sm;
+    height: 230px;
+    overflow-y: scroll;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.5);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $cSubBase;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .3);
+  }
+
+  &__check {
+    @extend .font-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

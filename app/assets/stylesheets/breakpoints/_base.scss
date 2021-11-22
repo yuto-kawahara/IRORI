@@ -35,7 +35,8 @@ Stylesheet: ベーススタイル
 
 body {
   letter-spacing: 0.125em;
-  font-family: 'Kosugi Maru', sans-serif;
+  font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, Helvetica, Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, sans-serif;
+  // font-family: 'Kosugi Maru', sans-serif;
   overflow-y: scroll;
   background: #EFF3F4;
 }
@@ -74,14 +75,12 @@ li {
 #right_side_area {
   display: none;
   width: 20vw;
-  min-height: 100vh;
   z-index: 990;
   background: #fff;
-  border-left: 1px solid #DDD;
+  position: sticky;
+  bottom: 10vh;
 
   & .news {
-    position: sticky;
-    top: 0;
     width: 18vw;
     margin: 0 auto;
     &__head {
@@ -111,7 +110,7 @@ li {
     }
     &__image {
       width: 35%;
-      height: auto;
+      height: fit-content;;
       border-radius: 8px;
     }
     &__publish {
@@ -133,7 +132,9 @@ li {
 
 #wrapper {
   width: 100%;
+  min-height: 123vh;
   padding-bottom: 10vh;
+  border-right: 1px solid #DDD;
 }
 
 #footer {

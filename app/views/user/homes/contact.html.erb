@@ -8,13 +8,32 @@
     </span>
   </div>
   <div class="area area__contact">
+    <p class="section-caption">
+      ご依頼やご相談についてのご質問やご要望がございましたら、<br>
+      下記フォームよりお気軽にお問い合わせください。<br>
+      送付いただいた内容を確認の上、担当者からご連絡させていただきます。
+    </p>
     <%= form_with model: @contact, url: send_mail_path, method: :post, local: true do |f| %>
       <div class="post_group">
+        <div class="post_control">
+          <div class="control">
+            <%= f.label "ユーザー", class: "post_title" %>
+          </div>
+          <%= attachment_image_tag current_user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_sm"  %>
+          <%= current_user.nickname %>
+        </div>
+        <div class="post_control">
+          <div class="control">
+            <%= f.label "メールアドレス", class: "post_title" %>
+          </div>
+          <%= f.text_field :email, value: current_user.email, disabled: true %>
+        </div>
         <div class="post_control">
           <div class="control">
             <%= f.label :subject, "タイトル", class: "post_title" %>
             <small class="badge_mandatory">必須</small>
           </div>
+          <p class="input_valid"><%= flash.now[:subject] %></p>
           <%= f.text_field :subject, maxlength: "100" %>
         </div>
         <div class="post_control">
@@ -22,9 +41,11 @@
             <%= f.label:message, "お問い合わせ内容", class: "post_title", maxlength: "1000" %>
             <small class="badge_mandatory">必須</small>
           </div>
+          <p class="input_valid"><%= flash.now[:message] %></p>
           <%= f.text_area :message %>
         </div>
-        <%= f.submit'送信', class: "btn btn__submit" %>
+        <%= render 'privacy' %>
+        <%= f.submit'送信', class: "btn btn__sending" %>
       </div>
     <% end %>
   </div>
