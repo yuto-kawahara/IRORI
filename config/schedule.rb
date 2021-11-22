@@ -20,7 +20,7 @@ every 1.minutes do
   runner "Recruit.remind_user"
 end
 
-every 1.minites do
+every 1.minutes do
   runner "User.guest_delete"
 end
 
