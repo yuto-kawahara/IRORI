@@ -22,6 +22,7 @@ Stylesheet: ベーススタイル
 .icon_sm {
   width: 25px;
   height: 25px;
+  font-size: 1.5em;
 }
 .icon_md {
   width: 30px;
@@ -78,7 +79,7 @@ li {
 #right_side_area {
   display: none;
   width: 20vw;
-  z-index: 990;
+  z-index: 49;
   background: #fff;
   position: sticky;
   bottom: 10vh;
@@ -295,14 +296,24 @@ li {
 .user_recruit_list {
   & .item__recruit {
     padding: 0;
+
+    &.no_active {
+      background: #DDD;
+    }
   }
 
   & .remain_tag {
     @extend .font-sr;
+    width: 90px;
+    text-align: center;
     background: #C93A40;
     color: #fff;
     padding: 4px 8px;
     margin-right: 10px;
+
+    &.end {
+      background: #000;
+    }
   }
 
   & .year,
@@ -327,7 +338,11 @@ li {
   }
   & .recruit_date {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    &.no_active {
+      color: #8c8c8c;
+    }
   }
   & .recruit_poster {
     @extend .font-sm;
@@ -351,6 +366,9 @@ li {
       backdrop-filter: blur(5px);
       background-color: rgba(15,15,15,0.5);
       text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    }
+    &.no_active {
+      filter: grayscale(100%);
     }
   }
   & .recruit_title {
@@ -543,7 +561,7 @@ li {
     display: flex;
     padding-top: 5px;
     margin-right: 10px;
-    ion-icon {
+    ion-icon, i {
       @extend .icon_sm;
     }
     & .icon_follow {

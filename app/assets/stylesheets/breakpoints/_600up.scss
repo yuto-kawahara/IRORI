@@ -108,6 +108,11 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   & .status_expired {
     font-size: 3.5em;
   }
+  & .recruit_date {
+    align-items: flex-start;
+    flex-direction: row;
+    align-items: flex-end
+  }
 }
 
 .recruit_detail_table {

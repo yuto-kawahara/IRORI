@@ -1,26 +1,14 @@
 <div id="wrapper">
-  <div class="inner">
-    <div class="head_link">
+  <div class="head_link">
+    <span class="head_link__inner">
+      <%= link_to other_user_evaluations_path, class: "btn btn__back" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
       <h2 class="head_link__title">卓報告</h2>
-    </div>
-    <ul class="tab">
-      <li class="tab__item">
-        <%= link_to user_evaluations_path(current_user), class: "tab__link" do %>
-          自分の報告
-        <% end %>
-      </li>
-      <li class="tab__item">
-        <%= link_to other_user_evaluations_path, class: "tab__link" do %>
-          みんなの報告
-        <% end %>
-      </li>
-    </ul>
-    <div class="tab_content">
-      <%= render 'index', evaluations: @evaluations %>
-    </div>
+    </span>
   </div>
-  <%= link_to new_user_evaluation_path(current_user), remote: true, class: "btn__new_report" do %>
-    <i class="fas fa-plus-circle"></i>
-  <% end %>
-  <div id="modal"></div>
+  <div class="tab__search">検索結果</div>
+  <div class="tab_content">
+    <%= render 'index', evaluations: @evaluations %>
+  </div>
 </div>

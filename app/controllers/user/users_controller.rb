@@ -3,7 +3,7 @@ class User::UsersController < ApplicationController
   before_action :quit_user_exclusion, except: [:withdraw, :search]
 
   def show
-    @recruits = @user.recruits.includes(:entry_conditions, :play_forms)
+    @recruits = @user.recruits.includes(:play_forms)
     @recruits = @recruits.sorted.page(params[:page])
   end
 

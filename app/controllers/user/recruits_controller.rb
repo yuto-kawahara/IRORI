@@ -84,12 +84,12 @@ class User::RecruitsController < ApplicationController
   def schedule
     date = params[:date]
     @recruits = Recruit.where(start_time: date.in_time_zone.all_day)
-    @recruits = @recruits.includes(:user, :entry_conditions, :play_forms)
+    @recruits = @recruits.includes(:user, :play_forms)
     @recruits = @recruits.valid.order(start_time: :desc).page(params[:page])
   end
 
   def today
-    @recruits = Recruit.includes(:user, :entry_conditions, :play_forms)
+    @recruits = Recruit.includes(:user, :play_forms)
     @recruits = @recruits.where(start_time: Time.current.in_time_zone.all_day)
     @recruits = @recruits.where.not(recruit_status: "expired_recruit")
     @recruits = @recruits.valid.order(start_time: :desc).page(params[:page])

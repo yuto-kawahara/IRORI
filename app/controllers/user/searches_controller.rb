@@ -8,7 +8,7 @@ class User::SearchesController < ApplicationController
 
   def recruit
     @keyword = params[:keyword]
-    @recruits = Recruit.includes(:user, :entry_conditions, :play_forms).valid.sorted
+    @recruits = Recruit.includes(:user, :play_forms).valid.sorted
     @recruits = @recruits.where('title LIKE ?', "%#{@keyword}%").page(params[:page])
   end
 end

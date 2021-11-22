@@ -7,7 +7,7 @@ class User::HomesController < ApplicationController
   end
 
   def home
-    @recruits = Recruit.includes(:user, :entry_conditions, :play_forms)
+    @recruits = Recruit.includes(:user, :play_forms)
     @recruits = @recruits.following_user_recruit(current_user).sorted
     @recruits = @recruits.page(params[:page])
   end

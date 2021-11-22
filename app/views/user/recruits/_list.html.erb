@@ -1,23 +1,27 @@
 <% unless recruits.blank? %>
   <ul class="list">
     <% recruits.each do |recruit| %>
-      <li class="item item__recruit">
+      <% recruit_status(recruit.recruit_status) %>
+      <li class="item item__recruit <%= @status %>">
         <%= link_to recruit_path(recruit), class: "recruit_detail_link" do %>
           <div class="recruit_head">
-            <%= remain_count(recruit) %>
-            <div class="recruit_date">
+            <% if @status == "active" %>
+              <span class="remain_tag"><%= remain_count(recruit) %></span>
+            <% else %>
+              <span class="remain_tag end">終了</span>
+            <% end %>
+            <div class="recruit_date <%= @status %>">
               <%= calc_start_time(recruit.start_time, recruit.time_required) %>
             </div>
           </div>
           <% if recruit.image != nil %>
-            <div class="recruit_content" style="background-image: url(<%= Refile.attachment_url(recruit, :image) %>)">
+            <div class="recruit_content <%= @status %>" style="background-image: url(<%= Refile.attachment_url(recruit, :image) %>)">
           <% else %>
-            <div class="recruit_content" style="background-image: url(/images/bg-top-img.png)">
+            <div class="recruit_content <%= @status %>" style="background-image: url(/images/bg-top-img.png)">
           <% end %>
             <div class="recruit_content__wrapper">
               <div class="recruit_poster">
                 <%= attachment_image_tag recruit.user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_lr"  %></p>
-                <%= recruit.user.nickname %>
               </div>
               <div class="recruit_content__inner">
                 <div class="recruit_title">
@@ -29,15 +33,6 @@
                     <p>プレイ形態</p>
                   </div>
                   <% recruit.play_forms.each do |form| %>
-                    <small class="tag"><%= form.name %></small>
-                  <% end %>
-                </div>
-                <div class="recruit_condition">
-                  <div>
-                    <span><i class="fas fa-list-ul"></i></span>
-                    <p>参加条件</p>
-                  </div>
-                  <% recruit.entry_conditions.each do |form| %>
                     <small class="tag"><%= form.name %></small>
                   <% end %>
                 </div>

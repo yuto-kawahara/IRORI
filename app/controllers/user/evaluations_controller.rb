@@ -71,12 +71,13 @@ class User::EvaluationsController < ApplicationController
   end
 
   def search
-    # binding.pry
     @content = params[:content]
-    reviewee = User.find_by(nickname: @content)
-    if reviewee.present?
+    users = User.valid
+    users = User.where.not(id: current_user.id)
+    reviewer = users.find_by(nickname: @content)
+    if reviewer.present?
       @evaluations = Evaluation.includes(:reviewee, :reviewer)
-      @evaluations = @evaluations.where(reviewee_id: reviewee.id).sorted
+      @evaluations = @evaluations.where(reviewer_id: reviewer.id).sorted
       @evaluations = @evaluations.valid.page(params[:page])
     else
       @evaluations = nil

@@ -15,7 +15,11 @@
         border-radius: 50%;
       }
     }
-
+    & .message_inner {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
     & .says {
       @extend .font-md;
       display: inline-block;
@@ -33,12 +37,6 @@
       }
     }
   }
-
-  & small {
-    letter-spacing: 0em;
-    position: absolute;
-    bottom: 0;
-  }
 }
 
 .current_user {
@@ -46,6 +44,10 @@
     flex-flow: row-reverse;
     & .faceicon {
       margin-left: 20px;
+    }
+
+    & .message_inner {
+      align-items: flex-end;
     }
 
     & .says {
@@ -56,17 +58,16 @@
       }
     }
   }
-
-  & small {
-    right: 8%;
-  }
 }
 
 .other_user {
-
   & .message_info {
     & .faceicon {
       margin-right: 20px;
+    }
+
+    & .message_inner {
+      align-items: flex-start;
     }
 
     & .says {
