@@ -1,26 +1,24 @@
 <div id="wrapper">
-  <div class="inner">
-    <div class="head_link">
-      <h2 class="head_link__title">メッセージ</h2>
-    </div>
-    <div class="area area__room_list">
-      <% if @user_rooms.present? %>
-        <ul class="list">
-          <% @user_rooms.each do |user_room| %>
-            <% user = user_room.user %>
-            <li class="item">
-              <%= link_to message_path(user.id) do %>
-                <%= attachment_image_tag user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md"  %>
-                <%= "#{user.nickname}さんとのチャット" %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-        <%= paginate @user_rooms %>
-        <%= render 'layouts/loader' %>
-      <% else %>
-        <p>チャットルームはありません</p>
-      <% end %>
-    </div>
+  <div class="head_link">
+    <h2 class="head_link__title">メッセージ</h2>
+  </div>
+  <div class="area area__room_list">
+    <% if @user_rooms.present? %>
+      <ul class="list">
+        <% @user_rooms.each do |user_room| %>
+          <% user = user_room.user %>
+          <li class="item">
+            <%= link_to message_path(user.id) do %>
+              <%= attachment_image_tag user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md"  %>
+              <%= "#{user.nickname}さんとのチャット" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <%= paginate @user_rooms %>
+      <%= render 'layouts/loader' %>
+    <% else %>
+      <p>チャットルームはありません</p>
+    <% end %>
   </div>
 </div>

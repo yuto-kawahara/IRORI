@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   scope module: :user do
     devise_for :users, skip: :all
     devise_scope :user do
@@ -14,13 +13,14 @@ Rails.application.routes.draw do
       post   'users/password'      => 'devise/passwords#create'
       post   'users/guest_login'   => 'devise/sessions#guest_login'
     end
-
     root to: 'homes#top'
     get  '/home'      => 'homes#home'
     get  '/setting'   => 'homes#setting'
     get  '/help'      => 'homes#help'
     get  '/contact'   => 'homes#contact'
     post '/send/mail' => 'homes#send_mail'
+
+    get '/news/:id' => 'news#show', as: :news
 
     get '/search/user'    => 'searches#user'
     get '/search/recruit' => 'searches#recruit'

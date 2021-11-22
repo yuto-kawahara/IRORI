@@ -4,21 +4,9 @@
       <%= link_to home_path, class: "btn btn__back" do %>
         <i class="fas fa-arrow-left"></i>
       <% end %>
-      <%= render 'form', value: @content %>
     </span>
   </div>
-  <ul class="tab">
-    <li class="tab__item">
-      <%= link_to search_user_path(:content => @content), class: "tab__link" do %>
-        アカウント
-      <% end %>
-    </li>
-    <li class="tab__item">
-      <%= link_to search_recruit_path(:content => @content), class: "tab__link" do %>
-        募集
-      <% end %>
-    </li>
-  </ul>
+  <%= render 'tab', keyword: @keyword %>
   <div class="area area__search_list">
     <div class="tab_content">
       <%= render 'user/users/index', users: @users, follow: "アカウントが見つかりませんでした"  %>

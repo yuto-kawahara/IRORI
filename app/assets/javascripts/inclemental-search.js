@@ -49,6 +49,7 @@ $(document).on('turbolinks:load', function() {
   search_result.on('click', '.result_item', function(){
     var result_item = $('.result_item');
     search_form.val(this.textContent);
+    search_form.focus();
     result_item.remove();
   });
 });

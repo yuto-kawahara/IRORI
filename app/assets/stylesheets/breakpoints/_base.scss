@@ -35,10 +35,10 @@ Stylesheet: ベーススタイル
 
 body {
   letter-spacing: 0.125em;
-  font-family: 'Kosugi Maru', sans-serif;
+  font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, Helvetica, Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, sans-serif;
+  // font-family: 'Kosugi Maru', sans-serif;
   overflow-y: scroll;
   background: #EFF3F4;
-  // background-image: url("/images/bg-side.png");
 }
 
 a {
@@ -72,14 +72,69 @@ li {
   }
 }
 
+#right_side_area {
+  display: none;
+  width: 20vw;
+  z-index: 990;
+  background: #fff;
+  position: sticky;
+  bottom: 10vh;
+
+  & .news {
+    width: 18vw;
+    margin: 0 auto;
+    &__head {
+      margin-bottom: 15px;
+    }
+    &__list {
+      margin: 10px 0;
+      background: #F7F9F9;
+      border-radius: 8px;
+      padding: 5px 10px;
+    }
+    &__item {
+      margin-bottom: 20px;
+      &:hover {
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+    }
+    & li:last-child {
+      margin-bottom: 0;
+    }
+    &__inner {
+      display: flex;
+    }
+    &__title {
+      font-size: .8em;
+    }
+    &__image {
+      width: 35%;
+      height: fit-content;;
+      border-radius: 8px;
+    }
+    &__publish {
+      @extend .font-sm;
+      color: #787878;
+    }
+  }
+
+}
+
 #main_area {
   position: relative;
   border: 1px solid #DDD;
   width: 100%;
   min-height: 100vh;
   margin-left: 0;
-  padding-bottom: 10vh;
   background: #fff;
+}
+
+#wrapper {
+  width: 100%;
+  min-height: 123vh;
+  padding-bottom: 10vh;
+  border-right: 1px solid #DDD;
 }
 
 #footer {
@@ -386,18 +441,21 @@ li {
   }
 
   & th {
+    & div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     & p {
-      @extend .font-md;
-      display: none;
+      @extend .font-sm;
       font-weight: bold;
     }
     & span {
-      @extend .font-md;
+      @extend .font-lr;
       display: flex;
-      width: 27px;
-      height: 27px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      color: #000;
       align-items: center;
       justify-content: center;
       margin-right: 5px;

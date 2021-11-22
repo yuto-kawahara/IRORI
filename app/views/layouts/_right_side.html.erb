@@ -1,0 +1,25 @@
+<div class="news">
+  <%= render 'user/searches/form', keyword: "" %>
+  <ul class="news__list">
+    <h2 class="news__head">ニュース一覧</h2>
+    <% @news.each do |news|%>
+      <li class="news__item">
+        <%= link_to news.url, class: "news__link", target: :_blank, rel: "noopener noreferrer" do %>
+          <div class="news__inner">
+            <p class="news__title"><%= news.title %></p>
+            <img src=<%= news.urlToImage %> alt=<%= news.title %> class="news__image">
+          </div>
+          <p class="news__publish">
+            <%= news.name %>
+            <%= I18n.l(news.publishedAt.to_date, format: :long) %>
+          </p>
+        <% end %>
+      </li>
+    <% end %>
+    <small>
+      Powered by <%= link_to "https://newsapi.org" do %>
+        News API
+      <% end %>
+    </small>
+  </ul>
+</div>

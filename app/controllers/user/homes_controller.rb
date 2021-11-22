@@ -27,7 +27,17 @@ class User::HomesController < ApplicationController
     if @contact.save
       ContactMailer.send_mail(@contact).deliver
     else
-      render :contact
+      create_input_valid(@contact.errors)
+      redirect_to contact_path
+    end
+  end
+
+  def create_input_valid(errors)
+    if errors.details.include?(:subject)
+      flash[:subject] = "タイトルを入力してください"
+    end
+    if errors.details.include?(:message)
+      flash[:message] = "問い合わせ内容を入力してください"
     end
   end
 

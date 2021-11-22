@@ -167,8 +167,12 @@
     font-size: 1em;
     padding: 0;
   }
+  &__sending,
   &__submit {
-    @extend .font-lr;
     width: auto;
+    &.no_active {
+      background: #CCC;
+      pointer-events: none;
+    }
   }
 }
