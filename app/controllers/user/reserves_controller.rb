@@ -78,10 +78,12 @@ class User::ReservesController < ApplicationController
     if @reject_reserves.present?
       @reject_reserves.each do |reserve|
         user = reserve.user
-        message = "申し訳ありません\nまたの機会に予約をお願い致します"
+        message = "予約が拒否されました\nまたの機会にご利用ください"
         # 予約確定時に予約拒否した相手に拒否した旨を送信する
         room_create_search(current_user, user, message, "broadcast")
       end
+      # 予約確定時に拒否したユーザーの予約を削除する
+      @reject_reserves.destroy_all
     end
     # 予約確定時に投稿主のレベルアップ
     Experience.level_up(current_user)
