@@ -75,7 +75,7 @@ class User < ApplicationRecord
 
   # 毎日0:00にゲストユーザーを削除する
   def self.guest_delete
-    user = User.where(email: 'guest@example.com')
+    user = User.find_by(user_status: "guest_user")
     if user.present?
       user.destroy
     end
