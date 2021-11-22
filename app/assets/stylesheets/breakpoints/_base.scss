@@ -6,6 +6,9 @@ Stylesheet: ベーススタイル
 .font-sm {
   font-size: .7em;
 }
+.font-sr {
+  font-size: .8em;
+}
 .font-md {
   font-size: .9em;
 }
@@ -290,68 +293,87 @@ li {
 }
 
 .user_recruit_list {
-  & .item {
-    border: none;
+  & .item__recruit {
     padding: 0;
   }
 
+  & .remain_tag {
+    @extend .font-sr;
+    background: #C93A40;
+    color: #fff;
+    padding: 4px 8px;
+    margin-right: 10px;
+  }
+
+  & .year,
+  & .month,
+  & .day,
+  & .wday {
+    @extend .font-lr;
+    &__stu {
+      color: #0291C9;
+    }
+    &__sun {
+      color: #F53A33;
+    }
+  }
+
+  & .recruit_head {
+    font-weight: bold;
+    border-bottom: 1px solid #DDD;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  & .recruit_date {
+    display: flex;
+    align-items: flex-end;
+  }
+  & .recruit_poster {
+    @extend .font-sm;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 20px;
+  }
   & .recruit_content {
-    display: flex;
-    align-items: center;
-    border: 1px solid #DDD;
-    border-top: none;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-
-    & dl {
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0 0 8px 8px;
+    &__wrapper {
+      padding: 10px;
       display: flex;
-      margin-bottom: 5px;
-      width: 100%;
+      border-radius: 0 0 8px 8px;
+      backdrop-filter: blur(5px);
+      background-color: rgba(15,15,15,0.5);
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
     }
-    & dt {
-      @extend .font-md;
-      font-weight: bold;
-      width: 28%;
-    }
-    & dd {
-      @extend .font-md;
-      display: flex;
-      align-items: center;
-      margin: 0;
-    }
-    & p {
-      @extend .font-md;
-      font-weight: bold;
-    }
-  }
-
-  & .recruit_status_area {
-    width: 20%;
-  }
-
-  & .user_post_info_area {
-    width: 90%;
-  }
-
-  & .profile_area {
-    display: flex;
-    align-items: center;
   }
   & .recruit_title {
-    @extend .font-lr;
-    border-bottom: 1px solid #DDDDDD;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    padding: 10px;
+    @extend .font-lg;
     font-weight: bold;
-    color: #fff;
-    background: $cSubBase;
+    text-decoration: underline;
+    margin-bottom: 15px;
   }
-
-  & .recruit_date {
-    @include badge;
-    text-align: center;
-    background: #000;
+  & .recruit_play_form,
+  & .recruit_condition {
+    @extend .font-md;
+    font-weight: bold;
+    margin-bottom: 6px;
+    & div {
+      display: flex;
+    }
+  }
+  & .recruit_explanation {
+    @extend .font-sr;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 }
 
@@ -412,6 +434,7 @@ li {
   padding: 10px;
   border-collapse: collapse;
   background: #EFF3F4;
+  font-weight: bold;
 
   & .table_head {
     display: flex;
@@ -438,6 +461,7 @@ li {
 
   & tr {
     text-align: left;
+    border-bottom: 2px dotted #fff;
   }
 
   & th {
@@ -465,7 +489,6 @@ li {
   & td {
     @extend .font-md;
     padding: 7px;
-    border-bottom: 2px dashed #fff;
   }
 
   & .recruit_img {
@@ -685,11 +708,12 @@ li {
     display: flex;
     flex-direction: column;
   }
+
   & .btn {
     &__signup {
       text-align: center;
       width: 100%;
-      background: #79CFB9;
+      background: $cBase;
     }
     &__login {
       text-align: center;
