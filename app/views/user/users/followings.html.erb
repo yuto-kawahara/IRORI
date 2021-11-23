@@ -1,10 +1,10 @@
 <div id="wrapper">
   <div class="head_link">
     <span class="head_link__inner">
-      <%= link_to profile_user_path(current_user), class: "btn btn__back" do %>
+      <%= link_to profile_user_path(@user), class: "btn btn__back" do %>
         <i class="fas fa-arrow-left"></i>
       <% end %>
-      <h2 class="head_link__title"><%= current_user.nickname %></h2>
+      <h2 class="head_link__title"><%= @user.nickname %></h2>
     </span>
   </div>
   <ul class="tab">

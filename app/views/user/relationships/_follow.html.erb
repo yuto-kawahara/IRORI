@@ -1,4 +1,4 @@
-<div class="follow_btn_area">
+<div class="follow_btn_area_<%= user.id %> ">
   <% if current_user.following?(user) %>
     <%= link_to 'フォロー解除', user_relationships_path(user.id), method: :delete, remote: true, class: "btn btn__unfollow " %>
   <% else %>
