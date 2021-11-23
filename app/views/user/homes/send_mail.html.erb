@@ -1,0 +1,29 @@
+<div id="wrapper">
+  <div class="head_link">
+    <span class="head_link__inner">
+      <%= link_to setting_path, class: "btn btn__back" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+      <h2 class="head_link__title">送信完了</h2>
+    </span>
+  </div>
+  <div class="area area__send_mail">
+    <img src="/images/finish-mail-send.png" alt="送信完了" class="send_mail_img">
+    <div class="mail_wrapper">
+      <div class="mail_head">
+        <h3>お問い合わせありがとうございます</h3>
+        <p>頂いた内容は以下の通りです</p>
+      </div>
+      <div class="mail_content">
+        <div class="mail_title">
+          <p class="mail_under">タイトル</p>
+          <p> <%= @contact.subject %></p>
+        </div>
+        <div class="mail_message">
+          <p class="mail_under">お問い合わせ内容</p>
+          <p> <%= safe_join(@contact.message.split("\n"),tag(:br)) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
