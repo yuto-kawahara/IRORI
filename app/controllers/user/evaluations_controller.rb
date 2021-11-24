@@ -19,8 +19,7 @@ class User::EvaluationsController < ApplicationController
   def other_index
     @users = User.valid
     @evaluation = Evaluation.new
-    @evaluations = Evaluation.includes(:reviewer, :reviewee)
-    @evaluations = @evaluations.not_current(current_user)
+    @evaluations = Evaluation.includes(:reviewer, :reviewee).not_current(current_user)
     @evaluations = @evaluations.valid.sorted.page(params[:page])
   end
 
@@ -31,7 +30,7 @@ class User::EvaluationsController < ApplicationController
     @evaluations = Evaluation.where(reviewer_id: current_user.id).sorted.page(params[:page])
     if reviewee.nil?
       @evaluation = Evaluation.new
-      flash[:nickname] = "存在しないユーザーです"
+      flash.now[:nickname] = "存在しないユーザーです"
       respond_to do |format|
         format.html
         format.js { render 'user/evaluations/new', evaluation: @evaluation }
@@ -42,6 +41,10 @@ class User::EvaluationsController < ApplicationController
     end
 
     if @evaluation.save
+      if @evaluation.stars >= 2.5
+        # 評価時に星2.5以上で評価されたユーザーがレベルアップ
+        Experience.level_up(reviewee)
+      end
       # 評価されたことを相手ユーザーに通知する
       create_notification(current_user,
                           reviewee,
@@ -53,7 +56,7 @@ class User::EvaluationsController < ApplicationController
       redirect_to user_evaluations_path
     else
       @evaluation = Evaluation.new
-      flash[:comment] = "メッセージを入力してください"
+      flash.now[:comment] = "メッセージを入力してください"
 
       respond_to do |format|
         format.html
@@ -65,6 +68,20 @@ class User::EvaluationsController < ApplicationController
   def destroy
     @evaluation = Evaluation.find(params[:id])
     @evaluation.destroy
+  end
+
+  def search
+    @content = params[:content]
+    users = User.valid
+    users = User.where.not(id: current_user.id)
+    reviewer = users.find_by(nickname: @content)
+    if reviewer.present?
+      @evaluations = Evaluation.includes(:reviewee, :reviewer)
+      @evaluations = @evaluations.where(reviewer_id: reviewer.id).sorted
+      @evaluations = @evaluations.valid.page(params[:page])
+    else
+      @evaluations = nil
+    end
   end
 
   private

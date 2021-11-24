@@ -1,26 +1,45 @@
 <li class="item item_<%= notification.id %> notice">
-  <div class="notice__head">
-    <% visitor = notification.visitor %>
-    <div class="notice_head__inner">
-      <%= link_to profile_user_path(visitor) do %>
-        <%= attachment_image_tag visitor, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md" %>
-      <% end %>
-      <span class="notice__form">
-        <%= notification_form(notification) %>
-        <small><%= " (#{time_ago_in_words(notification.created_at)}前)" %></small>
-      </span>
-    </div>
-    <div class="ellipsis_v" >
-      <i class="fas fa-ellipsis-v ellipsis_v__icon"></i>
-      <div class="option_modal">
-      	<%= link_to notification_path(notification), method: :delete, remote: true, class: "btn__recruit_delete" do %>
-      	  <i class="fas fa-trash-alt"></i>
-      	  <span>削除する</span>
-      	<% end %>
+  <% visitor = notification.visitor %>
+  <div class="notice__icon">
+    <% case notification.action
+         when "follow" then %>
+        <ion-icon name="person" class="icon_follow"></ion-icon>
+      <% when "comment" then %>
+        <ion-icon name="chatbubble-ellipses" class="icon_comment"></ion-icon>
+      <% when "reserve" then %>
+        <i class="fas fa-clock icon_reserve"></i>
+      <% when "cancel" then %>
+        <i class="fas fa-times-circle icon_cancel"></i>
+      <% when "message" then %>
+        <ion-icon name="chatbubbles" class="icon_message"></ion-icon>
+      <% when "review" then %>
+        <ion-icon name="star" class="icon_review"></ion-icon>
+    <% end %>
+  </div>
+  <div class="notice__inner">
+
+    <div class="notice__head">
+      <div class="notice__user_image">
+        <%= link_to profile_user_path(visitor) do %>
+          <%= attachment_image_tag visitor, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md" %>
+        <% end %>
+      </div>
+      <div class="ellipsis_v" >
+        <i class="fas fa-ellipsis-v ellipsis_v__icon"></i>
+        <div class="option_modal">
+        	<%= link_to notification_path(notification), method: :delete, remote: true, class: "btn__recruit_delete" do %>
+        	  <i class="fas fa-trash-alt"></i>
+        	  <span>削除する</span>
+        	<% end %>
+        </div>
       </div>
     </div>
+    <div class="notice__form">
+      <%= notification_form(notification) %>
+      <small><%= " (#{time_ago_in_words(notification.created_at)}前)" %></small>
+    </div>
+    <% if !@comment.nil? %>
+      <p class="notice__comment"><%= @comment %></p>
+    <% end %>
   </div>
-  <% if !@comment.nil? %>
-    <p class="notice__comment"><%= @comment %></p>
-  <% end %>
 </li>

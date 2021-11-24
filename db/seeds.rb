@@ -65,104 +65,71 @@ PlayForm.create!(
     }
   ])
 
-user = User.new(
-  email: "shimeji@test.com",
-  nickname: "舞茸しめじ",
-  introduction: "よろしくお願いいたします",
-  password: "test123",
-  )
-user.save!
+# user = User.new(
+#   email: "maitake@test.com",
+#   nickname: "マイタケ",
+#   introduction: "初心者です！よろしくお願いいたします！",
+#   password: "test123",
+#   )
+# user.save!
 
-user = User.new(
-  email: "matutake@test.com",
-  nickname: "まつたけえのき",
-  introduction: "よろしくお願いいたします",
-  password: "test456",
-  )
-user.save!
+# user = User.new(
+#   email: "shimeji@test.com",
+#   nickname: "シメジ",
+#   introduction: "楽しくボードゲームで遊びましょう！",
+#   password: "test456",
+#   )
+# user.save!
 
-user = User.new(
-  email: "hiratake@test.com",
-  nickname: "平茸なめこ",
-  introduction: "よろしくお願いいたします",
-  password: "test789",
-  )
-user.save!
+# user = User.new(
+#   email: "matutake@test.com",
+#   nickname: "マツタケ",
+#   introduction: "GMには自身があります！ぜひ初心者の方も参加してみてください。",
+#   password: "test789",
+#   )
+# user.save!
 
-user = User.new(
-  email: "buna@test.com",
-  nickname: "ブナシメジ",
-  introduction: "よろしくお願いいたします",
-  password: "test101",
-  )
-user.save!
+# user = User.new(
+#   email: "enoki@test.com",
+#   nickname: "エノキ",
+#   introduction: "よろしくお願いいたします",
+#   password: "test101",
+#   )
+# user.save!
 
-user = User.new(
-  email: "kaen@test.com",
-  nickname: "カエンダケ",
-  introduction: "よろしくお願いいたします",
-  password: "test111",
-  )
-user.save!
+# user = User.new(
+#   email: "kaen@test.com",
+#   nickname: "カエンダケ",
+#   introduction: "よろしくお願いいたします",
+#   password: "test111",
+#   )
+# user.save!
 
-user = User.new(
-  email: "tengu@test.com",
-  nickname: "テングダケ",
-  introduction: "よろしくお願いいたします",
-  password: "test121",
-  )
-user.save!
-user = User.new(
-  email: "tengu1@test.com",
-  nickname: "1ダケ",
-  introduction: "よろしくお願いいたします",
-  password: "test121",
-  )
-user.save!
-user = User.new(
-  email: "tengu2@test.com",
-  nickname: "2テングダケ",
-  introduction: "よろしくお願いいたします",
-  password: "test121",
-  )
-user.save!
-user = User.new(
-  email: "tengu3@test.com",
-  nickname: "3テングダケ",
-  introduction: "よろしくお願いいたします",
-  password: "test121",
-  )
-user.save!
-
-
-10.times do |n|
-  Recruit.create!(
-    user_id: 1,
-    title: "マダミス#{n}",
-    start_time: "2021-11-07 02:11:00",
-    time_required: 2,
-    capacity: 1,
-    explanation: "募集中です",
-    discord_server_link: "https://discord"
-  )
-end
-10.times do |n|
-  Recruit.create!(
-    user_id: 2,
-    title: "ボドゲ#{n}",
-    start_time: "2021-11-08 02:11:00",
-    time_required: 4,
-    capacity: 1,
-    explanation: "募集中です",
-    discord_server_link: "https://discord"
-  )
-end
-
-100.times do |n|
-  Evaluation.create!(
-    reviewer_id: 1,
-    reviewee_id: 5,
-    stars: 4.5,
-    comment: "テスト"
-  )
-end
+# user = User.new(
+#   email: "tengu@test.com",
+#   nickname: "テングダケ",
+#   introduction: "よろしくお願いいたします",
+#   password: "test121",
+#   )
+# user.save!
+# user = User.new(
+#   email: "hiratake@test.com",
+#   nickname: "ヒラタケ",
+#   introduction: "よろしくお願いいたします",
+#   password: "test121",
+#   )
+# user.save!
+# user = User.new(
+#   email: "nameko@test.com",
+#   nickname: "ナメコ",
+#   introduction: "よろしくお願いいたします",
+#   password: "test121",
+#   )
+# user.save!
+# user = User.new(
+#   email: "buna@test.com",
+#   nickname: "ブナシメジ",
+#   introduction: "よろしくお願いいたします",
+#   password: "test121",
+#   )
+# user.save!

@@ -1,0 +1,90 @@
+/******************************************************************
+
+Stylesheet: サイトマップ関連のCSS
+
+******************************************************************/
+.site_map_tab {
+  width: 100%;
+  & .tab_switch {
+    display: none;
+  }
+  & .tab_item {
+    display: block;
+    float: left;
+    width: calc(100%/4);
+    height: 50px;
+    text-align: center;
+    position: relative;
+    border-left: 1px solid $cBorder;
+    border-bottom: 1px solid $cBorder;
+    margin-bottom: 20px;
+    line-height: 50px;
+  }
+
+  & li:last-child {
+    border: none;
+  }
+
+  &__content {
+    display: none;
+  }
+
+  #item_general:checked ~ .area__site_map > #general_content,
+  #item_recruit:checked ~ .area__site_map > #recruit_content,
+  #item_reserve:checked ~ .area__site_map > #reserve_content,
+  #item_review:checked ~ .area__site_map > #review_content {
+    display: block;
+  }
+
+  #item_general:checked,
+  #item_recruit:checked,
+  #item_reserve:checked,
+  #item_review:checked {
+    & + .tab_item {
+      background: $cSubBase;
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+}
+
+.area__site_map {
+  margin: 0 auto;
+}
+
+.site {
+  &__map_title {
+    border-bottom: 5px solid $cSubBase;
+    margin-bottom: 20px;
+  }
+
+  &__map_img {
+    width: 100%;
+    border: 1px solid $cBorder;
+    margin-bottom: 20px;
+    &.half {
+      width: 50%;
+    }
+  }
+
+  &__wrapper {
+    border-radius: 8px;
+    padding: 10px;
+    background: #F7F9F9;
+    margin-bottom: 20px;
+  }
+
+  &__explanation_table {
+    @extend .font-sr;
+    & tr {
+      border-bottom: 1px dotted $cBorder;
+    }
+    & th {
+      text-align: left;
+      width: 30%;
+    }
+    & td {
+      padding: 10px 0;
+    }
+  }
+}

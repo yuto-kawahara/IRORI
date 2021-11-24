@@ -1,7 +1,13 @@
+/******************************************************************
+
+Stylesheet: 検索窓関連のCSS
+
+******************************************************************/
 .result_item {
   position: relative;
-  border: 1px solid #DDD;
+  border: 1px solid $cBorder;
   cursor: pointer;
+  background: #fff;
   &:before {
     content: "";
     position: absolute;

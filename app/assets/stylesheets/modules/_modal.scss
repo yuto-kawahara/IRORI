@@ -1,4 +1,10 @@
-#modal {
+/******************************************************************
+
+Stylesheet: モーダル関連のCSS
+
+******************************************************************/
+#modal,
+#modal_image {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -37,7 +43,7 @@
   visibility: hidden;
 
   &.hidden {
-    z-index: 10;
+    z-index: 50;
     opacity: 1;
     visibility: visible;
   }
@@ -54,5 +60,22 @@
   &.hidden {
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+.target_image {
+  position: absolute;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  transition: 0.5s ease-out;
+  z-index: 999;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
   }
 }

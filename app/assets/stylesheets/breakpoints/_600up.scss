@@ -9,6 +9,12 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   padding-left: 0;
   transform: translateX(0vw);
   z-index: 996;
+
+  & .side_menu {
+    & .hidden {
+      display: block;
+    }
+  }
 }
 
 #main_area {
@@ -21,7 +27,7 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 }
 
 .area {
-  width: 80vw;
+  width: 85vw;
 }
 
 .icon_lg {
@@ -55,7 +61,7 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   }
 
   &__recruit {
-    margin-top: 30vh;
+    margin-top: 25vh;
     & span {
       display: none;
     }
@@ -102,32 +108,20 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   & .status_expired {
     font-size: 3.5em;
   }
+  & .recruit_date {
+    align-items: flex-start;
+    flex-direction: row;
+    align-items: flex-end
+  }
 }
 
 .recruit_detail_table {
   & th {
     width: 25%;
-    padding: 10px;
-    & div {
-      display: flex;
-      align-items: center;
-      border-radius: 30px;
-      padding: 5px 5px 5px 35px;
-      background: $cSubBase;
-      color: #fff;
-    }
-    & p {
-      display: inline-block;
-    }
-    & span {
-      display: flex;
-      width: 27px;
-      height: 27px;
-      border-radius: 50%;
-      color: #fff;
-      align-items: center;
-      justify-content: center;
-      margin-right: 5px;
-    }
+    padding: 6px;
   }
+}
+
+.target_image {
+  width: 60%;
 }

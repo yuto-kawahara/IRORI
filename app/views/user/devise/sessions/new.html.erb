@@ -1,17 +1,18 @@
 <div id="top_wrapper">
   <div class="top_img top_img__login"></div>
   <div class="top_section">
+    <img src="/images/site-logo.png" alt="サイトロゴ" class="top_site_logo">
     <h2>ログイン</h2>
     <p class="input_valid"><%= flash[:alert] %></p>
     <%= form_with model: @user, url: user_session_path, local: true, class: "account_form" do |f| %>
       <div class="post_control">
         <%= f.label :email, "メールアドレス" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, placeholder: "\uf0e0", autocomplete: "email" %>
       </div>
 
       <div class="post_control">
         <%= f.label :password, "パスワード" %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.password_field :password, placeholder: "\uf023", autocomplete: "current-password" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
@@ -25,12 +26,16 @@
         <%= f.submit "ログイン", class: "btn btn__login" %>
       </div>
     <% end %>
-    <div class="post_control">
-      <p>会員登録がお済でない方</p>
+
+    <div class="account_control">
+      <h5>会員登録がお済でない方</h5>
       <%= render "user/devise/shared/links" %>
     </div>
-    <div class="post_control">
-      <%= link_to "ゲストログイン(閲覧用)", users_guest_login_path, method: :post, class: "btn" %>
+    <div class="account_control">
+      <h5>1日体験してみたい方はゲストログインが便利です</h5>
+      <div>
+        <%= link_to "ゲストログイン(閲覧用)", users_guest_login_path, method: :post, class: "btn" %>
+      </div>
     </div>
   </div>
 </div>

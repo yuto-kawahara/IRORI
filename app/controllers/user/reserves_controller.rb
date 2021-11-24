@@ -6,7 +6,7 @@ class User::ReservesController < ApplicationController
   before_action :confirm_access_restrictions, only: [:confirm, :complete]
 
   def create
-    @reserve = @recruit.reserves.create(user_id: current_user.id)
+    @reserve = Reserve.create(user_id: current_user.id, recruit_id: @recruit.id)
     # 予約時に予約ステータスを返信待ちに更新
     @reserve.update_attributes(reserve_status: "wait_reserve")
     # 予約されたことを投稿主に通知する
@@ -20,7 +20,7 @@ class User::ReservesController < ApplicationController
   end
 
   def destroy
-    @reserve = @recruit.reserves.find_by(user_id: current_user.id)
+    @reserve = Reserve.find_by(user_id: current_user.id, recruit_id: @recruit.id)
     @reserve.destroy
     # 予約キャンセルされたことを投稿主に通知する
     create_notification(current_user,
@@ -34,16 +34,6 @@ class User::ReservesController < ApplicationController
 
   def update
     @reserve = Reserve.find(params[:id])
-    @reserves = @recruit.reserves
-
-    remain_few = (@recruit.capacity * 0.7).floor
-    remain_last = (@recruit.capacity * 0.9).floor
-
-    # 予約数が募集人員の7～9割以内に到達した時に募集ステータスを"残り僅か"に更新
-    if (@reserves.count >= remain_few) && (@reserves.count <= remain_last)
-      @recruit.update_attributes(recruit_status: "few_recruit")
-    end
-
     status = params[:status]
     case status
       when "approve_reserve" then
@@ -51,10 +41,23 @@ class User::ReservesController < ApplicationController
       when "reject_reserve" then
         @reserve.update_attributes(reserve_status: "reject_reserve")
     end
+
+    @reserves = @recruit.reserves
+    reserves_count = @reserves.where(reserve_status: "approve_reserve").count
+
+    few_remain = (@recruit.capacity * 0.5).floor
+    last_remain = (@recruit.capacity * 0.9).floor
+
+    # 予約数が募集人員の7～9割以内に到達した時に募集ステータスを"残り僅か"に更新
+    if (reserves_count > few_remain) && (reserves_count <= last_remain)
+      @recruit.update_attributes(recruit_status: "few_recruit")
+    elsif reserves_count <= @recruit.capacity
+      @recruit.update_attributes(recruit_status: "now_recruit")
+    end
   end
 
   def waiting
-    @reserves = @recruit.reserves
+    @reserves = @recruit.reserves.includes(:user)
   end
 
   def confirm
@@ -63,6 +66,7 @@ class User::ReservesController < ApplicationController
 
   def complete
     @reserves = Reserve.where(recruit_id: @recruit.id, reserve_status: "approve_reserve")
+    @reject_reserves = Reserve.where(recruit_id: @recruit.id, reserve_status: "reject_reserve")
     @recruit.update_attributes(recruit_status: "end_recruit")
     @reserves.each do |reserve|
       user = reserve.user
@@ -71,6 +75,18 @@ class User::ReservesController < ApplicationController
       # 予約確定時に全参加者にサーバーリンクを送信する
       room_create_search(current_user, user, message, "broadcast")
     end
+    if @reject_reserves.present?
+      @reject_reserves.each do |reserve|
+        user = reserve.user
+        message = "予約が拒否されました\nまたの機会にご利用ください"
+        # 予約確定時に予約拒否した相手に拒否した旨を送信する
+        room_create_search(current_user, user, message, "broadcast")
+      end
+      # 予約確定時に拒否したユーザーの予約を削除する
+      @reject_reserves.destroy_all
+    end
+    # 予約確定時に投稿主のレベルアップ
+    Experience.level_up(current_user)
   end
 
   private
@@ -81,7 +97,7 @@ class User::ReservesController < ApplicationController
 
   def confirm_access_restrictions
     if @recruit.recruit_status == "end_recruit"
-      redirect_to reserve_list_recruit_path(@recruit.id)
+      redirect_to recruit_path(@recruit.id)
     end
   end
 end

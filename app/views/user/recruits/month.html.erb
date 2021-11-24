@@ -1,0 +1,16 @@
+<div id="wrapper">
+  <div class="head_link">
+    <h2 class="head_link__title">募集</h2>
+  </div>
+  <%= render 'user/recruits/calendar_tab' %>
+  <div class="area area__recruit_calendar">
+    <%= month_calendar events: @recruits do |date, recruits| %>
+      <%= date.day %>
+      <div  class="event_count">
+        <% unless recruits.blank? %>
+          <%= link_to "#{recruits.count}件", schedule_recruits_path(:date => date) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

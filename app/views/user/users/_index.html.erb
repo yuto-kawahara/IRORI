@@ -1,6 +1,6 @@
 <% unless users.blank? %>
   <div class="follow_list">
-    <%= render 'list', users: users %>
+    <%= render 'user/users/list', users: users %>
   </div>
   <%= paginate users %>
   <%= render 'layouts/loader' %>

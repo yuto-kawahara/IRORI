@@ -1,19 +1,16 @@
 class User::RecruitsController < ApplicationController
-  before_action :ensure_correct_recruit, except: [:new, :index, :create, :schedule]
+  before_action :ensure_correct_recruit, except: [:new, :create, :schedule, :today, :week, :month]
   before_action :set_app_requirements, only: [:new, :create, :edit]
 
   def new
     @recruit = Recruit.new
   end
 
-  def index
-    @recruits = Recruit.valid
-  end
-
   def show
     @recruit_comment = RecruitComment.new
     @recruit_comments = @recruit.recruit_comments.valid.includes(:user)
     @reserve = Reserve.new
+    @reserve_count = @recruit.reserves.where(reserve_status: "approve_reserve").count
     @entry_list = @recruit.entry_conditions
     @form_list = @recruit.play_forms
   end
@@ -24,6 +21,7 @@ class User::RecruitsController < ApplicationController
   def update
     play_form_ids = params[:recruit][:play_form_ids]
     entry_condition_ids = params[:recruit][:entry_condition_ids]
+    start_time = params[:recruit][:start_time]
 
     if @recruit.update(recruit_params)
       if play_form_ids.blank?
@@ -32,9 +30,14 @@ class User::RecruitsController < ApplicationController
       if entry_condition_ids.blank?
         RecruitEntryCondition.bulk_create(@recruit.id, entry_condition_ids)
       end
+      # 更新した開始日程が現在時刻以上の場合、"募集中"に更新する
+      if start_time >= Time.current
+        @recruit.update_attributes(recruit_status: "now_recruit")
+      end
       redirect_to recruit_path
     else
-      render :edit
+      create_input_valid(@recruit.errors)
+      redirect_to edit_recruit_path
     end
 
   end
@@ -81,8 +84,25 @@ class User::RecruitsController < ApplicationController
   def schedule
     date = params[:date]
     @recruits = Recruit.where(start_time: date.in_time_zone.all_day)
-    @recruits = @recruits.includes(:user, :entry_conditions, :play_forms)
+    @recruits = @recruits.includes(:user, :play_forms)
     @recruits = @recruits.valid.order(start_time: :desc).page(params[:page])
+  end
+
+  def today
+    @recruits = Recruit.includes(:user, :play_forms)
+    @recruits = @recruits.where(start_time: Time.current.in_time_zone.all_day)
+    @recruits = @recruits.where.not(recruit_status: "expired_recruit")
+    @recruits = @recruits.valid.order(start_time: :desc).page(params[:page])
+  end
+
+  def week
+    @recruits = Recruit.valid
+    @recruits = @recruits.where.not(recruit_status: "expired_recruit")
+  end
+
+  def month
+    @recruits = Recruit.valid
+    @recruits = @recruits.where.not(recruit_status: "expired_recruit")
   end
 
   private

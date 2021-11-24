@@ -16,13 +16,15 @@
           <%= attachment_image_tag message.user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_lr" %>
         <% end %>
       </div>
-      <div class="says">
-        <p class="message prewrap"><%= content %></p>
+      <div class="message_inner">
+        <div class="says">
+          <p class="message prewrap"><%= content %></p>
+        </div>
+        <small>
+          <%= "#{message.user.nickname}・" %>
+          <%= message.created_at.strftime("%Y/%m/%d %H:%M") %>
+        </small>
       </div>
     </div>
-    <small>
-      <%= "#{message.user.nickname}・" %>
-      <%= message.created_at.strftime("%Y/%m/%d %H:%M") %>
-    </small>
   </div>
 </li>

@@ -1,3 +1,8 @@
+/******************************************************************
+
+Stylesheet: ローダー関連のCSS
+
+******************************************************************/
 @mixin animation(
   $name,
   $duration: 1s,
@@ -19,39 +24,90 @@
 }
 
 .rect-spinner {
-  margin: 40px auto;
-  width: 50px;
-  height: 40px;
-  text-align: center;
-  letter-spacing: 0px;
-
-  & > div {
-    background-color: #333;
-    height: 100%;
-    width: 6px;
-    display: inline-block;
-    @include animation(
-      $name: sk-stretchdelay,
-      $duration: 1.2s,
-      $iteration-count: infinite,
-      $timing-function: ease-in-out
-    );
-
-    @for $i from 1 through 5 {
-      &:nth-child(#{$i}) {
-        animation-delay: -1.3s + $i * 0.1s;
-      }
-    }
+  font-size: 10px;
+  margin: 50px auto;
+  text-indent: -9999em;
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  background: $cBase;
+  background: linear-gradient(to right, $cBase 10%, rgba(135,192,64, 0) 42%);
+  position: relative;
+  @include animation(
+    $name: load3,
+    $duration: 1.4s,
+    $iteration-count: infinite,
+    $timing-function: linear
+  );
+  transform: translateZ(0);
+  &:before {
+    width: 50%;
+    height: 50%;
+    background: $cBase;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
   }
-
-  @keyframes sk-stretchdelay {
-    0%,
-    40%,
-    100% {
-      transform: scaleY(0.4);
-    }
-    20% {
-      transform: scaleY(1);
-    }
+  &:after {
+    background: #fff;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
   }
 }
+
+@keyframes load3 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// .rect-spinner {
+//   margin: 40px auto;
+//   width: 50px;
+//   height: 40px;
+//   text-align: center;
+//   letter-spacing: 0px;
+
+//   & > div {
+//     background-color: #87c040;
+//     height: 100%;
+//     width: 6px;
+//     display: inline-block;
+//     @include animation(
+//       $name: sk-stretchdelay,
+//       $duration: 1.2s,
+//       $iteration-count: infinite,
+//       $timing-function: ease-in-out
+//     );
+
+//     @for $i from 1 through 5 {
+//       &:nth-child(#{$i}) {
+//         animation-delay: -1.3s + $i * 0.1s;
+//       }
+//     }
+//   }
+
+//   @keyframes sk-stretchdelay {
+//     0%,
+//     40%,
+//     100% {
+//       transform: scaleY(0.4);
+//     }
+//     20% {
+//       transform: scaleY(1);
+//     }
+//   }
+// }

@@ -16,7 +16,18 @@
         </div>
       <% end %>
     </div>
-    <p class="profile_name"><%= @user.nickname %></p>
+    <p class="profile_name">
+      <%= @user.nickname %>
+      <% if @user.level < User::BRONZE_LEVEL %>
+        <span class="profile_level regular_level"><i class="fas fa-medal"></i>Lv.<%= @user.level %></span>
+      <% elsif @user.level >= User::BRONZE_LEVEL && @user.level < User::SILVER_LEVEL %>
+        <span class="profile_level bronze_level"><i class="fas fa-medal"></i>Lv.<%= @user.level %></span>
+      <% elsif @user.level >= User::SILVER_LEVEL && @user.level < User::GOLD_LEVEL %>
+        <span class="profile_level silver_level"><i class="fas fa-medal"></i>Lv.<%= @user.level %></span>
+      <% else %>
+        <span class="profile_level gold_level"><i class="fas fa-medal"></i>Lv.<%= @user.level %></span>
+      <% end %>
+    </p>
     <p class="profile_intro"><%= @user.introduction %></p>
     <%= render 'user/relationships/follow_count', user: @user %>
   </div>

@@ -1,6 +1,6 @@
 class Recruit < ApplicationRecord
   scope :valid,  -> { where(user_id: User.valid) }
-  scope :following_user_recruit, -> (user) { where(user_id: [user.id, user.following_user.valid]) }
+  scope :following_user_recruit, -> (user) { where(user_id: user.following_user.valid) }
   scope :status, -> (status) { where(recruit_status: status) }
   scope :sorted, -> { order(created_at: :desc) }
   scope :closed, -> { where(recruit_status: "end_recruit") }
@@ -42,23 +42,34 @@ class Recruit < ApplicationRecord
       @recruits.each do |recruit|
         if recruit.start_time < Time.current
           recruit.update_attributes(recruit_status: "expired_recruit")
+          recruit.reserves.destroy_all
         end
       end
     end
   end
 
-  # 募集日時の前日のAM8:00にリマインドを一斉送信
   def self.remind_user
     @recruits = Recruit.where(recruit_status: "end_recruit")
     if @recruits.present?
       @recruits.each do |recruit|
-        if (recruit.start_time - 1) < Time.current
+        # 募集日時が今日の場合はすぐにリマインドを送信
+        if recruit.start_time.between?(Time.zone.today.beginning_of_day, Time.zone.today.end_of_day)
           reserves = recruit.reserves
           reserves.each do |reserve|
-            message = "「#{recruit.title}」の前日リマインドです。\nサーバーにまだ入室していない場合は入室してください。"
+            message = "「#{recruit.title}」のリマインドです。\nサーバーにまだ入室していない場合は入室してください。"
             User::MessagesController.helpers.room_create_search(recruit.user, reserve.user, message, "broadcast")
           end
           recruit.update_attributes(recruit_status: "reminded_recruit")
+        elsif (recruit.start_time - 1) < Time.current
+          # 募集日時の前日のAM8:00にリマインドを一斉送信
+          if Time.current.time >= "8:00"
+            reserves = recruit.reserves
+            reserves.each do |reserve|
+              message = "「#{recruit.title}」の前日リマインドです。\nサーバーにまだ入室していない場合は入室してください。"
+              User::MessagesController.helpers.room_create_search(recruit.user, reserve.user, message, "broadcast")
+            end
+            recruit.update_attributes(recruit_status: "reminded_recruit")
+          end
         end
       end
     end

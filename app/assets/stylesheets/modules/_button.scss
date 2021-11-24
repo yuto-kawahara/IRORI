@@ -1,3 +1,8 @@
+/******************************************************************
+
+Stylesheet: ボタン関連のCSS
+
+******************************************************************/
 .btn {
   @extend .font-md;
   display: inline-block;
@@ -100,9 +105,12 @@
     justify-content: space-around;
     width: 40px;
     height: 40px;
+    margin: 0;
     margin-right: 20px;
   }
-
+  &__message {
+    margin-right: 10px;
+  }
   &__new_report {
     position: fixed;
     bottom: 10vh;
@@ -142,6 +150,10 @@
     & span {
       display: none;
     }
+    &.no_active {
+      background: #CCC;
+      pointer-events: none;
+    }
   }
   &__comment_delete {
     position: absolute;
@@ -160,8 +172,12 @@
     font-size: 1em;
     padding: 0;
   }
+  &__sending,
   &__submit {
-    @extend .font-lr;
     width: auto;
+    &.no_active {
+      background: #CCC;
+      pointer-events: none;
+    }
   }
 }

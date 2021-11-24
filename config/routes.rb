@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   scope module: :user do
     devise_for :users, skip: :all
     devise_scope :user do
@@ -14,13 +13,17 @@ Rails.application.routes.draw do
       post   'users/password'      => 'devise/passwords#create'
       post   'users/guest_login'   => 'devise/sessions#guest_login'
     end
-
     root to: 'homes#top'
     get  '/home'      => 'homes#home'
     get  '/setting'   => 'homes#setting'
     get  '/help'      => 'homes#help'
     get  '/contact'   => 'homes#contact'
     post '/send/mail' => 'homes#send_mail'
+
+    get '/news/:id' => 'news#show', as: :news
+
+    get '/search/user'    => 'searches#user'
+    get '/search/recruit' => 'searches#recruit'
 
     resources :users, param: :nickname, only: [:update] do
       collection do
@@ -36,9 +39,12 @@ Rails.application.routes.draw do
       resources :evaluations, only: [:new, :index, :create, :destroy]
     end
 
-    resources :recruits do
+    resources :recruits, except: [:index] do
       collection do
         get 'schedule'
+        get 'schedule/today' => 'recruits#today'
+        get 'schedule/week'  => 'recruits#week'
+        get 'schedule/month' => 'recruits#month'
       end
       resources :recruit_comments, only: [:edit, :update, :create, :destroy]
       resource :reserves, only: [:create, :destroy] do
@@ -47,9 +53,9 @@ Rails.application.routes.draw do
         end
       end
     end
-
-    resources :evaluations, only: [:show]
     get '/evaluations' => 'evaluations#other_index', as: :other_user_evaluations
+    get '/evaluations/search' => 'evaluations#search'
+    resources :evaluations, only: [:show]
     resources :reserves, only: [:update]
     resources :notifications, only: [:index, :destroy]
     resources :messages, only: [:create, :destory, :index, :show]

@@ -1,5 +1,9 @@
 class User < ApplicationRecord
-  scope :valid,  -> { where(user_status: "valid_user") }
+  BRONZE_LEVEL   = 10  # ブロンズ会員
+  SILVER_LEVEL   = 30  # シルバー会員
+  GOLD_LEVEL     = 50  # ゴールド会員
+
+  scope :valid,  -> { where(user_status: ["valid_user", "guest_user"]) }
   scope :sorted, -> { order(created_at: :desc) }
   scope :not_current, -> (user) { where.not(id: user.id) }
 
@@ -16,6 +20,7 @@ class User < ApplicationRecord
   has_many :rooms,                 through: :user_rooms
   has_many :discord_server_links,  dependent: :destroy
   has_many :contacts,              dependent: :destroy
+  has_many :experiences,           dependent: :destroy
 
   has_many :following,             class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
   has_many :followed,              class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -54,6 +59,10 @@ class User < ApplicationRecord
     nickname
   end
 
+  def level
+    level = Experience.find_or_create_by!(user_id: id).level
+  end
+
   # ゲストログイン時にまだゲストユーザーが作成されていない場合は作成し、
   # ゲストユーザーが作成されている場合はそのままログインする
   def self.guest
@@ -66,9 +75,9 @@ class User < ApplicationRecord
 
   # 毎日0:00にゲストユーザーを削除する
   def self.guest_delete
-    user = User.where(email: 'guest@example.com')
+    user = User.find_by(user_status: "guest_user")
     if user.present?
-      user.destroy_all
+      user.destroy
     end
   end
 

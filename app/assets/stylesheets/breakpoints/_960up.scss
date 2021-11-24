@@ -6,6 +6,9 @@ Stylesheet: 960px以上のタブレットやモニタで適用
 .font-sm {
   font-size: .7em;
 }
+.font-sr {
+  font-size: .9em;
+}
 .font-md {
   font-size: 1.0em;
 }
@@ -19,6 +22,7 @@ Stylesheet: 960px以上のタブレットやモニタで適用
 .icon_sm {
   width: 40px;
   height: 40px;
+  font-size: 2.5em;
 }
 .icon_md {
   width: 50px;
@@ -39,20 +43,32 @@ Stylesheet: 960px以上のタブレットやモニタで適用
 
 #side_area {
   width: 20vw;
+  z-index: 49;
 }
 
 #main_area {
+  display: flex;
+  align-items: flex-end;
   width: 60vw;
-  min-height: 100vh;
   margin-left: 20vw;
 }
 
+#wrapper {
+  position: relative;
+  width: 40vw;
+  padding-bottom: 10vh;
+}
+
+#right_side_area {
+  display: block;
+}
+
 .area {
-  width: 55vw;
+  width: 36vw;
 }
 
 .comment_form_area {
-  width: 60vw;
+  width: 40vw;
 }
 
 
@@ -68,7 +84,7 @@ Stylesheet: 960px以上のタブレットやモニタで適用
     }
   }
   &__new_report {
-    right: 21vh;
+    right: 63vh;
   }
 }
 
@@ -98,4 +114,12 @@ Stylesheet: 960px以上のタブレットやモニタで適用
 }
 .account_form {
   width: 50%;
+}
+
+.target_image {
+  width: 40%;
+}
+
+.mobile_hidden {
+  display: none;
 }

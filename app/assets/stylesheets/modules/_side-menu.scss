@@ -1,3 +1,8 @@
+/******************************************************************
+
+Stylesheet: サイドメニュー関連のCSS
+
+******************************************************************/
 .navigation {
   width: 100%;
   height: 100%;
@@ -17,10 +22,15 @@
   & .side_menu {
     padding-top: 3vh;
 
+    & .hidden {
+      display: none;
+    }
+
     &__list {
       list-style: none;
       width: 100%;
       border-radius: 20px 0 0 20px;
+      padding-left: 8px;
     }
     &__link {
       position: relative;
@@ -75,12 +85,13 @@
     line-height: 60px;
   }
 
-  & .notice_icon[data-notice="false"]::before {
-    display: none;
-  }
-
   & .notice_icon {
-    &::before {
+    &.read {
+      &:before {
+        display: none;
+      }
+    }
+    &:before {
       @extend .font-md;
       display: flex;
       justify-content: center;

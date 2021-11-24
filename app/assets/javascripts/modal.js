@@ -1,19 +1,18 @@
 /*global $*/
 $(document).on('turbolinks:load', function () {
+  var target = $('.list');
   var cover = $('#cover');
   var ellipsis_h = $('.ellipsis_h');
-  var ellipsis_v = $('.ellipsis_v');
 
   ellipsis_h.click(function() {
     cover.addClass("hidden");
     $('.recruit_change_area').toggleClass("open");
   });
 
-  ellipsis_v.click(function() {
+  target.on('click', '.ellipsis_v', function() {
     cover.addClass("hidden");
-    $(this).find('.option_modal').toggleClass("open");
+    $(this).find('.option_modal').addClass("open");
   });
-
 
   cover.click(function() {
     cover.removeClass("hidden");

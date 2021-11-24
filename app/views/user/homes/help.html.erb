@@ -1,12 +1,34 @@
 <div id="wrapper">
-  <div class="inner">
-    <div class="head_link">
-      <span class="head_link__inner">
-        <%= link_to setting_path, class: "btn btn__back" do %>
-          <i class="fas fa-arrow-left"></i>
-        <% end %>
-        <h2 class="head_link__title">ヘルプ</h2>
-      </span>
+  <div class="head_link">
+    <span class="head_link__inner">
+      <%= link_to setting_path, class: "btn btn__back" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+      <h2 class="head_link__title">ヘルプ</h2>
+    </span>
+  </div>
+  <div class="site_map_tab">
+    <input id="item_general" type="radio" name="tab_item" class="tab_switch" checked="checked" />
+    <label class="tab_item" for="item_general">全般</label>
+    <input id="item_recruit" type="radio" name="tab_item" class="tab_switch" />
+    <label class="tab_item" for="item_recruit">募集</label>
+    <input id="item_reserve" type="radio" name="tab_item" class="tab_switch" />
+    <label class="tab_item" for="item_reserve">予約</label>
+    <input id="item_review" type="radio" name="tab_item" class="tab_switch" />
+    <label class="tab_item" for="item_review">卓報告</label>
+    <div class="area area__site_map">
+      <div class="site_map_tab__content" id="general_content">
+        <%= render 'general' %>
+      </div>
+      <div class="site_map_tab__content" id="recruit_content">
+        <%= render 'recruit' %>
+      </div>
+      <div class="site_map_tab__content" id="reserve_content">
+        <%= render 'reserve' %>
+      </div>
+      <div class="site_map_tab__content" id="review_content">
+        <%= render 'review' %>
+      </div>
     </div>
   </div>
 </div>

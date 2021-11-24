@@ -6,6 +6,9 @@ Stylesheet: ベーススタイル
 .font-sm {
   font-size: .7em;
 }
+.font-sr {
+  font-size: .8em;
+}
 .font-md {
   font-size: .9em;
 }
@@ -19,6 +22,7 @@ Stylesheet: ベーススタイル
 .icon_sm {
   width: 25px;
   height: 25px;
+  font-size: 1.5em;
 }
 .icon_md {
   width: 30px;
@@ -35,10 +39,9 @@ Stylesheet: ベーススタイル
 
 body {
   letter-spacing: 0.125em;
-  // font-family: ronde-b, sans-serif;
-  font-family: 'Noto Sans JP', sans-serif;
-  // font-family: 'Kaisei Decol', serif;
+  font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, Helvetica, Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, sans-serif;
   overflow-y: scroll;
+  background: #EFF3F4;
 }
 
 a {
@@ -66,18 +69,75 @@ li {
   z-index: 998;
   background: #fff;
   transition: all .3s;
+  border-left: 1px solid $cBorder;
   &.open {
     transform: translateX(0vw);
   }
 }
 
+#right_side_area {
+  display: none;
+  width: 20vw;
+  z-index: 49;
+  background: #fff;
+  position: sticky;
+  bottom: 10vh;
+
+  & .news {
+    width: 18vw;
+    margin: 0 auto;
+    &__head {
+      margin-bottom: 15px;
+    }
+    &__list {
+      margin: 10px 0;
+      background: #F7F9F9;
+      border-radius: 8px;
+      padding: 5px 10px;
+    }
+    &__item {
+      margin-bottom: 20px;
+      &:hover {
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+    }
+    & li:last-child {
+      margin-bottom: 0;
+    }
+    &__inner {
+      display: flex;
+    }
+    &__title {
+      font-size: .8em;
+    }
+    &__image {
+      width: 35%;
+      height: fit-content;;
+      border-radius: 8px;
+    }
+    &__publish {
+      @extend .font-sm;
+      color: #787878;
+    }
+  }
+
+}
+
 #main_area {
   position: relative;
-  border: 1px solid #DDD;
+  border: 1px solid $cBorder;
   width: 100%;
   min-height: 100vh;
   margin-left: 0;
+  background: #fff;
+}
+
+#wrapper {
+  width: 100%;
+  min-height: 150vh;
   padding-bottom: 10vh;
+  border-right: 1px solid $cBorder;
 }
 
 #footer {
@@ -87,20 +147,20 @@ li {
   width: 100%;
   height: 10vh;
   background: #fff;
-  z-index: 995;
+  z-index: 49;
 }
 
 .list {
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   margin-top: 20px;
 }
 
 .item {
   @extend .font-md;
   position: relative;
-  border: 1px solid #DDDDDD;
-  padding: 10px;
+  border: 1px solid $cBorder;
   margin-bottom: 20px;
+  padding: 10px;
   border-radius: 8px;
   transition: all .3s;
   background: #fff;
@@ -143,7 +203,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid $cBorder;
   padding: 10px 10px 10px 41px;
   position: -webkit-sticky;
   position: sticky;
@@ -160,17 +220,39 @@ li {
   &__inner {
     display: flex;
     align-items: center;
+    width: 100%;
   }
 }
 
 .user_profile_inner {
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid $cBorder;
   padding: 20px;
 
   & .profile_name {
     @extend .font-lg;
     font-weight: bold;
     margin-bottom: 10px;
+  }
+  & .profile_level {
+    @extend .font-md;
+    color: #fff;
+    border-radius: 30px;
+    padding: 3px 10px;
+    font-weight: bold;
+    background: #b87333;
+
+    &.regular_level {
+      background: linear-gradient(135deg, #0291C9 37%, #01619C 100%);
+    }
+    &.bronze_level {
+      background: linear-gradient(135deg, #BA6E40 0%, #C08D5E 91%, #C08D5E 48%, #B87333 27%, #AE6938 82%, #C08D5E 79%, #976B2F 72%);
+    }
+    &.silver_level {
+      background: linear-gradient(135deg, #C9CACA 0%, #9FA0A0 91%, #AEB3B5 48%, #EEEEEE 27%, #B9C3C9 82%, #9EACB4 79%, #DBDBDB 72%);
+    }
+    &.gold_level {
+      background: linear-gradient(135deg, #b8751e 0%, #ffce08 91%, #FEF0B2 48%, #fafad6 27%, #fefeb2 82%, #e1ce08 79%, #b8751e 72%);
+    }
   }
   & .profile_intro {
     @extend .font-lr;
@@ -211,57 +293,111 @@ li {
 }
 
 .user_recruit_list {
-  & .item {
-    border: none;
+  & .item__recruit {
     padding: 0;
+
+    &.no_active {
+      background: $cBorder;
+    }
   }
 
-  & .recruit_content {
+  & .remain_tag {
+    @extend .font-sr;
+    width: 90px;
+    text-align: center;
+    background: #C93A40;
+    color: #fff;
+    padding: 4px 8px;
+    margin-right: 10px;
+
+    &.end {
+      background: #000;
+    }
+  }
+
+  & .year,
+  & .month,
+  & .day,
+  & .wday {
+    @extend .font-lr;
+    &__stu {
+      color: #0291C9;
+    }
+    &__sun {
+      color: #F53A33;
+    }
+  }
+
+  & .recruit_head {
+    font-weight: bold;
+    border-bottom: 1px solid $cBorder;
+    padding: 10px;
     display: flex;
     align-items: center;
-    padding: 10px;
-    border: 1px solid #DDD;
-    border-top: none;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-
-    & dl {
-      display: flex;
-      margin-bottom: 5px;
-      width: 100%;
-    }
-    & dt {
-      @extend .font-md;
-      font-weight: bold;
-      width: 34%;
-    }
-    & dd {
-      @extend .font-md;
-      display: flex;
-      align-items: center;
-      margin: 0;
-    }
-    & p {
-      @extend .font-md;
-      font-weight: bold;
+  }
+  & .recruit_date {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    &.no_active {
+      color: #8c8c8c;
     }
   }
-
-  & .recruit_status_area {
-    width: 25%;
-    margin-right: 10px;
-  }
-
-  & .user_post_info_area {
-    width: 90%;
-  }
-
-  & .icon_status {
+  & .recruit_poster {
+    @extend .font-sm;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-left: 10px;
+    padding-right: 20px;
   }
+  & .recruit_content {
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0 0 8px 8px;
+    &__wrapper {
+      padding: 10px;
+      display: flex;
+      border-radius: 0 0 8px 8px;
+      backdrop-filter: blur(5px);
+      background-color: rgba(15,15,15,0.5);
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    }
+    &.no_active {
+      filter: grayscale(100%);
+    }
+  }
+  & .recruit_title {
+    @extend .font-lg;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 15px;
+  }
+  & .recruit_play_form,
+  & .recruit_condition {
+    @extend .font-md;
+    font-weight: bold;
+    margin-bottom: 6px;
+    & div {
+      display: flex;
+    }
+  }
+  & .recruit_explanation {
+    @extend .font-sr;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+}
 
+.icon_status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   & ion-icon {
     font-size: 3em;
   }
@@ -307,27 +443,6 @@ li {
   & .status_reminded {
     color: #30ba4e;
   }
-
-  & .profile_area {
-    display: flex;
-    align-items: center;
-  }
-  & .recruit_title {
-    @extend .font-lg;
-    border-bottom: 1px solid #DDDDDD;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    padding: 10px;
-    font-weight: bold;
-    color: #fff;
-    background: $cSubBase;
-  }
-
-  & .recruit_date {
-    @include badge;
-    text-align: center;
-    background: #000;
-  }
 }
 
 .recruit_detail_table {
@@ -336,6 +451,7 @@ li {
   padding: 10px;
   border-collapse: collapse;
   background: #EFF3F4;
+  font-weight: bold;
 
   & .table_head {
     display: flex;
@@ -352,31 +468,36 @@ li {
     background: #fff;
     padding: 10px;
     box-shadow: 0px 0px 15px rgba(101, 119, 134, 20%);
+    font-weight: 500;
 
     &.open {
       visibility: visible;
       opacity: 1;
-      z-index: 11;
+      z-index: 51;
     }
   }
 
   & tr {
     text-align: left;
+    border-bottom: 2px dotted #fff;
   }
 
   & th {
+    & div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     & p {
-      @extend .font-md;
-      display: none;
+      @extend .font-sm;
       font-weight: bold;
     }
     & span {
-      @extend .font-md;
+      @extend .font-lr;
       display: flex;
-      width: 27px;
-      height: 27px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      color: #000;
       align-items: center;
       justify-content: center;
       margin-right: 5px;
@@ -386,13 +507,13 @@ li {
   & td {
     @extend .font-md;
     padding: 7px;
-    border-bottom: 2px dashed #fff;
   }
 
   & .recruit_img {
+    width: 200px;
     & > img {
-      width: 50%;
-      height: 50%;
+      width: 100%;
+      height: 100%;
       border-radius: 8px;
     }
   }
@@ -435,16 +556,47 @@ li {
 }
 
 .notice {
+  display: flex;
+  &__icon {
+    display: flex;
+    padding-top: 5px;
+    margin-right: 10px;
+    ion-icon, i {
+      @extend .icon_sm;
+    }
+    & .icon_follow {
+      color: #1D9BF0;
+    }
+    & .icon_comment {
+      color: #00BA7C;
+    }
+    & .icon_reserve {
+      color: #4C6EF5;
+    }
+    & .icon_cancel {
+      color: #F53A33;
+    }
+    & .icon_message {
+      color: #FE672E;
+    }
+    & .icon_review {
+      color: #FFDC5D;
+    }
+  }
   &__head {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
   }
 
+  &__inner {
+    width: 100%;
+  }
+
   &__form {
     @extend .font-md;
     margin-bottom: 10px;
-    border-bottom: 1px dashed #DDD;
+    border-bottom: 1px dashed $cBorder;
     & span {
       white-space: nowrap;
     }
@@ -524,7 +676,7 @@ li {
   font-weight: bold;
 }
 .review_stars {
-  border-bottom: 1px dashed #DDD;
+  border-bottom: 1px dotted $cBorder;
 }
 
 .review_show_area {
@@ -532,7 +684,6 @@ li {
     background: #fff;
   }
 }
-
 
 .area {
   width: 90vw;
@@ -575,11 +726,12 @@ li {
     display: flex;
     flex-direction: column;
   }
+
   & .btn {
     &__signup {
       text-align: center;
-      margin-top: 20px;
       width: 100%;
+      background: $cBase;
     }
     &__login {
       text-align: center;
@@ -587,4 +739,45 @@ li {
       margin-top: 20px;
     }
   }
+}
+
+.mobile_hidden {
+  display: block;
+  width: 100%;
+}
+
+.send_mail_img {
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+.area__send_mail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mail_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  border-radius: 8px;
+  width: 100%;
+  align-items: center;
+}
+
+.mail_head {
+  margin-bottom: 30px;
+}
+
+.mail_content {
+  width: 100%;
+}
+
+.mail_title {
+  margin-bottom: 30px;
+}
+.mail_under {
+  font-weight: bold;
+  border-bottom: 5px solid $cSubBase;
 }

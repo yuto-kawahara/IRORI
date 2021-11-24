@@ -50,6 +50,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop-airbnb'
   gem 'bullet', '~> 6.1', '>= 6.1.5'
+  gem 'pry-byebug'
+  gem 'rspec-rails'
 end
 
 group :test do
@@ -83,3 +85,5 @@ gem 'counter_culture', '~> 3.0'
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'mini_racer'
+gem 'mailcatcher'
+gem 'news-api'
