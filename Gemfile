@@ -50,6 +50,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop-airbnb'
   gem 'bullet', '~> 6.1', '>= 6.1.5'
+  gem 'pry-byebug'
+  gem 'rspec-rails'
 end
 
 group :test do
@@ -68,8 +70,6 @@ gem 'refile-mini_magick'
 gem 'kaminari','~> 1.2.1'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
-gem 'pry-byebug'
-gem 'rspec-rails'
 gem 'enum_help'
 gem 'simple_calendar', '~> 2.0'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
