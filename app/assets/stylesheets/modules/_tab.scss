@@ -1,15 +1,20 @@
+/******************************************************************
+
+Stylesheet: タブ関連のCSS
+
+******************************************************************/
 .tab {
   position: sticky;
   top: 0;
   display: flex;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid $cBorder;
   &__item {
     display: flex;
     width: 50%;
     height: 50px;
     text-align: center;
     position: relative;
-    border-right: 1px solid #DDD;
+    border-right: 1px solid $cBorder;
   }
 
   & li:last-child {
@@ -37,7 +42,7 @@
   &__search {
     width: 100%;
     height: 50px;
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid $cBorder;
     line-height: 50px;
     text-align: center;
     font-weight: bold;

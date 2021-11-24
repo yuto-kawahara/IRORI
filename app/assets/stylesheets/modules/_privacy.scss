@@ -1,3 +1,8 @@
+/******************************************************************
+
+Stylesheet: プライバシーポリシー関連のCSS
+
+******************************************************************/
 .privacy_policy {
   margin-bottom: 20px;
   &__title {
@@ -9,7 +14,7 @@
     @extend .font-sm;
     height: 230px;
     overflow-y: scroll;
-    border: 1px solid #DDD;
+    border: 1px solid $cBorder;
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 0 1px 0 rgba(0,0,0,0.5);

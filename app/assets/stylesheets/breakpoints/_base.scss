@@ -40,7 +40,6 @@ Stylesheet: ベーススタイル
 body {
   letter-spacing: 0.125em;
   font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, Helvetica, Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, sans-serif;
-  // font-family: 'Kosugi Maru', sans-serif;
   overflow-y: scroll;
   background: #EFF3F4;
 }
@@ -70,7 +69,7 @@ li {
   z-index: 998;
   background: #fff;
   transition: all .3s;
-  border-left: 1px solid #DDD;
+  border-left: 1px solid $cBorder;
   &.open {
     transform: translateX(0vw);
   }
@@ -127,7 +126,7 @@ li {
 
 #main_area {
   position: relative;
-  border: 1px solid #DDD;
+  border: 1px solid $cBorder;
   width: 100%;
   min-height: 100vh;
   margin-left: 0;
@@ -138,7 +137,7 @@ li {
   width: 100%;
   min-height: 150vh;
   padding-bottom: 10vh;
-  border-right: 1px solid #DDD;
+  border-right: 1px solid $cBorder;
 }
 
 #footer {
@@ -159,7 +158,7 @@ li {
 .item {
   @extend .font-md;
   position: relative;
-  border: 1px solid #DDD;
+  border: 1px solid $cBorder;
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 8px;
@@ -204,7 +203,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid $cBorder;
   padding: 10px 10px 10px 41px;
   position: -webkit-sticky;
   position: sticky;
@@ -226,7 +225,7 @@ li {
 }
 
 .user_profile_inner {
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid $cBorder;
   padding: 20px;
 
   & .profile_name {
@@ -298,7 +297,7 @@ li {
     padding: 0;
 
     &.no_active {
-      background: #DDD;
+      background: $cBorder;
     }
   }
 
@@ -331,7 +330,7 @@ li {
 
   & .recruit_head {
     font-weight: bold;
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid $cBorder;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -597,7 +596,7 @@ li {
   &__form {
     @extend .font-md;
     margin-bottom: 10px;
-    border-bottom: 1px dashed #DDD;
+    border-bottom: 1px dashed $cBorder;
     & span {
       white-space: nowrap;
     }
@@ -677,7 +676,7 @@ li {
   font-weight: bold;
 }
 .review_stars {
-  border-bottom: 1px dashed #DDD;
+  border-bottom: 1px dotted $cBorder;
 }
 
 .review_show_area {
