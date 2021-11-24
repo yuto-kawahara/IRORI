@@ -80,12 +80,13 @@
     line-height: 60px;
   }
 
-  & .notice_icon[data-notice="false"]::before {
-    display: none;
-  }
-
   & .notice_icon {
-    &::before {
+    &.read {
+      &:before {
+        display: none;
+      }
+    }
+    &:before {
       @extend .font-md;
       display: flex;
       justify-content: center;

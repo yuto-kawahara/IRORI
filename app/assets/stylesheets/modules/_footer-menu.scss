@@ -35,11 +35,12 @@
     line-height: 19px;
   }
 
-  & .notice_icon[data-notice="false"]::before {
-    display: none;
-  }
-
   & .notice_icon {
+    &.read {
+      &:before {
+        display: none;
+      }
+    }
     &::before {
       @extend .font-md;
       display: flex;

@@ -64,7 +64,7 @@
     </li>
     <li class="side_menu__list hidden">
       <%= link_to notifications_path, class: "side_menu__link" do %>
-        <span class="icon"><ion-icon name="notifications-outline" class="notice_icon" data-notice=<%= @unread %>></ion-icon></span>
+        <span class="icon"><ion-icon name="notifications-outline" class="notice_icon <%= @unread %>"></ion-icon></span>
         <span class="title">通知</span>
       <% end %>
     </li>
