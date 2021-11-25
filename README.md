@@ -1,5 +1,5 @@
 　　　　　　　　![site-logo](https://user-images.githubusercontent.com/86665594/143163730-65ba7f28-0f2c-4ef6-97c9-bf3b7b07ba4c.png)
-                ![アセット 1](https://user-images.githubusercontent.com/86665594/143385966-efdd3001-fbc6-421a-98ce-cc4804f8b6fa.png)
+               ![アセット 1](https://user-images.githubusercontent.com/86665594/143386695-709d7255-97cc-42de-a799-d8ad7d2e0ed1.png)
 
 # - IRORI -
 　日本人になじみの深い「囲炉裏(いろり)」とボードゲーム界隈の「卓を囲む」という呼び方から着想を得て、
