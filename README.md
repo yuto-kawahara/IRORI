@@ -16,10 +16,30 @@
 そうした中でオンラインでボードゲームができると知って、試しにやってみると顔も名前も全く知らない人とボードゲームを楽しんだり、会話できるという環境が孤独を解消してくれることを知りました。
 　誰かと話したいけどきっかけがない、外出できず孤独を感じている、そんな方が気軽に一歩踏み出せるようなアプリを作ろうと思い立ちました。
 
-### ターゲットユーザ
+### ターゲットユーザー
 * ボードゲームを通して誰かと繋がりたい方  
 * ボードゲームをやったことがなく、機会があればやってみたいという方  
 * ボードゲームが好きで人と遊ぶことが好きな方  
+
+### 機能一覧
+* 募集機能
+* 予約機能
+* 通知機能
+ * フォローされた時、DMが届いた時、募集にコメントがあった時、予約された時、予約キャンセルされた時、卓報告で評価された時に通知が来る
+* 定時処理
+ * 予約確定後、参加者全員のDMにリマインドを送信  
+ 　今日の募集の場合はDMにすぐにリマインドを送信  
+   今日以降の募集の場合は前日の午前8時にリマインドを送信
+* 問い合わせ機能  
+* 検索機能
+* レビュー機能（お世話になったGM/PLにお礼を伝える）
+* フォローフォロワー機能
+* カレンダー表示（募集・予約状況を表示）
+* DM機能
+* コメント機能
+* レスポンシブ
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1MTZBoAEUzQ-hY0zV6-piHM2MqCnosbZeM_l7QVCCJiw/edit#gid=0>
 
 ### 主な利用シーン
 * おうち時間をボードゲームで楽しみたい時  
@@ -27,18 +47,8 @@
 * 誰かと会話しながらボードゲームを楽しみたい時  
 * 自分の推しボードゲームを誰かに勧めたい時  
 
-## 設計書
-### 【ER図】
-<https://app.diagrams.net/#G1d_khGARfFliiGCqonryGlzTg8d6TWKLu>
-
-### 【テーブル定義書】
-<https://docs.google.com/spreadsheets/d/1J9YOg19tfQtdVOl_TdYEhYnLuAqEkzFBXW203M3wKtA/edit#gid=856357510>
-
-### 【アプリケーション詳細設計書】
-<https://docs.google.com/spreadsheets/d/1QJTuXQGeLTxHYYOfAAkiqHZTHpDXz2iMiamtaVlZNXk/edit#gid=1355574236>
-
-## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1MTZBoAEUzQ-hY0zV6-piHM2MqCnosbZeM_l7QVCCJiw/edit#gid=0>
+## ER図
+![IRORI_ER drawio](https://user-images.githubusercontent.com/86665594/143388201-0dbebcd0-3cc6-4751-a137-32335f64c375.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
