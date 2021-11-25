@@ -69,6 +69,7 @@ class User::ReservesController < ApplicationController
     @reject_reserves = Reserve.where(recruit_id: @recruit.id, reserve_status: "reject_reserve")
     @recruit.update_attributes(recruit_status: "end_recruit")
     @reserves.each do |reserve|
+      reserve.update_attributes(reserve_status: "confirm_reserve")
       user = reserve.user
       server_link = text_url_to_link(reserve.recruit.discord_server_link)
       message = "サーバー招待を送信します\nご入室ください\n#{server_link}"

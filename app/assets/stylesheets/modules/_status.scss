@@ -1,0 +1,132 @@
+.icon_status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & ion-icon {
+    font-size: 3em;
+  }
+}
+.status_wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.recruit_status_title,
+.reserve_status_title {
+  font-weight: bold;
+  border-bottom: 3px solid $cSubBase;
+  margin-bottom: 15px;
+}
+
+.recruit_status_explanation,
+.reserve_status_explanation {
+  display: flex;
+  align-items: flex-start;
+}
+.recruit_status {
+  width: 40px;
+}
+.reserve_status {
+  width: 40px;
+}
+.recruit_point_1,
+.recruit_point_2,
+.recruit_point_3,
+.recruit_point_4,
+.recruit_point_5,
+.reserve_point_1,
+.reserve_point_2,
+.reserve_point_3,
+.reserve_point_4 {
+  @extend .font-sr;
+  display: flex;
+  align-items: center;
+  position: relative;
+  &:before {
+    content: '';
+    @extend .font-md;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13px;
+    height: 13px;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+}
+.recruit_point_1 {
+  &:before {
+    background-color: #DC3545;
+  }
+}
+.recruit_point_2 {
+  &:before {
+    background-color: #FFA521;
+  }
+}
+.recruit_point_3 {
+  &:before {
+    background-color: #0291C9;
+  }
+}
+.recruit_point_4 {
+  &:before {
+    background-color: gray;
+  }
+}
+.recruit_point_5 {
+  &:before {
+    background-color: #30ba4e;
+  }
+}
+
+.reserve_point_1 {
+  &:before {
+    background-color: #FFA521;
+  }
+}
+.reserve_point_2 {
+  &:before {
+    background-color: #30ba4e;
+  }
+}
+.reserve_point_3 {
+  &:before {
+    background-color: #DC3545;
+  }
+}
+.reserve_point_4 {
+  &:before {
+    background-color: #000;
+  }
+}
+
+.now_recruit {
+  color: #DC3545;
+}
+.few_recruit {
+  color: #FFA521;
+}
+.end_recruit {
+  color: #0291C9;
+}
+.expired_recruit {
+  color: gray;
+}
+.reminded_recruit {
+  color: #30ba4e;
+}
+
+.wait_reserve {
+  color: #FFA521;
+}
+.approve_reserve {
+  color: #30ba4e;
+}
+.reject_reserve {
+  color: #DC3545;
+}
+.confirm_reserve {
+  color: #000;
+}

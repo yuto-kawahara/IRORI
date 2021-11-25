@@ -121,7 +121,6 @@ li {
       color: #787878;
     }
   }
-
 }
 
 #main_area {
@@ -394,57 +393,6 @@ li {
   }
 }
 
-.icon_status {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  & ion-icon {
-    font-size: 3em;
-  }
-
-  & .now {
-    @include badge;
-    background: #F53A33;
-  }
-
-  & .few {
-    @include badge;
-    background: orange;
-  }
-
-  & .end {
-    @include badge;
-    background: #0291C9;
-  }
-
-  & .expired {
-    @include badge;
-    background: gray;
-  }
-
-  & .reminded {
-    @include badge;
-    background: #30ba4e;
-  }
-
-  & .status_now {
-    color: #F53A33;
-  }
-  & .status_end {
-    color: #0291C9;
-  }
-  & .status_few {
-    color: orange;
-  }
-  & .status_expired {
-    font-size: 2.5em;
-    color: gray;
-  }
-  & .status_reminded {
-    color: #30ba4e;
-  }
-}
-
 .recruit_detail_table {
   position: relative;
   border-radius: 8px;
@@ -600,7 +548,6 @@ li {
     & span {
       white-space: nowrap;
     }
-
   }
 
   & a {
