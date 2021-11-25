@@ -67,7 +67,9 @@ class User::UsersController < ApplicationController
     end
 
     reserves.each do |reserve|
-      @schedule.push(reserve.recruit)
+      if reserve.recruit.user.user_status != "quit_user"
+        @schedule.push(reserve.recruit)
+      end
     end
   end
 
