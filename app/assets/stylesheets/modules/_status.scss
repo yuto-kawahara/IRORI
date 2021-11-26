@@ -24,12 +24,12 @@
   display: flex;
   align-items: flex-start;
 }
-.recruit_status {
-  width: 40px;
-}
+.recruit_status,
 .reserve_status {
   width: 40px;
+  margin-right: 15px;
 }
+
 .recruit_point_1,
 .recruit_point_2,
 .recruit_point_3,
