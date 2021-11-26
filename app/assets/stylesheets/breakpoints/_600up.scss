@@ -119,6 +119,10 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   & th {
     width: 25%;
     padding: 6px;
+
+    & p {
+      display: block;
+    }
   }
 }
 
