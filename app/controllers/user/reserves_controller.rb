@@ -63,7 +63,7 @@ class User::ReservesController < ApplicationController
   end
 
   def confirm
-    @reserves = Reserve.where(recruit_id: @recruit.id, reserve_status: "approve_reserve")
+    @reserves = Reserve.where(recruit_id: @recruit.id, reserve_status: "approve_reserve").includes(:user)
   end
 
   def complete

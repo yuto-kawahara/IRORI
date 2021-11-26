@@ -3,9 +3,16 @@
     <% user = reserve.user %>
     <% status = reserve.reserve_status %>
     <li class="item">
-      <%= link_to profile_user_path(user) do %>
-        <%= attachment_image_tag user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md"  %>
-        <%= user.nickname %>
+      <% if user.user_status != "quit_user" %>
+        <%= link_to profile_user_path(user) do %>
+          <%= attachment_image_tag user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md"  %>
+          <%= user.nickname %>
+        <% end %>
+      <% else %>
+        <%= link_to profile_user_path(user) do %>
+          <%= attachment_image_tag user, :icon_image, fallback: "/images/no-icon.png", class: "face_icon icon_md"  %>
+          <%= "退会済みユーザー" %>
+        <% end %>
       <% end %>
       <% if ((@recruit.recruit_status != "end_recruit")\
           && (@recruit.recruit_status != "reminded_recruit")\
