@@ -19,8 +19,10 @@ $(document).on('turbolinks:load', function () {
   });
   // ウィンドウをリサイズした時に、サイドメニューを閉じる
   $(window).resize(function(){
-    modal.empty();
-    mask.addClass("hidden");
-    side_area.removeClass('open');
+    if (screen.width >= 480) {
+      modal.empty();
+      mask.addClass("hidden");
+      side_area.removeClass('open');
+    }
   });
 });
