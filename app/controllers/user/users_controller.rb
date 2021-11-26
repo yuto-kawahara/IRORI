@@ -4,7 +4,7 @@ class User::UsersController < ApplicationController
 
   def show
     @recruits = @user.recruits.includes(:play_forms)
-    @recruits = @recruits.sorted.page(params[:page])
+    @recruits = @recruits.updated.page(params[:page])
   end
 
   def edit
