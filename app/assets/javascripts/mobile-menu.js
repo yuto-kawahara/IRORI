@@ -7,6 +7,7 @@ $(document).on('turbolinks:load', function () {
   side_area.removeClass('open');
   mask.addClass("hidden");
 
+  // モバイルメニューボタンをクリックした時にサイドメニューをスライドする
   $('.mobile_menu_btn').click(function() {
     side_area.addClass('open');
     mask.removeClass("hidden");
@@ -16,7 +17,7 @@ $(document).on('turbolinks:load', function () {
       mask.addClass("hidden");
     });
   });
-
+  // ウィンドウをリサイズした時に、サイドメニューを閉じる
   $(window).resize(function(){
     modal.empty();
     mask.addClass("hidden");

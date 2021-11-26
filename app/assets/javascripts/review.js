@@ -17,6 +17,7 @@ $(document).on('turbolinks:load', function () {
     }
   }
   review();
+  // 親要素(review_list)に子要素が追加されたらreviewメソッドを実行する
   if (target !== null) {
     var observer = new MutationObserver(function(record) {
       observer.disconnect();

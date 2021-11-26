@@ -1,5 +1,6 @@
 /*global $*/
 $(document).on('turbolinks:load', function() {
+  // 画像追加時に画面に即時反映
   $('#img_refile').change(function(){
     var file = $('input[type="file"]').prop('files')[0];
     var faceicon = document.querySelector('.edit_face_icon');
