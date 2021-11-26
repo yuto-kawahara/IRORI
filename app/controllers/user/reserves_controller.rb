@@ -37,8 +37,10 @@ class User::ReservesController < ApplicationController
     status = params[:status]
     case status
       when "approve_reserve" then
+        # 承認ボタン押下時に予約ステータスを承認に更新
         @reserve.update_attributes(reserve_status: "approve_reserve")
       when "reject_reserve" then
+        # 拒否ボタン押下時に予約ステータスを拒否に更新
         @reserve.update_attributes(reserve_status: "reject_reserve")
     end
 
@@ -48,7 +50,7 @@ class User::ReservesController < ApplicationController
     few_remain = (@recruit.capacity * 0.5).floor
     last_remain = (@recruit.capacity * 0.9).floor
 
-    # 予約数が募集人員の7～9割以内に到達した時に募集ステータスを"残り僅か"に更新
+    # 予約数が募集人員の5～9割以内に到達した時に募集ステータスを"残り僅か"に更新
     if (reserves_count > few_remain) && (reserves_count <= last_remain)
       @recruit.update_attributes(recruit_status: "few_recruit")
     elsif reserves_count <= @recruit.capacity
@@ -67,8 +69,10 @@ class User::ReservesController < ApplicationController
   def complete
     @reserves = Reserve.where(recruit_id: @recruit.id, reserve_status: "approve_reserve")
     @reject_reserves = Reserve.where(recruit_id: @recruit.id, reserve_status: "reject_reserve")
+    # 募集ステータスを募集終了に更新
     @recruit.update_attributes(recruit_status: "end_recruit")
     @reserves.each do |reserve|
+      # 予約ステータスを予約確定に更新
       reserve.update_attributes(reserve_status: "confirm_reserve")
       user = reserve.user
       server_link = text_url_to_link(reserve.recruit.discord_server_link)
@@ -97,6 +101,7 @@ class User::ReservesController < ApplicationController
   end
 
   def confirm_access_restrictions
+    # 募集ステータスが募集終了の場合、confirm・completeページにアクセスできないように制限
     if @recruit.recruit_status == "end_recruit"
       redirect_to recruit_path(@recruit.id)
     end

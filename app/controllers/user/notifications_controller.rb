@@ -13,8 +13,4 @@ class User::NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.destroy
   end
-
-  def destroy_all
-  end
-
 end

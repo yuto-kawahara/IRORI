@@ -67,6 +67,7 @@ class User::UsersController < ApplicationController
     end
 
     reserves.each do |reserve|
+      # 退会したユーザーの募集は表示しない
       if reserve.recruit.user.user_status != "quit_user"
         @schedule.push(reserve.recruit)
       end
@@ -96,6 +97,7 @@ class User::UsersController < ApplicationController
   end
 
   def quit_user_exclusion
+    # 退会したユーザーのページにアクセスできないように制限
     if @user.user_status == "quit_user"
       redirect_to profile_user_path(current_user)
     end
