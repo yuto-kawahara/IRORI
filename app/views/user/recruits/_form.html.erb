@@ -51,8 +51,8 @@
         <small class="badge_mandatory">必須</small>
       </div>
       <p class="input_valid"><%= flash[:discord_server_link] %></p>
-      <%= f.text_field :discord_server_link, placeholder: "https://discord.gg/",   maxlength: "200" %>
-      <p>&#8251;招待リンクの有効期限を確認してください</p>
+      <%= f.text_field :discord_server_link, placeholder: "https://discord.gg/", maxlength: "200" %>
+      <p class="discord_caution">&#8251;招待リンクの有効期限を確認してください</p>
     </div>
 
     <div class="post_control">
