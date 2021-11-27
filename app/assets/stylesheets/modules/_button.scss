@@ -61,6 +61,9 @@ Stylesheet: ボタン関連のCSS
       color: #fff;
       background: #30ba4e;
     }
+    & span {
+      display: none;
+    }
   }
 
   &__reject {
@@ -78,6 +81,9 @@ Stylesheet: ボタン関連のCSS
     &:hover {
       color: #fff;
       background: #DC3545;
+    }
+    & span {
+      display: none;
     }
   }
 

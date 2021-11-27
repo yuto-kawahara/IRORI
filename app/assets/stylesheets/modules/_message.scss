@@ -29,10 +29,15 @@ Stylesheet: メッセージ関連のCSS
       @extend .font-md;
       display: inline-block;
       position: relative;
-      max-width: 70%;
+      max-width: 83%;
       padding: 17px 13px;
       border-radius: 12px;
       background: #d7ebfe;
+
+      & a {
+        color: blue;
+        text-decoration: underline;
+      }
 
       &:after {
         content: "";

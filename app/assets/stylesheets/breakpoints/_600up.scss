@@ -51,7 +51,9 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 .btn {
   &__reserve,
   &__cancel,
-  &__reserve_list {
+  &__reserve_list,
+  &__approve,
+  &__reject {
     display: inline-block;
     width: auto;
     height: auto;
