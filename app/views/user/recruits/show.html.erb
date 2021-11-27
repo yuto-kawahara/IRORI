@@ -6,6 +6,7 @@
     <% else %>
       <% if @recruit.recruit_status != "expired_recruit"\
          && @recruit.recruit_status != "end_recruit"\
+         && @recruit.recruit_status != "reminded_recruit"\
          && @recruit.capacity > @reserve_count %>
           <%= render 'user/reserves/reserve_btn', recruit: @recruit, active: "active" %>
       <% else %>
