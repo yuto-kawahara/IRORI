@@ -585,6 +585,38 @@ li {
     align-items: center;
   }
 }
+
+.area__reserve_complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > img {
+    margin-top: 12px;
+    width: 26%;
+  }
+}
+
+.reserve_complete_message {
+  position: relative;
+  padding: 13px;
+  background: #e0edff;
+  border-radius: 15px;
+  font-weight: bold;
+  @extend .font-md;
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 46%;
+    border: 15px solid transparent;
+    border-top: 15px solid #e0edff;
+    width: 0;
+    height: 0;
+  }
+}
+
 .confirm_btn_area {
   text-align: center;
 }

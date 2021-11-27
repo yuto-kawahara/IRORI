@@ -4,9 +4,7 @@
     <% if @recruit.user == current_user %>
       <%= render 'user/reserves/waiting', recruit: @recruit %>
     <% else %>
-      <% if @recruit.recruit_status != "expired_recruit"\
-         && @recruit.recruit_status != "end_recruit"\
-         && @recruit.recruit_status != "reminded_recruit"\
+      <% if @recruit.recruit_status_before_type_cast < Recruit.recruit_statuses[:end_recruit]\
          && @recruit.capacity > @reserve_count %>
           <%= render 'user/reserves/reserve_btn', recruit: @recruit, active: "active" %>
       <% else %>

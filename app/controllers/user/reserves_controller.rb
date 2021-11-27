@@ -102,7 +102,7 @@ class User::ReservesController < ApplicationController
 
   def confirm_access_restrictions
     # 募集ステータスが募集終了の場合、confirm・completeページにアクセスできないように制限
-    if @recruit.recruit_status == "end_recruit"
+    if @recruit.recruit_status_before_type_cast >= Recruit.recruit_statuses[:end_recruit]
       redirect_to recruit_path(@recruit.id)
     end
   end
