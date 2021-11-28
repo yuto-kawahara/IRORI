@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function () {
       path: "nav.pagination a[rel=next]",
       append: ".item",
       hideNav: "nav.pagination",
-      history: true,
+      history: 'push',
       scrollThreshold: 400,
       prefill: true,
       status: ".page-load-status",
