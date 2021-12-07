@@ -81,4 +81,8 @@ class User < ApplicationRecord
     end
   end
 
+  # 未読の通知がある場合は既読に更新
+  def notification_checked
+    passive_notifications.valid.unread.each{ |notification| notification.update_attribute(:checked, true) }
+  end
 end

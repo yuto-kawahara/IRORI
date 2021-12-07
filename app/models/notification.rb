@@ -9,4 +9,5 @@ class Notification < ApplicationRecord
   belongs_to :recruit_comment, optional: true
   belongs_to :message,         optional: true
   belongs_to :evaluation,      optional: true
+
 end
