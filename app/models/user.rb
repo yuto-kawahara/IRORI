@@ -85,4 +85,27 @@ class User < ApplicationRecord
   def notification_checked
     passive_notifications.valid.unread.each{ |notification| notification.update_attribute(:checked, true) }
   end
+
+  # ユーザーの論理削除
+  def logical_delete!
+    # deviseの一意制約を回避するため退会時にユーザー名とメールアドレスに退会用の文字列付与
+    assign_attributes(nickname: nickname + quited_suffix,
+                      email: email + quited_suffix,
+                      user_status: "quit_user")
+    skip_email_changed_notification!
+    save!
+  end
+
+  # 接尾辞に退会用の文字列を生成
+  def quited_suffix
+    "_quited_user_" + I18n.l(Time.current, format: :long)
+  end
+
+  # ゲスト退会時の初期化処理
+  def reset_guest
+    update_attributes(nickname: "ゲスト",
+                      email: "guest@example.com",
+                      icon_image: nil,
+                      introduction: nil)
+  end
 end

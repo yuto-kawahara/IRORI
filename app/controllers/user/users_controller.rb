@@ -24,22 +24,11 @@ class User::UsersController < ApplicationController
 
   def withdraw
     # 一般ユーザー退会時
-    if current_user.user_status != "guest_user"
-      # deviseの一意制約を回避するため退会時にユーザー名とメールアドレスに退会フラグを付与する
-      delete_flg = "_quited_user_" + I18n.l(Time.current, format: :long)
-      deleted_name = current_user.nickname + delete_flg
-      deleted_email = current_user.email + delete_flg
-      current_user.assign_attributes(nickname: deleted_name,
-                                     email: deleted_email,
-                                     user_status: "quit_user")
-      current_user.skip_email_changed_notification!
-      current_user.save!
+    if !current_user.guest_user?
+      current_user.logical_delete!
     else
       # ゲストユーザー退会時は初期化処理のみ実施
-      current_user.update_attributes(nickname: "ゲスト",
-                                     email: "guest@example.com",
-                                     icon_image: nil,
-                                     introduction: nil)
+      current_user.reset_guest
     end
     reset_session
     redirect_to root_path
