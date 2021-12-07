@@ -47,20 +47,12 @@ class User::UsersController < ApplicationController
   end
 
   def schedule
-    @schedule = []
-    recruits = current_user.recruits
-    reserves = current_user.reserves.includes(:recruit)
-
-    recruits.each do |recruit|
-      @schedule.push(recruit)
-    end
-
-    reserves.each do |reserve|
+    recruits = current_user.recruits.to_a
+    reserves = current_user.reserves.includes(:recruit).map do |reserve|
       # 退会したユーザーの募集は表示しない
-      if reserve.recruit.user.user_status != "quit_user"
-        @schedule.push(reserve.recruit)
-      end
-    end
+      reserve.recruit unless reserve.user.quit_user?
+    end.compact
+    @schedule = recruits + reserves
   end
 
   def search
