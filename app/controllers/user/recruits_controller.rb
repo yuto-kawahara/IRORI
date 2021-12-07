@@ -20,21 +20,10 @@ class User::RecruitsController < ApplicationController
   end
 
   def update
-    play_form_ids = params[:recruit][:play_form_ids]
-    entry_condition_ids = params[:recruit][:entry_condition_ids]
-    start_time = params[:recruit][:start_time]
-
     if @recruit.update(recruit_params)
-      if play_form_ids.blank?
-        RecruitPlayForm.bulk_create(@recruit.id, play_form_ids)
-      end
-      if entry_condition_ids.blank?
-        RecruitEntryCondition.bulk_create(@recruit.id, entry_condition_ids)
-      end
-      # 更新した開始日程が現在時刻以上の場合、"募集中"に更新する
-      if start_time >= Time.current
-        @recruit.update_attributes(recruit_status: "now_recruit")
-      end
+      RecruitBulkCreator.new(
+        @recruit,params[:recruit][:play_form_ids],params[:recruit][:entry_condition_ids],params[:recruit][:start_time]
+      ).update
       redirect_to recruit_path
     else
       create_input_valid(@recruit.errors)
@@ -47,11 +36,10 @@ class User::RecruitsController < ApplicationController
     @recruit = Recruit.new(recruit_params)
     @recruit.user_id = current_user.id
 
-    play_form_ids = params[:recruit][:play_form_ids]
-    entry_condition_ids = params[:recruit][:entry_condition_ids]
     if @recruit.save
-      RecruitPlayForm.bulk_create(@recruit.id, play_form_ids)
-      RecruitEntryCondition.bulk_create(@recruit.id, entry_condition_ids)
+      RecruitBulkCreator.new(
+        @recruit,params[:recruit][:play_form_ids],params[:recruit][:entry_condition_ids],nil
+      ).create
       redirect_to recruit_path(@recruit)
     else
       create_input_valid(@recruit.errors)
