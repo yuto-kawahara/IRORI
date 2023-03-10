@@ -58,10 +58,6 @@ https://irori.work/
 * コメント機能
 * レスポンシブ
 
-## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1MTZBoAEUzQ-hY0zV6-piHM2MqCnosbZeM_l7QVCCJiw/edit#gid=0>
- 
-
 ## ER図
 ![IRORI_ER drawio](https://user-images.githubusercontent.com/86665594/143388201-0dbebcd0-3cc6-4751-a137-32335f64c375.png)
 
